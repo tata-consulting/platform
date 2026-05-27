@@ -1216,6 +1216,22 @@
   box-shadow: 0 0 0 4px rgba(95, 36, 159, 0.12);
 }
 
+.form-field.is-invalid input,
+.form-field.is-invalid select,
+.form-field.is-invalid textarea,
+.form-field [aria-invalid="true"] {
+  border-color: #B00020;
+  box-shadow: 0 0 0 4px rgba(176, 0, 32, 0.10);
+}
+
+.form-field__error {
+  margin-top: 6px;
+  color: #B00020;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
 .form-actions {
   grid-column: 1 / -1;
   display: flex;

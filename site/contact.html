@@ -128,26 +128,32 @@
             <span class="eyebrow" style="display:block; margin-bottom: var(--s-3);">Send us a note</span>
             <h2 style="margin-bottom: var(--s-8);">A few details to help us route it to the right team.</h2>
 
-            <form class="contact-form" novalidate>
+            <form class="contact-form" novalidate aria-describedby="form-help">
+              <p id="form-help" style="grid-column: 1 / -1; font-size: 0.875rem; color: var(--text-muted); margin-top: calc(-1 * var(--s-2));">All fields are required. Please use your work email - personal accounts (Gmail, Yahoo, Outlook, etc.) are not accepted.</p>
               <div class="form-field">
-                <label for="first">First name</label>
-                <input id="first" type="text" name="first" autocomplete="given-name" required />
+                <label for="first">First name <span aria-hidden="true" style="color: var(--brand-primary);">*</span></label>
+                <input id="first" type="text" name="first" autocomplete="given-name" required minlength="1" aria-required="true" />
+                <p class="form-field__error" data-error-for="first" hidden></p>
               </div>
               <div class="form-field">
-                <label for="last">Last name</label>
-                <input id="last" type="text" name="last" autocomplete="family-name" required />
+                <label for="last">Last name <span aria-hidden="true" style="color: var(--brand-primary);">*</span></label>
+                <input id="last" type="text" name="last" autocomplete="family-name" required minlength="1" aria-required="true" />
+                <p class="form-field__error" data-error-for="last" hidden></p>
               </div>
               <div class="form-field">
-                <label for="email">Work email</label>
-                <input id="email" type="email" name="email" autocomplete="email" required />
+                <label for="email">Work email <span aria-hidden="true" style="color: var(--brand-primary);">*</span></label>
+                <input id="email" type="email" name="email" autocomplete="email" required aria-required="true" inputmode="email" placeholder="you@yourcompany.com" />
+                <p class="form-field__error" data-error-for="email" hidden></p>
               </div>
               <div class="form-field">
-                <label for="company">Company</label>
-                <input id="company" type="text" name="company" autocomplete="organisation" required />
+                <label for="company">Company <span aria-hidden="true" style="color: var(--brand-primary);">*</span></label>
+                <input id="company" type="text" name="company" autocomplete="organization" required minlength="1" aria-required="true" />
+                <p class="form-field__error" data-error-for="company" hidden></p>
               </div>
               <div class="form-field form-field--full">
-                <label for="interest">I'd like to talk about</label>
-                <select id="interest" name="interest">
+                <label for="interest">I'd like to talk about <span aria-hidden="true" style="color: var(--brand-primary);">*</span></label>
+                <select id="interest" name="interest" required aria-required="true">
+                  <option value="">Choose a topic&hellip;</option>
                   <option>Cloud transformation</option>
                   <option>AI &amp; data</option>
                   <option>Cybersecurity</option>
@@ -157,12 +163,14 @@
                   <option>Careers</option>
                   <option>Media or analyst inquiry</option>
                 </select>
+                <p class="form-field__error" data-error-for="interest" hidden></p>
               </div>
               <div class="form-field form-field--full">
-                <label for="message">Tell us more</label>
-                <textarea id="message" name="message" placeholder="What problem are you trying to solve?"></textarea>
+                <label for="message">Tell us more <span aria-hidden="true" style="color: var(--brand-primary);">*</span></label>
+                <textarea id="message" name="message" required minlength="10" aria-required="true" placeholder="What problem are you trying to solve?"></textarea>
+                <p class="form-field__error" data-error-for="message" hidden></p>
               </div>
-              <p data-form-status hidden style="grid-column: 1 / -1; color: var(--brand-primary); font-weight: 600;"></p>
+              <p data-form-status hidden style="grid-column: 1 / -1; color: var(--brand-primary); font-weight: 600;" role="status" aria-live="polite"></p>
               <div class="form-actions">
                 <button class="btn btn--primary" type="submit">Send note
                   <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>

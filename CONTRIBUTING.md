@@ -41,7 +41,8 @@ platform/
 │   ├── js/
 │   │   └── main.js             Sticky header, mega-menu, mobile menu, reveal-on-scroll, form handlers
 │   ├── assets/                 Logo, imagery
-│   └── favicon.svg
+│   ├── favicon.svg
+│   └── CNAME                   GitHub Pages custom domain
 │
 ├── scripts/
 │   └── generate-site.py        Single source of truth for shared chrome + page configs
@@ -68,6 +69,12 @@ python3 scripts/generate-site.py
 ```
 
 This re-emits all 20 pages with the new chrome while preserving each page's `<main>`. Commit the regenerated HTML alongside the generator change.
+
+### Changing the GitHub Pages custom domain
+
+Edit `site/CNAME`. GitHub Pages deploys the `site/` directory as-is, so the value in that file becomes the site's canonical custom domain.
+
+Use the apex domain (`example.com`) when you want both the apex and `www` hostnames to land on the same site via GitHub Pages redirects. DNS still needs to be configured to point both hostnames at Pages.
 
 ### Adding a new page
 

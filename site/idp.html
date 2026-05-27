@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Internal Developer Platform - Built on Meshery - Tata Consulting Services, PLC</title>
-  <meta name="description" content="The Tata Internal Developer Platform is built on the CNCF project Meshery by the London Engineering Centre of Excellence. Service provider-grade architecture, strict multi-tenancy, policy-as-code RBAC, and a developer experience worth opening every morning - for hundreds of thousands of Tata engineers and client teams." />
+  <title>Internal Developer Platform - Tata Consulting Services, PLC</title>
+  <meta name="description" content="The Tata Internal Developer Platform is built and operated by the London Engineering Centre of Excellence on an open, cloud-native, AI-enabled stack. Service provider-grade architecture, strict multi-tenancy, policy-as-code RBAC, and a developer experience worth opening every morning - for hundreds of thousands of Tata engineers and client teams." />
   <script>document.documentElement.classList.add('js')</script>
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -380,8 +380,8 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg>
           The Tata Internal Developer Platform
         </span>
-        <h1 id="idp-hero-title">One platform for hundreds of thousands of engineers. <em>Built on Meshery.</em></h1>
-        <p class="idp-hero__lede">The Tata Internal Developer Platform is the London Engineering Centre of Excellence's flagship product: a service provider-grade IDP that maps the deep, multi-tiered structure of a global enterprise onto a single, opinionated paved road - and ships it both inside Tata and to the clients we serve. It is built on the CNCF project <strong>Meshery</strong>, the cloud-native manager, and on the open-source ecosystem that surrounds it.</p>
+        <h1 id="idp-hero-title">One platform for hundreds of thousands of engineers. <em>Open, cloud-native, AI-enabled.</em></h1>
+        <p class="idp-hero__lede">The Tata Internal Developer Platform is the London Engineering Centre of Excellence's flagship product: a service provider-grade IDP that maps the deep, multi-tiered structure of a global enterprise onto a single, opinionated paved road - and ships it both inside Tata and to the clients we serve. It is built on open, AI-enabled, cloud-native foundations and on the wider CNCF ecosystem, drawing on cloud, DevOps, IoT, and automation patterns proven at scale.</p>
         <div class="idp-hero__cta">
           <a class="btn btn--primary" href="https://platform.tata-consulting.co.uk" rel="noopener" target="_blank">Open the platform
             <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
@@ -400,7 +400,7 @@
           </div>
           <div>
             <div class="idp-hero__meta-num">CNCF</div>
-            <div class="idp-hero__meta-label">Open-source core: Meshery</div>
+            <div class="idp-hero__meta-label">Open-source core: CNCF</div>
           </div>
           <div>
             <div class="idp-hero__meta-num">London</div>
@@ -464,12 +464,20 @@
         <div class="section-head">
           <div class="section-head__title">
             <span class="eyebrow">How it fits together</span>
-            <h2 id="architecture-title">A Meshery-anchored stack, top to bottom.</h2>
-            <p class="lead" style="margin-top: var(--s-5);">Meshery sits at the centre of the platform as the cloud-native manager: a control plane that knows how to model, deploy, and continuously reconcile Kubernetes-native components, service meshes, and the long tail of CNCF projects. Around it we layer the developer surface above and the runtime fabric below.</p>
+            <h2 id="architecture-title">An open, cloud-native stack, top to bottom.</h2>
+            <p class="lead" style="margin-top: var(--s-5);">An AI-enabled collaboration suite sits at the top of the platform: a design surface that lets architects, platform engineers, and developers model, deploy, and continuously reconcile cloud-native components and the long tail of CNCF projects together. Beneath it we layer the developer surface, the platform services, and a hardened runtime fabric spanning container orchestration (Kubernetes, OpenShift), serverless (Knative, AWS Lambda, Azure Functions), and a service mesh (Istio, Linkerd) - all sitting on hybrid and multi-cloud infrastructure.</p>
           </div>
         </div>
 
-        <div class="mesh-diagram" role="img" aria-label="The Tata IDP architecture: developer surface on top; Meshery control plane in the middle; multi-tenant Kubernetes runtime with custom operators below.">
+        <div class="mesh-diagram" role="img" aria-label="The Tata IDP architecture: collaboration suite at the top; developer surface; platform services and a hardened cloud-native runtime; multi-cloud infrastructure.">
+          <div class="mesh-row">
+            <div class="mesh-block mesh-block--meshery">
+              <span class="mesh-block__eyebrow">Collaboration - suite</span>
+              <span class="mesh-block__title">Meshery - Infrastructure as Design</span>
+              <span class="mesh-block__detail">AI-enabled design, deployment, and operation of cloud-native components and the wider CNCF landscape using hundreds of models. Extended in-house with custom operators, organisation-aware tenancy, and policy enforcement.</span>
+            </div>
+          </div>
+          <div class="mesh-arrow"></div>
           <div class="mesh-row mesh-row--3">
             <div class="mesh-block mesh-block--surface">
               <span class="mesh-block__eyebrow">Surface - portal</span>
@@ -488,14 +496,6 @@
             </div>
           </div>
           <div class="mesh-arrow"></div>
-          <div class="mesh-row">
-            <div class="mesh-block mesh-block--meshery">
-              <span class="mesh-block__eyebrow">Control plane</span>
-              <span class="mesh-block__title">Meshery - the cloud-native manager (CNCF)</span>
-              <span class="mesh-block__detail">Design - deploy - operate Kubernetes-native components, service meshes, and the wider CNCF landscape, all from one model. Extended in-house with custom operators, organisation-aware tenancy, and policy enforcement.</span>
-            </div>
-          </div>
-          <div class="mesh-arrow"></div>
           <div class="mesh-row mesh-row--2">
             <div class="mesh-block mesh-block--runtime">
               <span class="mesh-block__eyebrow">Platform services</span>
@@ -504,8 +504,8 @@
             </div>
             <div class="mesh-block mesh-block--runtime">
               <span class="mesh-block__eyebrow">Runtime fabric</span>
-              <span class="mesh-block__title">Hardened Kubernetes - operators - mesh</span>
-              <span class="mesh-block__detail">Meshery Operator - in-house controllers (Go) - service mesh - network policy - autoscaling</span>
+              <span class="mesh-block__title">Hardened cloud-native runtime</span>
+              <span class="mesh-block__detail">Container orchestration (Kubernetes, OpenShift) - service mesh (Istio, Linkerd) - serverless (Knative) - in-house controllers (Go) - network policy - autoscaling</span>
             </div>
           </div>
           <div class="mesh-arrow"></div>
@@ -550,7 +550,7 @@
             <ul>
               <li>Client-dedicated tenancy that respects their organisational shape, not ours.</li>
               <li>Sovereign UK regions and client-controlled landing zones for regulated workloads.</li>
-              <li>Open core: built on Meshery and the CNCF stack, so clients are never locked into a Tata-only path.</li>
+              <li>Open core: built on the CNCF stack and on cloud, DevOps, AI, and automation standards, so clients are never locked into a Tata-only path.</li>
               <li>The same platform Tata uses internally, with the same release cadence and the same on-call discipline.</li>
             </ul>
           </div>
@@ -624,24 +624,24 @@
           <div class="section-head__title">
             <span class="eyebrow">Open-source footprint</span>
             <h2 id="oss-title">What we maintain upstream.</h2>
-            <p class="lead" style="margin-top: var(--s-5);">The platform's competitive edge does not come from secrecy. It comes from being one of the most active enterprise contributors to the projects underneath - so we know how Meshery and its neighbours will evolve, and so the wider community gets to benefit from the problems we have to solve at Tata's scale.</p>
+            <p class="lead" style="margin-top: var(--s-5);">The platform's competitive edge does not come from secrecy. It comes from being one of the most active enterprise contributors to the cloud-native projects underneath - so we know how the ecosystem will evolve, and so the wider community gets to benefit from the problems we have to solve at Tata's scale.</p>
           </div>
         </div>
 
         <div class="oss-grid">
           <article class="oss-card reveal">
-            <span class="oss-card__name">meshery / meshery</span>
-            <h3 class="oss-card__title">Meshery - the cloud-native manager</h3>
-            <p class="oss-card__text">Our team is a core contributor to Meshery itself - the CNCF project that gives the platform its control plane. Heavy use of Go and TypeScript, with a particular focus on the model that lets one Meshery instance manage Kubernetes-native components across many tenants.</p>
+            <span class="oss-card__name">cloud-native collaboration suite</span>
+            <h3 class="oss-card__title">Infrastructure as Design</h3>
+            <p class="oss-card__text">Our team is a core contributor to the AI-enabled, design-led collaboration suite that anchors the platform. Heavy use of Go and TypeScript, with a particular focus on the model that lets one control plane manage cloud-native components (Kubernetes, OpenShift, serverless) across many tenants.</p>
           </article>
           <article class="oss-card reveal">
-            <span class="oss-card__name">meshery / meshery-operator</span>
-            <h3 class="oss-card__title">Meshery Operator</h3>
-            <p class="oss-card__text">We contribute meaningfully to the operator that manages Meshery's lifecycle on Kubernetes - the same operator that runs in production across every cluster the IDP supervises, in both Tata and client environments.</p>
+            <span class="oss-card__name">lifecycle operators</span>
+            <h3 class="oss-card__title">Cloud-native lifecycle operators</h3>
+            <p class="oss-card__text">We contribute meaningfully to the operators that manage the lifecycle of the collaboration suite on container orchestrators like Kubernetes and OpenShift - the same operators that run in production across every cluster the IDP supervises, in both Tata and client environments.</p>
           </article>
           <article class="oss-card reveal">
-            <span class="oss-card__name">meshery / helm-kanvas-snapshot</span>
-            <h3 class="oss-card__title">helm-kanvas-snapshot</h3>
+            <span class="oss-card__name">helm-kanvas-snapshot</span>
+            <h3 class="oss-card__title">Visual release snapshots</h3>
             <p class="oss-card__text">A Helm-aware tool for capturing and visualising the state of a release - the kind of <em>see-what-you-shipped</em> capability we needed in production and decided to build in the open rather than as an internal-only utility.</p>
           </article>
         </div>
@@ -659,9 +659,10 @@
           </div>
         </div>
         <div class="stack-row">
-          <span class="stack-chip"><span></span>Meshery</span>
-          <span class="stack-chip"><span></span>Meshery Operator</span>
-          <span class="stack-chip"><span></span>Kubernetes</span>
+          <span class="stack-chip"><span></span>Cloud-native collaboration suite</span>
+          <span class="stack-chip"><span></span>Lifecycle operators</span>
+          <span class="stack-chip"><span></span>Container orchestration (Kubernetes, OpenShift)</span>
+          <span class="stack-chip"><span></span>Serverless (Knative, Lambda, Functions)</span>
           <span class="stack-chip"><span></span>Helm &amp; helm-kanvas-snapshot</span>
           <span class="stack-chip"><span></span>Argo CD &amp; Argo Workflows</span>
           <span class="stack-chip"><span></span>Crossplane</span>
@@ -741,7 +742,7 @@
             <li><a href="https://platform.tata-consulting.co.uk" rel="noopener" target="_blank">Open the platform</a></li>
             <li><a href="london.html">London CoE</a></li>
             <li><a href="idp.html">Internal Developer Platform</a></li>
-            <li><a href="https://meshery.io" rel="noopener" target="_blank">Meshery (CNCF)</a></li>
+            <li><a href="https://landscape.cncf.io" rel="noopener" target="_blank">CNCF Landscape</a></li>
           </ul>
         </div>
         <div class="site-footer__col">
