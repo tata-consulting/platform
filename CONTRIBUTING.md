@@ -74,7 +74,7 @@ This re-emits all 20 pages with the new chrome while preserving each page's `<ma
 
 Edit `site/CNAME`. GitHub Pages deploys the `site/` directory as-is, so the value in that file becomes the site's canonical custom domain.
 
-Use the apex domain (`example.com`) when you want both the apex and `www` hostnames to land on the same site via GitHub Pages redirects. DNS still needs to be configured to point both hostnames at Pages.
+Use the hostname you want to be canonical (for example, `www.example.com`) in `site/CNAME`. If you also want the apex domain (`example.com`) to work, point the apex DNS at GitHub Pages as well so GitHub can redirect it to the canonical host.
 
 ### Adding a new page
 
