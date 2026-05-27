@@ -21,17 +21,17 @@ from textwrap import dedent
 
 SITE_DIR = Path(__file__).resolve().parents[1] / "site"
 
-WORDMARK_LIGHT = """\
-        <svg viewBox="0 0 220 48" aria-hidden="true" style="color: var(--brand-primary)">
-          <g fill="currentColor">
-            <path d="M4 12h44v6H32v22h-6V18H4z"/>
-            <path d="M82 11.2c-9 0-15.4 6.2-15.4 15s6.4 15 15.4 15c5.2 0 9.4-1.9 12.4-5.4l-4.4-4c-2 2-4.6 3.2-7.8 3.2-5.5 0-9.4-3.7-9.4-8.8s3.9-8.8 9.4-8.8c3 0 5.5 1 7.5 2.9l4.5-4C92 13 87.6 11.2 82 11.2z"/>
-            <path d="M112.8 11.2c-7.2 0-12 3.6-12 8.9 0 11.4 17.7 7.8 17.7 13.6 0 1.9-1.9 3-5.5 3-3.7 0-7-1.4-9.5-3.7l-3.4 4.7c2.9 2.6 7.7 4.3 12.6 4.3 7.6 0 12.4-3.6 12.4-9.1 0-11.5-17.7-7.7-17.7-13.5 0-1.8 1.7-2.8 4.8-2.8 2.7 0 5.8.9 8.7 2.6l3-4.9c-3-1.9-7-3.1-11.1-3.1z"/>
-          </g>
-          <text x="138" y="32" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="700" fill="currentColor" letter-spacing="-0.02em">Consulting, PLC</text>
-        </svg>"""
+WORDMARK_LIGHT = (
+    '<img src="assets/logo/tcs-logo-black.svg" '
+    'alt="Tata Consulting Services, PLC" '
+    'class="site-header__logo-img" width="160" height="46" />'
+)
 
-WORDMARK_DARK = WORDMARK_LIGHT.replace("color: var(--brand-primary)", "color: #fff")
+WORDMARK_DARK = (
+    '<img src="assets/logo/tcs-logo-white.svg" '
+    'alt="Tata Consulting Services, PLC" '
+    'class="site-footer__logo-img" width="160" height="46" />'
+)
 
 ARROW = '<svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>'
 
@@ -55,11 +55,11 @@ CHROME_TOP = """<!doctype html>
 
   <div class="utility-bar">
     <div class="container utility-bar__inner">
-      <a href="#"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></svg> United Kingdom - English</a>
+      <a href="find-office.html" aria-label="United Kingdom - English. Find an office in another region."><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></svg> United Kingdom - English</a>
       <a href="investors.html">Investors</a>
       <a href="newsroom.html">Newsroom</a>
       <a href="alumni.html">Alumni</a>
-      <a href="#">Sign in</a>
+      <a href="contact.html?topic=sign-in">Sign in</a>
     </div>
   </div>
 
@@ -556,7 +556,7 @@ def newsroom_main() -> str:
             <span class="eyebrow">Recent</span>
             <h2>Latest announcements.</h2>
           </div>
-          <a class="arrow-link" href="#">Archive
+          <a class="arrow-link" href="newsroom.html#archive">Archive
             {ARROW}
           </a>
         </div>
