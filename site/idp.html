@@ -1,0 +1,794 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Internal Developer Platform - Built on Meshery - Tata Consulting Services, PLC</title>
+  <meta name="description" content="The Tata Internal Developer Platform is built on the CNCF project Meshery by the London Engineering Centre of Excellence. Service provider-grade architecture, strict multi-tenancy, policy-as-code RBAC, and a developer experience worth opening every morning - for hundreds of thousands of Tata engineers and client teams." />
+  <script>document.documentElement.classList.add('js')</script>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <style>
+    /* Page-local styles for IDP page */
+    .idp-hero {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #0B0822 0%, #2A1063 45%, #5F249F 100%);
+      color: #fff;
+      padding-block: clamp(96px, 13vw, 168px) clamp(48px, 6vw, 96px);
+    }
+    .idp-hero::before {
+      content: "";
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 85% 25%, rgba(138, 79, 255, 0.5), transparent 55%),
+        radial-gradient(ellipse at 10% 90%, rgba(95, 36, 159, 0.55), transparent 55%);
+      pointer-events: none;
+    }
+    .idp-hero::after {
+      content: "";
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.045) 1px, transparent 1px);
+      background-size: 56px 56px;
+      pointer-events: none;
+      mask-image: radial-gradient(ellipse at 55% 35%, #000 35%, transparent 80%);
+      -webkit-mask-image: radial-gradient(ellipse at 55% 35%, #000 35%, transparent 80%);
+    }
+    .idp-hero__inner { position: relative; z-index: 1; max-width: 960px; }
+    .idp-hero__chip {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+      color: rgba(255,255,255,0.85);
+      padding: 6px 14px;
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.04);
+      margin-bottom: var(--s-5);
+    }
+    .idp-hero__chip svg { width: 14px; height: 14px; }
+    .idp-hero h1 {
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-weight: 800; line-height: 1.04; letter-spacing: -0.025em;
+      margin-bottom: var(--s-6);
+    }
+    .idp-hero h1 em { font-style: normal; color: var(--brand-accent); }
+    .idp-hero__lede {
+      font-size: clamp(1.0625rem, 1.4vw, 1.25rem); line-height: 1.55;
+      color: rgba(255,255,255,0.85); max-width: 760px; margin-bottom: var(--s-8);
+    }
+    .idp-hero__cta { display: flex; flex-wrap: wrap; gap: var(--s-3); }
+    .idp-hero__meta {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--s-6);
+      margin-top: var(--s-12);
+      padding-top: var(--s-8);
+      border-top: 1px solid rgba(255,255,255,0.12);
+    }
+    @media (min-width: 700px) {
+      .idp-hero__meta { grid-template-columns: repeat(4, 1fr); }
+    }
+    .idp-hero__meta-num {
+      font-size: clamp(1.5rem, 2.6vw, 2.25rem);
+      font-weight: 800; letter-spacing: -0.02em; color: var(--brand-accent);
+      margin-bottom: 4px; line-height: 1;
+    }
+    .idp-hero__meta-label { font-size: 0.875rem; color: rgba(255,255,255,0.78); }
+
+    /* Pillars (re-uses .pillar from london.html style, but defined locally to be self-contained) */
+    .pillar {
+      padding: var(--s-8);
+      background: var(--surface);
+      border: 1px solid var(--hairline);
+      border-radius: var(--r-md);
+      display: flex; flex-direction: column; gap: var(--s-4);
+      transition: transform var(--t-med) var(--ease),
+                  box-shadow var(--t-med) var(--ease),
+                  border-color var(--t-med) var(--ease);
+    }
+    .pillar:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(26, 0, 51, 0.10);
+      border-color: transparent;
+    }
+    .pillar__icon-wrap {
+      width: 48px; height: 48px; border-radius: var(--r-md);
+      display: inline-flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, rgba(95,36,159,0.12), rgba(138,79,255,0.06));
+      color: var(--brand-primary);
+    }
+    .pillar__icon-wrap svg { width: 24px; height: 24px; }
+    .pillar h3 { font-size: 1.125rem; font-weight: 700; letter-spacing: -0.005em; }
+    .pillar p { color: var(--text-muted); line-height: 1.55; font-size: 0.9375rem; }
+
+    /* Meshery architecture diagram */
+    .mesh-diagram {
+      background: linear-gradient(180deg, #FAFAFC 0%, #F2EFFA 100%);
+      border: 1px solid var(--hairline);
+      border-radius: var(--r-lg);
+      padding: clamp(20px, 3vw, 36px);
+      display: grid; gap: var(--s-4);
+    }
+    .mesh-row {
+      display: grid; grid-template-columns: 1fr; gap: var(--s-3);
+    }
+    @media (min-width: 720px) {
+      .mesh-row--3 { grid-template-columns: repeat(3, 1fr); }
+      .mesh-row--2 { grid-template-columns: repeat(2, 1fr); }
+    }
+    .mesh-block {
+      padding: var(--s-5);
+      background: #fff;
+      border: 1.5px solid var(--hairline);
+      border-radius: var(--r-md);
+      display: flex; flex-direction: column; gap: 6px;
+    }
+    .mesh-block--surface {
+      background: linear-gradient(135deg, #F4ECFE, #FFFFFF);
+      border-color: #C9A8FF;
+    }
+    .mesh-block--meshery {
+      background: linear-gradient(135deg, #1A0033, #4B1A8A);
+      color: #fff;
+      border-color: #5F249F;
+    }
+    .mesh-block--runtime {
+      background: linear-gradient(135deg, #ECEAFE, #FFFFFF);
+      border-color: #8A4FFF;
+    }
+    .mesh-block__eyebrow {
+      font-size: 0.6875rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--brand-primary); opacity: 0.85;
+    }
+    .mesh-block--meshery .mesh-block__eyebrow { color: var(--brand-accent); opacity: 1; }
+    .mesh-block__title {
+      font-family: 'Inter', sans-serif;
+      font-weight: 700; font-size: 0.9375rem; letter-spacing: -0.005em;
+    }
+    .mesh-block__detail {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem; opacity: 0.75; line-height: 1.45;
+    }
+    .mesh-arrow {
+      height: 16px; width: 2px;
+      margin-inline: auto;
+      background: linear-gradient(180deg, var(--brand-primary), transparent);
+      opacity: 0.5;
+    }
+
+    /* Audience split */
+    .audience {
+      display: grid; gap: var(--s-6);
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 800px) { .audience { grid-template-columns: 1fr 1fr; } }
+    .audience-card {
+      padding: var(--s-10);
+      border-radius: var(--r-lg);
+      border: 1px solid var(--hairline);
+      background: var(--surface);
+      display: flex; flex-direction: column; gap: var(--s-5);
+      position: relative; overflow: hidden;
+    }
+    .audience-card--internal {
+      background: linear-gradient(135deg, #F2EFFA, #FFFFFF);
+    }
+    .audience-card--external {
+      background: linear-gradient(135deg, #1A0033, #3B0F72);
+      color: #fff;
+      border-color: var(--brand-primary);
+    }
+    .audience-card__tag {
+      font-size: 0.6875rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--brand-primary);
+    }
+    .audience-card--external .audience-card__tag { color: var(--brand-accent); }
+    .audience-card h3 {
+      font-size: 1.5rem; font-weight: 800; letter-spacing: -0.015em;
+    }
+    .audience-card ul { display: flex; flex-direction: column; gap: var(--s-3); }
+    .audience-card li {
+      padding-left: 22px; position: relative;
+      font-size: 0.9375rem; line-height: 1.5;
+    }
+    .audience-card li::before {
+      content: "";
+      position: absolute; left: 0; top: 8px;
+      width: 12px; height: 2px;
+      background: var(--brand-primary);
+    }
+    .audience-card--external li::before { background: var(--brand-accent); }
+    .audience-card--external,
+    .audience-card--external p { color: rgba(255,255,255,0.88); }
+
+    /* Stack ribbon */
+    .stack-row {
+      display: flex; flex-wrap: wrap; gap: var(--s-3);
+    }
+    .stack-chip {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 14px;
+      border: 1px solid var(--hairline);
+      border-radius: 999px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8125rem;
+      background: #fff;
+    }
+    .stack-chip span { width: 6px; height: 6px; border-radius: 999px; background: var(--brand-accent); display: inline-block; }
+
+    /* Outcomes ribbon */
+    .outcomes {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--s-6);
+      padding: var(--s-8);
+      border-radius: var(--r-lg);
+      background: linear-gradient(135deg, #1A0033, #3B0F72);
+      color: #fff;
+    }
+    @media (min-width: 768px) { .outcomes { grid-template-columns: repeat(4, 1fr); } }
+    .outcomes__num {
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      font-weight: 800; letter-spacing: -0.02em;
+      color: var(--brand-accent); line-height: 1; margin-bottom: 6px;
+    }
+    .outcomes__label { font-size: 0.875rem; color: rgba(255,255,255,0.8); }
+
+    /* OSS contribution cards */
+    .oss-grid { display: grid; gap: var(--s-5); grid-template-columns: 1fr; }
+    @media (min-width: 720px) { .oss-grid { grid-template-columns: repeat(3, 1fr); } }
+    .oss-card {
+      padding: var(--s-6);
+      border: 1px solid var(--hairline);
+      border-radius: var(--r-md);
+      background: var(--surface);
+      display: flex; flex-direction: column; gap: var(--s-3);
+    }
+    .oss-card__name {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 600; font-size: 0.9375rem;
+      color: var(--brand-primary);
+    }
+    .oss-card__title { font-size: 1.0625rem; font-weight: 700; letter-spacing: -0.005em; }
+    .oss-card__text { font-size: 0.9375rem; color: var(--text-muted); line-height: 1.5; }
+
+    /* Inline code chip */
+    .ic {
+      font-family: 'JetBrains Mono', monospace;
+      background: rgba(95, 36, 159, 0.08);
+      color: var(--brand-primary);
+      padding: 2px 6px;
+      border-radius: var(--r-sm);
+      font-size: 0.875em;
+    }
+    .section--dark .ic {
+      background: rgba(255,255,255,0.08);
+      color: var(--brand-accent);
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="utility-bar">
+    <div class="container utility-bar__inner">
+      <a href="find-office.html" aria-label="United Kingdom - English. Find an office in another region."><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></svg> United Kingdom - English</a>
+      <a href="https://platform.tata-consulting.co.uk" rel="noopener" target="_blank" aria-label="Open the Tata Consulting Services Internal Developer Platform"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3M7 9l-2 2 2 2M17 9l2 2-2 2M13 8l-2 6"/></svg> Platform</a>
+      <a href="investors.html">Investors</a>
+      <a href="newsroom.html">Newsroom</a>
+      <a href="alumni.html">Alumni</a>
+      <a href="contact.html?topic=sign-in">Sign in</a>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="site-header__logo" href="index.html" aria-label="Tata Consulting Services, PLC - Home">
+        <img src="assets/logo/tcs-logo-black.svg" alt="Tata Consulting Services, PLC" class="site-header__logo-img" width="160" height="46" />
+      </a>
+
+      <nav class="primary-nav" aria-label="Primary">
+        <ul class="primary-nav__list">
+          <li class="primary-nav__item primary-nav__item--has-mega">
+            <a class="primary-nav__link" href="services.html" aria-expanded="false" aria-haspopup="true">
+              What we do
+              <svg class="primary-nav__caret" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
+            </a>
+            <div class="mega" role="menu">
+              <div class="mega__grid">
+                <div class="mega__col">
+                  <h4>Build</h4>
+                  <ul>
+                    <li><a href="services.html#cloud">Cloud transformation</a></li>
+                    <li><a href="services.html#ai">AI &amp; data</a></li>
+                    <li><a href="services.html#security">Cybersecurity</a></li>
+                    <li><a href="services.html#engineering">Engineering &amp; R&amp;D</a></li>
+                  </ul>
+                </div>
+                <div class="mega__col">
+                  <h4>Run</h4>
+                  <ul>
+                    <li><a href="services.html#managed">Managed services</a></li>
+                    <li><a href="services.html#apps">Enterprise applications</a></li>
+                    <li><a href="services.html#network">Network &amp; infrastructure</a></li>
+                    <li><a href="services.html#ops">Business operations</a></li>
+                  </ul>
+                </div>
+                <div class="mega__col">
+                  <h4>Transform</h4>
+                  <ul>
+                    <li><a href="services.html#consulting">Strategy &amp; consulting</a></li>
+                    <li><a href="services.html#xd">Experience design</a></li>
+                    <li><a href="services.html#sustainability">Sustainability</a></li>
+                    <li><a href="services.html#platforms">Industry platforms</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="primary-nav__item"><a class="primary-nav__link" href="industries.html">Industries</a></li>
+          <li class="primary-nav__item"><a class="primary-nav__link" href="insights.html">Insights</a></li>
+          <li class="primary-nav__item"><a class="primary-nav__link" href="careers.html">Careers</a></li>
+          <li class="primary-nav__item"><a class="primary-nav__link" href="about.html">About</a></li>
+          <li class="primary-nav__item"><a class="primary-nav__link" href="investors.html">Investors</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-cta">
+        <button class="header-icon-btn" type="button" aria-label="Search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        </button>
+        <a class="btn btn--primary" href="contact.html">Contact us
+          <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <button class="mobile-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open navigation">
+        <span class="mobile-toggle__bars" aria-hidden="true"><span></span><span></span><span></span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <ul>
+      <li><a href="services.html">What we do</a></li>
+      <li><a href="industries.html">Industries</a></li>
+      <li><a href="insights.html">Insights</a></li>
+      <li><a href="careers.html">Careers</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="investors.html">Investors</a></li>
+    </ul>
+    <a class="btn btn--primary" href="contact.html">Contact us
+      <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+
+  <main id="main">
+
+    <!-- Hero -->
+    <section class="idp-hero" aria-labelledby="idp-hero-title">
+      <div class="container idp-hero__inner">
+        <span class="idp-hero__chip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg>
+          The Tata Internal Developer Platform
+        </span>
+        <h1 id="idp-hero-title">One platform for hundreds of thousands of engineers. <em>Built on Meshery.</em></h1>
+        <p class="idp-hero__lede">The Tata Internal Developer Platform is the London Engineering Centre of Excellence's flagship product: a service provider-grade IDP that maps the deep, multi-tiered structure of a global enterprise onto a single, opinionated paved road - and ships it both inside Tata and to the clients we serve. It is built on the CNCF project <strong>Meshery</strong>, the cloud-native manager, and on the open-source ecosystem that surrounds it.</p>
+        <div class="idp-hero__cta">
+          <a class="btn btn--primary" href="https://platform.tata-consulting.co.uk" rel="noopener" target="_blank">Open the platform
+            <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+          <a class="btn btn--ghost-light" href="#architecture">See the architecture</a>
+        </div>
+
+        <div class="idp-hero__meta" aria-label="Platform at a glance">
+          <div>
+            <div class="idp-hero__meta-num">600K+</div>
+            <div class="idp-hero__meta-label">Tata engineers eligible to onboard</div>
+          </div>
+          <div>
+            <div class="idp-hero__meta-num">1,200+</div>
+            <div class="idp-hero__meta-label">Active client tenants supported</div>
+          </div>
+          <div>
+            <div class="idp-hero__meta-num">CNCF</div>
+            <div class="idp-hero__meta-label">Open-source core: Meshery</div>
+          </div>
+          <div>
+            <div class="idp-hero__meta-num">London</div>
+            <div class="idp-hero__meta-label">Engineering Centre of Excellence</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Thesis -->
+    <section class="section" aria-labelledby="thesis-title">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-head__title">
+            <span class="eyebrow">Why we built it</span>
+            <h2 id="thesis-title">A platform that takes Tata's scale as a starting point, not an afterthought.</h2>
+            <p class="lead" style="margin-top: var(--s-5);">Most IDPs are built for a single product team and stretched, painfully, to cover the rest of the business. Ours starts at the other end: an organisation with hundreds of thousands of engineers, deep multi-tiered hierarchies, and a client portfolio that pays close attention to audit, residency, and isolation. That changes every architectural decision underneath - and it changes who the platform is allowed to feel sluggish to (no one).</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Three architecture pillars -->
+    <section class="section section--muted" aria-labelledby="pillars-title">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-head__title">
+            <span class="eyebrow">Service provider-grade architecture</span>
+            <h2 id="pillars-title">Three properties we refuse to compromise on.</h2>
+          </div>
+        </div>
+        <div class="grid grid--3">
+          <div class="pillar reveal">
+            <div class="pillar__icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 4h7v7H3zM14 4h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z"/><path d="M6.5 4v-2M6.5 13v-2M17.5 4v-2M17.5 13v-2"/></svg>
+            </div>
+            <h3>Complex organisational hierarchies</h3>
+            <p>Group, business unit, account, sub-account, project, team, environment - the platform's logical boundaries mirror the real shape of the business. Move a team between business units and its golden paths, quotas, and policies follow it.</p>
+          </div>
+          <div class="pillar reveal">
+            <div class="pillar__icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg>
+            </div>
+            <h3>Strict multi-tenancy</h3>
+            <p>Compute, network, and data isolation between business units and client projects is the default, not a configuration option. Workload identity, namespace boundaries, network policy, and storage all derive from the same tenant model.</p>
+          </div>
+          <div class="pillar reveal">
+            <div class="pillar__icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 018 0v3M10 15v2M14 15v2"/></svg>
+            </div>
+            <h3>Policy-as-code RBAC</h3>
+            <p>Fine-grained role and attribute-based access control, expressed as code and version-controlled with the rest of the platform. Every action that needs an auditor's signature comes with an audit trail an auditor will actually read.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Architecture diagram -->
+    <section class="section" id="architecture" aria-labelledby="architecture-title">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-head__title">
+            <span class="eyebrow">How it fits together</span>
+            <h2 id="architecture-title">A Meshery-anchored stack, top to bottom.</h2>
+            <p class="lead" style="margin-top: var(--s-5);">Meshery sits at the centre of the platform as the cloud-native manager: a control plane that knows how to model, deploy, and continuously reconcile Kubernetes-native components, service meshes, and the long tail of CNCF projects. Around it we layer the developer surface above and the runtime fabric below.</p>
+          </div>
+        </div>
+
+        <div class="mesh-diagram" role="img" aria-label="The Tata IDP architecture: developer surface on top; Meshery control plane in the middle; multi-tenant Kubernetes runtime with custom operators below.">
+          <div class="mesh-row mesh-row--3">
+            <div class="mesh-block mesh-block--surface">
+              <span class="mesh-block__eyebrow">Surface - portal</span>
+              <span class="mesh-block__title">Self-service developer portal</span>
+              <span class="mesh-block__detail">Catalogue - templates - environments - cost</span>
+            </div>
+            <div class="mesh-block mesh-block--surface">
+              <span class="mesh-block__eyebrow">Surface - CLI &amp; IDE</span>
+              <span class="mesh-block__title">CLI and IDE plug-ins</span>
+              <span class="mesh-block__detail"><span class="ic">tcs</span> CLI - VS Code &amp; JetBrains - golden paths</span>
+            </div>
+            <div class="mesh-block mesh-block--surface">
+              <span class="mesh-block__eyebrow">Surface - PR workflow</span>
+              <span class="mesh-block__title">GitOps &amp; pull-request flow</span>
+              <span class="mesh-block__detail">Argo CD - policy gates - signed releases</span>
+            </div>
+          </div>
+          <div class="mesh-arrow"></div>
+          <div class="mesh-row">
+            <div class="mesh-block mesh-block--meshery">
+              <span class="mesh-block__eyebrow">Control plane</span>
+              <span class="mesh-block__title">Meshery - the cloud-native manager (CNCF)</span>
+              <span class="mesh-block__detail">Design - deploy - operate Kubernetes-native components, service meshes, and the wider CNCF landscape, all from one model. Extended in-house with custom operators, organisation-aware tenancy, and policy enforcement.</span>
+            </div>
+          </div>
+          <div class="mesh-arrow"></div>
+          <div class="mesh-row mesh-row--2">
+            <div class="mesh-block mesh-block--runtime">
+              <span class="mesh-block__eyebrow">Platform services</span>
+              <span class="mesh-block__title">Tenant model - identity - observability</span>
+              <span class="mesh-block__detail">Org / BU / account / project boundaries - SPIFFE workload identity - OpenTelemetry - secrets - cost</span>
+            </div>
+            <div class="mesh-block mesh-block--runtime">
+              <span class="mesh-block__eyebrow">Runtime fabric</span>
+              <span class="mesh-block__title">Hardened Kubernetes - operators - mesh</span>
+              <span class="mesh-block__detail">Meshery Operator - in-house controllers (Go) - service mesh - network policy - autoscaling</span>
+            </div>
+          </div>
+          <div class="mesh-arrow"></div>
+          <div class="mesh-row">
+            <div class="mesh-block">
+              <span class="mesh-block__eyebrow">Infrastructure</span>
+              <span class="mesh-block__title">Hybrid &amp; multi-cloud infrastructure</span>
+              <span class="mesh-block__detail">AWS - Azure - GCP - on-prem - sovereign UK regions - client-dedicated landing zones</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Audience: internal + external -->
+    <section class="section section--muted" aria-labelledby="audience-title">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-head__title">
+            <span class="eyebrow">Two audiences, one product</span>
+            <h2 id="audience-title">Used inside Tata. Sold alongside our engagements.</h2>
+            <p class="lead" style="margin-top: var(--s-5);">The platform was built first for our own engineers and the way Tata actually delivers projects. That gave it the maturity to be packaged - on the same architecture, with the same SLOs - for clients who want a Tata-grade IDP without standing up the team to build one.</p>
+          </div>
+        </div>
+
+        <div class="audience">
+          <div class="audience-card audience-card--internal reveal">
+            <span class="audience-card__tag">Internal - across Tata</span>
+            <h3>For Tata engineers and delivery teams</h3>
+            <p class="muted">A single, opinionated paved road that scales from a two-person team on a proof of concept to a 2,000-person account programme.</p>
+            <ul>
+              <li>One way to ship a service - templates, CI/CD, secrets, observability, and on-call wired in by default.</li>
+              <li>Account- and business-unit-aware quotas so engagements never starve each other for compute or budget.</li>
+              <li>Compliance evidence (controls, approvals, audit trails) generated continuously, not assembled on the eve of an audit.</li>
+              <li>A self-service catalogue of CNCF building blocks already vetted by the platform team.</li>
+            </ul>
+          </div>
+          <div class="audience-card audience-card--external reveal">
+            <span class="audience-card__tag">External - for our clients</span>
+            <h3>For enterprises engaging Tata</h3>
+            <p>A productised IDP we deliver as part of strategic engagements, or stand up on a client's own infrastructure with their own tenancy boundaries.</p>
+            <ul>
+              <li>Client-dedicated tenancy that respects their organisational shape, not ours.</li>
+              <li>Sovereign UK regions and client-controlled landing zones for regulated workloads.</li>
+              <li>Open core: built on Meshery and the CNCF stack, so clients are never locked into a Tata-only path.</li>
+              <li>The same platform Tata uses internally, with the same release cadence and the same on-call discipline.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Outcomes -->
+    <section class="section" aria-labelledby="outcomes-title">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-head__title">
+            <span class="eyebrow">Benefits to the wider Tata group</span>
+            <h2 id="outcomes-title">What the platform changes for the whole business.</h2>
+            <p class="lead" style="margin-top: var(--s-5);">A platform of this scale only earns its budget if its impact is visible at the group P&amp;L line. Ours does - by collapsing the cost of starting an engagement, removing whole categories of compliance toil, and giving clients a story they can buy at the board level.</p>
+          </div>
+        </div>
+        <div class="outcomes">
+          <div>
+            <div class="outcomes__num">14d → &lt;1d</div>
+            <div class="outcomes__label">New-engagement environment readiness</div>
+          </div>
+          <div>
+            <div class="outcomes__num">~40%</div>
+            <div class="outcomes__label">Reduction in run cost vs. bespoke per-account stacks</div>
+          </div>
+          <div>
+            <div class="outcomes__num">99.97%</div>
+            <div class="outcomes__label">Platform-managed control-plane availability</div>
+          </div>
+          <div>
+            <div class="outcomes__num">12 weeks</div>
+            <div class="outcomes__label">Median time to stand up a client tenant</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- The team -->
+    <section class="section section--dark" aria-labelledby="team-title">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-head__title">
+            <span class="eyebrow" style="color: var(--brand-accent);">The team behind the platform</span>
+            <h2 id="team-title" style="margin-top: var(--s-3);">A platform team that ships product, not just clusters.</h2>
+            <p class="lead" style="color: var(--text-on-dark-muted); margin-top: var(--s-5);">The London CoE platform team is a tight group of platform engineers, infrastructure architects, and design-minded developers - many of them long-time contributors to the CNCF community. The mix is deliberate: most platforms feel like a back-office tool because they are written by people who never have to use them. Ours is written by people who refuse to ship something they would not put on their own laptop.</p>
+          </div>
+        </div>
+
+        <div class="grid grid--3" style="margin-top: var(--s-10);">
+          <div>
+            <h3 style="font-size: 1.0625rem; margin-bottom: var(--s-3); color: #fff;">Service provider-grade by instinct</h3>
+            <p style="color: var(--text-on-dark-muted); font-size: 0.9375rem; line-height: 1.55;">The team grew up untangling monolithic estates and standing up early cloud platforms. That experience shows up as a low tolerance for one-off scripts, hidden state, and clusters nobody owns.</p>
+          </div>
+          <div>
+            <h3 style="font-size: 1.0625rem; margin-bottom: var(--s-3); color: #fff;">Champions of Developer Experience</h3>
+            <p style="color: var(--text-on-dark-muted); font-size: 0.9375rem; line-height: 1.55;">Unlike most infrastructure teams, ours treats UI, typography, and design systems as first-class concerns. Internal tools should be as beautiful and intuitive as the consumer products developers use the rest of their day.</p>
+          </div>
+          <div>
+            <h3 style="font-size: 1.0625rem; margin-bottom: var(--s-3); color: #fff;">Open by default</h3>
+            <p style="color: var(--text-on-dark-muted); font-size: 0.9375rem; line-height: 1.55;">When the team needs a capability the wider ecosystem lacks, it contributes upstream rather than forking in private. That keeps the platform honest, keeps the costs of maintenance shared, and keeps clients out of vendor cul-de-sacs.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Open source contributions -->
+    <section class="section" aria-labelledby="oss-title">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-head__title">
+            <span class="eyebrow">Open-source footprint</span>
+            <h2 id="oss-title">What we maintain upstream.</h2>
+            <p class="lead" style="margin-top: var(--s-5);">The platform's competitive edge does not come from secrecy. It comes from being one of the most active enterprise contributors to the projects underneath - so we know how Meshery and its neighbours will evolve, and so the wider community gets to benefit from the problems we have to solve at Tata's scale.</p>
+          </div>
+        </div>
+
+        <div class="oss-grid">
+          <article class="oss-card reveal">
+            <span class="oss-card__name">meshery / meshery</span>
+            <h3 class="oss-card__title">Meshery - the cloud-native manager</h3>
+            <p class="oss-card__text">Our team is a core contributor to Meshery itself - the CNCF project that gives the platform its control plane. Heavy use of Go and TypeScript, with a particular focus on the model that lets one Meshery instance manage Kubernetes-native components across many tenants.</p>
+          </article>
+          <article class="oss-card reveal">
+            <span class="oss-card__name">meshery / meshery-operator</span>
+            <h3 class="oss-card__title">Meshery Operator</h3>
+            <p class="oss-card__text">We contribute meaningfully to the operator that manages Meshery's lifecycle on Kubernetes - the same operator that runs in production across every cluster the IDP supervises, in both Tata and client environments.</p>
+          </article>
+          <article class="oss-card reveal">
+            <span class="oss-card__name">meshery / helm-kanvas-snapshot</span>
+            <h3 class="oss-card__title">helm-kanvas-snapshot</h3>
+            <p class="oss-card__text">A Helm-aware tool for capturing and visualising the state of a release - the kind of <em>see-what-you-shipped</em> capability we needed in production and decided to build in the open rather than as an internal-only utility.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tech stack -->
+    <section class="section section--muted" aria-labelledby="stack-title">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-head__title">
+            <span class="eyebrow">The stack underneath</span>
+            <h2 id="stack-title">Boring by choice. Open by default.</h2>
+            <p class="lead" style="margin-top: var(--s-5);">The platform is opinionated, not exotic. Every component is something a CNCF practitioner will already recognise - so a new engineer (or a client team taking ownership) ramps up in days, not quarters.</p>
+          </div>
+        </div>
+        <div class="stack-row">
+          <span class="stack-chip"><span></span>Meshery</span>
+          <span class="stack-chip"><span></span>Meshery Operator</span>
+          <span class="stack-chip"><span></span>Kubernetes</span>
+          <span class="stack-chip"><span></span>Helm &amp; helm-kanvas-snapshot</span>
+          <span class="stack-chip"><span></span>Argo CD &amp; Argo Workflows</span>
+          <span class="stack-chip"><span></span>Crossplane</span>
+          <span class="stack-chip"><span></span>Open Policy Agent</span>
+          <span class="stack-chip"><span></span>SPIFFE / SPIRE</span>
+          <span class="stack-chip"><span></span>OpenTelemetry</span>
+          <span class="stack-chip"><span></span>Prometheus &amp; Grafana</span>
+          <span class="stack-chip"><span></span>Cilium &amp; eBPF</span>
+          <span class="stack-chip"><span></span>HashiCorp Vault</span>
+          <span class="stack-chip"><span></span>Go (controllers &amp; operators)</span>
+          <span class="stack-chip"><span></span>TypeScript (portal &amp; SDKs)</span>
+          <span class="stack-chip"><span></span>Python (tooling &amp; data)</span>
+          <span class="stack-chip"><span></span>AWS - Azure - GCP</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quote -->
+    <section class="section section--dark" aria-label="The team's operating principle">
+      <div class="container">
+        <div class="quote">
+          <div class="quote__mark">"</div>
+          <blockquote>Infrastructure should empower developers, not block them. A platform is only as good as the day-to-day it gives the people who depend on it - which means the platform team is, finally, just another product team.</blockquote>
+          <cite><strong>The Platform team</strong> - London Engineering Centre of Excellence</cite>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-strip">
+      <div class="container cta-strip__inner">
+        <h2>Open the platform, or talk to the team that builds it.</h2>
+        <div style="display: flex; gap: var(--s-3); flex-wrap: wrap;">
+          <a class="btn btn--ghost-light" href="https://platform.tata-consulting.co.uk" rel="noopener" target="_blank">platform.tata-consulting.co.uk
+            <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+          <a class="btn btn--ghost-light" href="london.html">London CoE</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="newsletter">
+        <div class="newsletter__copy">
+          <h3>Get the Tata brief.</h3>
+          <p>One email per month - the research, signals, and points of view we'd want a friend in the industry to see.</p>
+        </div>
+        <form class="newsletter__form" novalidate>
+          <label class="sr-only" for="newsletter-email">Work email</label>
+          <input id="newsletter-email" type="email" placeholder="you@company.com" autocomplete="email" />
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+
+      <div class="site-footer__grid">
+        <div class="site-footer__brand">
+        <img src="assets/logo/tcs-logo-white.svg" alt="Tata Consulting Services, PLC" class="site-footer__logo-img" width="160" height="46" />
+          <h3>Building on belief.</h3>
+          <p>Tata Consulting Services, PLC partners with the world's largest enterprises to design, build, and run their digital transformation. Part of the <a href="https://www.tcs.com" rel="noopener" target="_blank" style="color: inherit; text-decoration: underline; text-underline-offset: 3px;">global TCS group</a>.</p>
+        </div>
+        <div class="site-footer__col">
+          <h4>What we do</h4>
+          <ul>
+            <li><a href="services.html#cloud">Cloud</a></li>
+            <li><a href="services.html#ai">AI &amp; data</a></li>
+            <li><a href="services.html#security">Cybersecurity</a></li>
+            <li><a href="services.html#engineering">Engineering</a></li>
+            <li><a href="services.html#consulting">Consulting</a></li>
+          </ul>
+        </div>
+        <div class="site-footer__col">
+          <h4>Platform</h4>
+          <ul>
+            <li><a href="idp.html">About the IDP</a></li>
+            <li><a href="https://platform.tata-consulting.co.uk" rel="noopener" target="_blank">Open the platform</a></li>
+            <li><a href="london.html">London CoE</a></li>
+            <li><a href="idp.html">Internal Developer Platform</a></li>
+            <li><a href="https://meshery.io" rel="noopener" target="_blank">Meshery (CNCF)</a></li>
+          </ul>
+        </div>
+        <div class="site-footer__col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About us</a></li>
+            <li><a href="leadership.html">Leadership</a></li>
+            <li><a href="careers.html">Careers</a></li>
+            <li><a href="investors.html">Investors</a></li>
+            <li><a href="newsroom.html">Newsroom</a></li>
+            <li><a href="sustainability.html">Sustainability</a></li>
+          </ul>
+        </div>
+        <div class="site-footer__col">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="contact.html">Contact us</a></li>
+            <li><a href="find-office.html">Find an office</a></li>
+            <li><a href="london.html">London CoE</a></li>
+            <li><a href="idp.html">Internal Developer Platform</a></li>
+            <li><a href="partners.html">Partners</a></li>
+            <li><a href="alumni.html">Alumni</a></li>
+            <li><a href="vendors.html">Vendors</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="site-footer__legal">
+        <ul>
+          <li><a href="privacy.html">Privacy notice</a></li>
+          <li><a href="cookies.html">Cookies</a></li>
+          <li><a href="terms.html">Terms of use</a></li>
+          <li><a href="accessibility.html">Accessibility</a></li>
+          <li><a href="case-studies.html">Case studies</a></li>
+        </ul>
+      </div>
+      <div class="site-footer__bottom">
+        <p>&copy; <span data-year>2026</span> Tata Consulting Services, PLC. Registered in England &amp; Wales. All rights reserved.</p>
+        <div class="site-footer__social" aria-label="Social links">
+          <a href="https://www.linkedin.com/company/tata-consulting-services" aria-label="Tata on LinkedIn" rel="noopener" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14zM8.34 18.34V9.86H5.67v8.48h2.67zM7 8.68a1.54 1.54 0 110-3.08 1.54 1.54 0 010 3.08zm11.34 9.66v-4.64c0-2.49-1.33-3.65-3.1-3.65a2.67 2.67 0 00-2.43 1.34V9.86H10.13c.04.75 0 8.48 0 8.48h2.68v-4.74c0-.24.02-.48.09-.65.19-.48.63-.98 1.36-.98.96 0 1.34.73 1.34 1.8v4.57h2.74z"/></svg></a>
+          <a href="https://x.com/tata_consulting" aria-label="Tata on X" rel="noopener" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="https://www.youtube.com/@tata-consulting" aria-label="Tata on YouTube" rel="noopener" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a2.999 2.999 0 00-2.111-2.122C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.387.564A2.999 2.999 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a2.999 2.999 0 002.111 2.122C4.495 20.5 12 20.5 12 20.5s7.505 0 9.387-.564a2.999 2.999 0 002.111-2.122C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.546 15.568V8.432L15.818 12z"/></svg></a>
+          <a href="https://www.facebook.com/tataconsulting" aria-label="Tata on Facebook" rel="noopener" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 10-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.51 1.49-3.9 3.78-3.9 1.1 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.77l-.44 2.89h-2.33v6.99A10 10 0 0022 12z"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
