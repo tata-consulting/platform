@@ -28,7 +28,7 @@ WORDMARK_LIGHT = """\
             <path d="M82 11.2c-9 0-15.4 6.2-15.4 15s6.4 15 15.4 15c5.2 0 9.4-1.9 12.4-5.4l-4.4-4c-2 2-4.6 3.2-7.8 3.2-5.5 0-9.4-3.7-9.4-8.8s3.9-8.8 9.4-8.8c3 0 5.5 1 7.5 2.9l4.5-4C92 13 87.6 11.2 82 11.2z"/>
             <path d="M112.8 11.2c-7.2 0-12 3.6-12 8.9 0 11.4 17.7 7.8 17.7 13.6 0 1.9-1.9 3-5.5 3-3.7 0-7-1.4-9.5-3.7l-3.4 4.7c2.9 2.6 7.7 4.3 12.6 4.3 7.6 0 12.4-3.6 12.4-9.1 0-11.5-17.7-7.7-17.7-13.5 0-1.8 1.7-2.8 4.8-2.8 2.7 0 5.8.9 8.7 2.6l3-4.9c-3-1.9-7-3.1-11.1-3.1z"/>
           </g>
-          <text x="138" y="32" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="700" fill="currentColor" letter-spacing="-0.02em">Consultancy</text>
+          <text x="138" y="32" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="700" fill="currentColor" letter-spacing="-0.02em">Consulting, PLC</text>
         </svg>"""
 
 WORDMARK_DARK = WORDMARK_LIGHT.replace("color: var(--brand-primary)", "color: #fff")
@@ -55,7 +55,7 @@ CHROME_TOP = """<!doctype html>
 
   <div class="utility-bar">
     <div class="container utility-bar__inner">
-      <a href="#"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></svg> Global - English</a>
+      <a href="#"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></svg> United Kingdom - English</a>
       <a href="investors.html">Investors</a>
       <a href="newsroom.html">Newsroom</a>
       <a href="alumni.html">Alumni</a>
@@ -65,7 +65,7 @@ CHROME_TOP = """<!doctype html>
 
   <header class="site-header">
     <div class="container site-header__inner">
-      <a class="site-header__logo" href="index.html" aria-label="Trion Consultancy Services - Home">
+      <a class="site-header__logo" href="index.html" aria-label="Tata Consulting Services, PLC - Home">
 """ + WORDMARK_LIGHT + """
       </a>
 
@@ -152,7 +152,7 @@ CHROME_BOTTOM = """
     <div class="container">
       <div class="newsletter">
         <div class="newsletter__copy">
-          <h3>Get the Trion brief.</h3>
+          <h3>Get the Tata brief.</h3>
           <p>One email per month - the research, signals, and points of view we'd want a friend in the industry to see.</p>
         </div>
         <form class="newsletter__form" novalidate>
@@ -166,7 +166,7 @@ CHROME_BOTTOM = """
         <div class="site-footer__brand">
 """ + WORDMARK_DARK + """
           <h3>Building on belief.</h3>
-          <p>Trion Consultancy Services partners with the world's largest enterprises to design, build, and run their digital transformation.</p>
+          <p>Tata Consulting Services, PLC partners with the world's largest enterprises to design, build, and run their digital transformation.</p>
         </div>
         <div class="site-footer__col">
           <h4>What we do</h4>
@@ -221,12 +221,12 @@ CHROME_BOTTOM = """
         </ul>
       </div>
       <div class="site-footer__bottom">
-        <p>&copy; <span data-year>2026</span> Trion Consultancy Services. All rights reserved.</p>
+        <p>&copy; <span data-year>2026</span> Tata Consulting Services, PLC. All rights reserved.</p>
         <div class="site-footer__social" aria-label="Social links">
-          <a href="https://www.linkedin.com/company/trion-consultancy-services" aria-label="LinkedIn on LinkedIn" rel="noopener" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14zM8.34 18.34V9.86H5.67v8.48h2.67zM7 8.68a1.54 1.54 0 110-3.08 1.54 1.54 0 010 3.08zm11.34 9.66v-4.64c0-2.49-1.33-3.65-3.1-3.65a2.67 2.67 0 00-2.43 1.34V9.86H10.13c.04.75 0 8.48 0 8.48h2.68v-4.74c0-.24.02-.48.09-.65.19-.48.63-.98 1.36-.98.96 0 1.34.73 1.34 1.8v4.57h2.74z"/></svg></a>
-          <a href="https://x.com/trion_consulting" aria-label="Trion on X" rel="noopener" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
-          <a href="https://www.youtube.com/@trion-consulting" aria-label="Trion on YouTube" rel="noopener" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a2.999 2.999 0 00-2.111-2.122C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.387.564A2.999 2.999 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a2.999 2.999 0 002.111 2.122C4.495 20.5 12 20.5 12 20.5s7.505 0 9.387-.564a2.999 2.999 0 002.111-2.122C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.546 15.568V8.432L15.818 12z"/></svg></a>
-          <a href="https://www.facebook.com/trionconsultancy" aria-label="Trion on Facebook" rel="noopener" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 10-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.51 1.49-3.9 3.78-3.9 1.1 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.77l-.44 2.89h-2.33v6.99A10 10 0 0022 12z"/></svg></a>
+          <a href="https://www.linkedin.com/company/tata-consulting-services" aria-label="LinkedIn on LinkedIn" rel="noopener" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14zM8.34 18.34V9.86H5.67v8.48h2.67zM7 8.68a1.54 1.54 0 110-3.08 1.54 1.54 0 010 3.08zm11.34 9.66v-4.64c0-2.49-1.33-3.65-3.1-3.65a2.67 2.67 0 00-2.43 1.34V9.86H10.13c.04.75 0 8.48 0 8.48h2.68v-4.74c0-.24.02-.48.09-.65.19-.48.63-.98 1.36-.98.96 0 1.34.73 1.34 1.8v4.57h2.74z"/></svg></a>
+          <a href="https://x.com/tata_consulting" aria-label="Tata on X" rel="noopener" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="https://www.youtube.com/@tata-consulting" aria-label="Tata on YouTube" rel="noopener" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a2.999 2.999 0 00-2.111-2.122C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.387.564A2.999 2.999 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a2.999 2.999 0 002.111 2.122C4.495 20.5 12 20.5 12 20.5s7.505 0 9.387-.564a2.999 2.999 0 002.111-2.122C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.546 15.568V8.432L15.818 12z"/></svg></a>
+          <a href="https://www.facebook.com/tataconsulting" aria-label="Tata on Facebook" rel="noopener" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 10-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.51 1.49-3.9 3.78-3.9 1.1 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.77l-.44 2.89h-2.33v6.99A10 10 0 0022 12z"/></svg></a>
         </div>
       </div>
     </div>
@@ -293,7 +293,7 @@ def leadership_main() -> str:
     return (
         page_hero(
             "Leadership",
-            "The people who run Trion.",
+            "The people who run Tata.",
             "An operating committee of practitioners. Most of our leaders spent decades inside the disciplines they now oversee - building, delivering, and learning the hard way before stepping into leadership.",
         )
         + f"""
@@ -503,7 +503,7 @@ def investors_main() -> str:
             <span class="eyebrow" style="color: var(--brand-accent); display:block; margin-bottom: var(--s-3);">Talk to IR</span>
             <h2 style="margin-bottom: var(--s-6);">Direct line to the team.</h2>
             <p style="color: var(--text-on-dark-muted); font-size: 1.0625rem; line-height: 1.6; margin-bottom: var(--s-8);">For analyst inquiries, shareholder questions, or scheduled briefings, reach our investor relations team directly.</p>
-            <a class="arrow-link arrow-link--light" href="mailto:ir@trion.example">ir@trion.example
+            <a class="arrow-link arrow-link--light" href="mailto:ir@tata.co.uk">ir@tata.co.uk
               {ARROW}
             </a>
           </div>
@@ -516,12 +516,12 @@ def investors_main() -> str:
 
 
 NEWSROOM_RELEASES = [
-    ("media--ocean",  "May 14, 2026", "Press release",   "Trion expands European delivery footprint with new Madrid campus.", "Three thousand engineers, designers, and consultants will be based in the new center by 2028."),
-    ("media--neon",   "Apr 28, 2026", "Press release",   "Q4 FY25 results: revenue up 8.4% YoY, margin holds at 24.6%.", "Annual revenue crosses $29B; record TCV bookings driven by AI and cloud engagements."),
-    ("media--sunset", "Apr 02, 2026", "Announcement",    "Trion joins UN Climate Action Compact.", "Commits to net-zero across owned operations by 2030, full supply chain by 2040."),
+    ("media--ocean",  "May 14, 2026", "Press release",   "Tata expands European delivery footprint with new Madrid campus.", "Three thousand engineers, designers, and consultants will be based in the new center by 2028."),
+    ("media--neon",   "Apr 28, 2026", "Press release",   "Q4 FY25 results: revenue up 8.4% YoY, margin holds at 24.6%.", "Annual revenue crosses £23B; record TCV bookings driven by AI and cloud engagements."),
+    ("media--sunset", "Apr 02, 2026", "Announcement",    "Tata joins UN Climate Action Compact.", "Commits to net-zero across owned operations by 2030, full supply chain by 2040."),
     ("media--forest", "Mar 18, 2026", "Press release",   "Strategic alliance with a leading hyperscaler expands managed AI services.", "Joint go-to-market across financial services, manufacturing, and healthcare."),
-    ("media--ember",  "Feb 24, 2026", "Award",           "Recognized as a Leader in the 2026 Cloud Services Magic Quadrant.", "Sixth consecutive year in the Leaders quadrant."),
-    ("media--steel",  "Jan 30, 2026", "Press release",   "Trion to acquire a specialist healthcare data engineering firm.", "Strengthens life sciences delivery in North America and Europe."),
+    ("media--ember",  "Feb 24, 2026", "Award",           "Recognised as a Leader in the 2026 Cloud Services Magic Quadrant.", "Sixth consecutive year in the Leaders quadrant."),
+    ("media--steel",  "Jan 30, 2026", "Press release",   "Tata to acquire a specialist healthcare data engineering firm.", "Strengthens life sciences delivery in North America and Europe."),
 ]
 
 
@@ -573,7 +573,7 @@ def newsroom_main() -> str:
             <span class="eyebrow" style="display:block; margin-bottom: var(--s-3);">Media inquiries</span>
             <h2 style="margin-bottom: var(--s-6);">Working on a story?</h2>
             <p class="muted" style="font-size: 1.0625rem; line-height: 1.6; margin-bottom: var(--s-8);">For journalist or analyst inquiries, briefings, or interview requests, our global communications team responds within one business day.</p>
-            <a class="arrow-link" href="mailto:press@trion.example">press@trion.example
+            <a class="arrow-link" href="mailto:press@tata.co.uk">press@tata.co.uk
               {ARROW}
             </a>
           </div>
@@ -586,9 +586,9 @@ def newsroom_main() -> str:
 
 
 FIND_OFFICE_LIST = [
-    ("Mumbai - Global HQ",    "Trion House<br />N. M. Marg, Apollo Bunder<br />Mumbai 400001, India",                                                      "+91 22 6666 7777",  "+912266667777"),
-    ("Bengaluru",             "Trion Park, Whitefield Main Road<br />Whitefield, Bengaluru 560066<br />India",                                              "+91 80 2222 1234",  "+918022221234"),
-    ("Delhi NCR",             "Trion Tower, DLF Cyber City Phase III<br />Gurugram 122002<br />India",                                                       "+91 124 444 5555",  "+911244445555"),
+    ("Mumbai - Global HQ",    "Tata House<br />N. M. Marg, Apollo Bunder<br />Mumbai 400001, India",                                                      "+91 22 6666 7777",  "+912266667777"),
+    ("Bengaluru",             "Tata Park, Whitefield Main Road<br />Whitefield, Bengaluru 560066<br />India",                                              "+91 80 2222 1234",  "+918022221234"),
+    ("Delhi NCR",             "Tata Tower, DLF Cyber City Phase III<br />Gurugram 122002<br />India",                                                       "+91 124 444 5555",  "+911244445555"),
     ("New York",              "101 Park Avenue, 26th Floor<br />New York, NY 10178<br />United States",                                                      "+1 212 555 0100",   "+12125550100"),
     ("Toronto",               "199 Bay Street, 30th Floor<br />Toronto, ON M5L 1G9<br />Canada",                                                             "+1 416 555 0150",   "+14165550150"),
     ("London",                "17 Old Bailey<br />London EC4M 7EG<br />United Kingdom",                                                                      "+44 20 7220 0800",  "+442072200800"),
@@ -633,7 +633,7 @@ PARTNER_LIST = [
     ("media--neon",   "Hyperscale alliance",     "Cloud platforms",         "Co-engineering, joint go-to-market, and shared customer success across the three largest public-cloud providers."),
     ("media--ocean",  "Strategic alliance",      "Core enterprise software", "Deep delivery practices around SAP, Oracle, Microsoft, Salesforce, ServiceNow, and Workday - implementation, migration, and managed run."),
     ("media--sunset", "Technology partner",      "Data &amp; AI",            "Joint capabilities with Databricks, Snowflake, Confluent, and the leading model providers - to put AI into production, not pilots."),
-    ("media--forest", "Innovation network",      "Startups &amp; ventures",  "Trion Ventures invests in and co-builds with 80+ enterprise startups. We bring them into client engagements when their tech is ready."),
+    ("media--forest", "Innovation network",      "Startups &amp; ventures",  "Tata Ventures invests in and co-builds with 80+ enterprise startups. We bring them into client engagements when their tech is ready."),
     ("media--ember",  "Academic partnership",    "Research &amp; talent",    "Joint research centers with 30+ universities globally. Sponsored chairs, applied research, and a steady pipeline of graduate hires."),
     ("media--steel",  "Industry consortia",      "Standards &amp; advocacy", "Active participation in cloud, AI safety, cybersecurity, and sustainability standards bodies - shaping the rules of the road."),
 ]
@@ -683,7 +683,7 @@ def partners_main() -> str:
       </div>
     </section>
 """
-        + cta_strip("Become a Trion partner.", "Start the conversation", "contact.html")
+        + cta_strip("Become a Tata partner.", "Start the conversation", "contact.html")
     )
 
 
@@ -691,8 +691,8 @@ def alumni_main() -> str:
     return (
         page_hero(
             "Alumni",
-            "Once Trion. Always Trion.",
-            "Over 850,000 people have been part of Trion across our history. The network you joined when you walked in is yours for life - whether you're still here or building somewhere new.",
+            "Once Tata. Always Tata.",
+            "Over 850,000 people have been part of Tata across our history. The network you joined when you walked in is yours for life - whether you're still here or building somewhere new.",
         )
         + f"""
     <section class="section section--dark">
@@ -756,7 +756,7 @@ def alumni_main() -> str:
           </div>
           <div class="reveal" style="padding: var(--s-8) 0; border-top: 2px solid var(--brand-primary);">
             <h3 style="margin-bottom: var(--s-3);">Newsletter</h3>
-            <p class="muted">A quarterly digest of what's changing - in Trion and in the industry.</p>
+            <p class="muted">A quarterly digest of what's changing - in Tata and in the industry.</p>
           </div>
         </div>
       </div>
@@ -770,7 +770,7 @@ def vendors_main() -> str:
     return (
         page_hero(
             "Vendors &amp; suppliers",
-            "Working with Trion procurement.",
+            "Working with Tata procurement.",
             "We work with thousands of suppliers globally, from hyperscalers to local hospitality vendors. This is how to register, get paid, and stay compliant.",
         )
         + f"""
@@ -778,7 +778,7 @@ def vendors_main() -> str:
       <div class="container">
         <div class="section-head__title" style="margin-bottom: var(--s-12); max-width: 720px;">
           <span class="eyebrow">Onboarding</span>
-          <h2 style="margin-top: var(--s-3);">Four steps to becoming an approved Trion supplier.</h2>
+          <h2 style="margin-top: var(--s-3);">Four steps to becoming an approved Tata supplier.</h2>
         </div>
         <div class="grid grid--4">
           <a class="service-tile reveal" href="contact.html">
@@ -843,7 +843,7 @@ def vendors_main() -> str:
             <span class="eyebrow" style="color: var(--brand-accent); display:block; margin-bottom: var(--s-3);">Procurement team</span>
             <h2 style="margin-bottom: var(--s-6);">Talk to a buyer.</h2>
             <p style="color: var(--text-on-dark-muted); font-size: 1.0625rem; line-height: 1.6; margin-bottom: var(--s-8);">For questions on category strategy, RFP timing, payment terms, or onboarding status, reach the regional procurement team.</p>
-            <a class="arrow-link arrow-link--light" href="mailto:procurement@trion.example">procurement@trion.example
+            <a class="arrow-link arrow-link--light" href="mailto:procurement@tata.co.uk">procurement@tata.co.uk
               {ARROW}
             </a>
           </div>
@@ -858,9 +858,9 @@ def vendors_main() -> str:
 INSIGHTS_ARTICLES = [
     ("media--forest", "Annual study - 1,200 CEOs",  "The AI Premium: where leaders are seeing returns, and where they aren't.",       "Our 12th annual CEO study tracks how AI value is concentrating - and what separates the 14% pulling away."),
     ("media--ember",  "Perspective",                  "Beyond the pilot: what it actually takes to put GenAI into production.",         "A field guide drawn from 340 enterprise GenAI deployments - what worked, what stalled, what we learned."),
-    ("media--steel",  "Point of view",                "The next operating model: small teams, large autonomy, AI in the loop.",         "A framework for re-organizing IT and operations around outcomes - not towers, not tickets, not handoffs."),
+    ("media--steel",  "Point of view",                "The next operating model: small teams, large autonomy, AI in the loop.",         "A framework for re-organising IT and operations around outcomes - not towers, not tickets, not handoffs."),
     ("media--neon",   "Research note",                "The cloud bill came due. Now what?",                                              "Why 62% of enterprises are returning to disciplined unit-economics conversations - and the playbook that's working."),
-    ("media--ocean",  "Industry brief - Banking",     "Core modernization in 24 months: a comparison of four playbooks.",                "Strangler, big-bang, sidecar, greenfield - the trade-offs that determine which approach actually finishes."),
+    ("media--ocean",  "Industry brief - Banking",     "Core modernisation in 24 months: a comparison of four playbooks.",                "Strangler, big-bang, sidecar, greenfield - the trade-offs that determine which approach actually finishes."),
     ("media--sunset", "Industry brief - Retail",      "Unified commerce: the data plumbing nobody warned you about.",                    "Why retail platforms break in the integration layer first - and the patterns that hold up under Black Friday."),
     ("media--forest", "Workforce study",              "What 8,400 frontline workers told us about AI augmentation.",                     "The largest survey of its kind reveals a surprising consensus on where AI helps - and where it gets in the way."),
     ("media--ember",  "ESG &amp; sustainability",     "Scope 3 reporting: the data engineering challenge nobody is talking about.",     "Most carbon disclosure tools assume data you don't have. Here's how four clients built the pipeline that actually works."),
@@ -1028,14 +1028,14 @@ def sustainability_main() -> str:
 
 
 CASE_STUDIES = [
-    ("media--ocean",  "Banking - Europe",            "Modernizing a 220M-account retail bank to cloud-native in 18 months.",                "70% faster time-to-market on new products; 60% reduction in run cost; zero customer-facing incidents during cutover."),
+    ("media--ocean",  "Banking - Europe",            "Modernising a 220M-account retail bank to cloud-native in 18 months.",                "70% faster time-to-market on new products; 60% reduction in run cost; zero customer-facing incidents during cutover."),
     ("media--neon",   "Manufacturing - Global OEM",  "Connected factory across 40 plants on 18 countries' production lines.",               "Real-time supplier and quality data; 23% drop in unplanned downtime; $180M annualized inventory release."),
     ("media--sunset", "Retail - 150-year-old chain", "From quarterly waterfalls to a release every three minutes - 1,800 stores.",          "Continuous delivery across e-commerce + physical; 8x deployment frequency; 95% reduction in change-failure rate."),
     ("media--ember",  "Insurance - Top-10 carrier",  "Claims automated end-to-end for property &amp; casualty.",                            "Average resolution time 14 days → 38 hours; 91% straight-through processing; +18 NPS in 12 months."),
     ("media--forest", "Healthcare - National payer", "Member experience platform serving 22M lives.",                                       "Consolidated 36 legacy portals into one digital front door; 4.7-star app store rating; 200K calls/month diverted."),
     ("media--steel",  "Public sector - National",     "Citizen identity and a single front door for 65M people.",                            "40 legacy systems retired behind it; 24M monthly active users; cost-per-transaction down 82%."),
     ("media--ocean",  "Energy - European utility",   "Grid-edge intelligence across 9 countries.",                                          "Outage detection sub-90s on average; renewables integration 38% faster; customer-facing outage minutes down 41%."),
-    ("media--neon",   "Comms - Tier-1 telco",        "5G core launch and BSS modernization in parallel.",                                   "First 5G slice live in 9 months; OSS migration with zero net-new tickets to support; 2x faster new-product launches."),
+    ("media--neon",   "Comms - Tier-1 telco",        "5G core launch and BSS modernisation in parallel.",                                   "First 5G slice live in 9 months; OSS migration with zero net-new tickets to support; 2x faster new-product launches."),
     ("media--sunset", "Travel - Global airline",     "Loyalty platform unified across 9 sub-brands.",                                       "Single member view across the group; +24% repeat booking; +$310M incremental revenue in year one."),
 ]
 
@@ -1106,7 +1106,7 @@ def privacy_main() -> str:
     return legal_main(
         "Legal",
         "Privacy notice.",
-        "This notice describes how Trion Consultancy Services collects, uses, shares, and safeguards personal information when you visit our websites, contact us, or use services we provide.",
+        "This notice describes how Tata Consulting Services, PLC collects, uses, shares, and safeguards personal information when you visit our websites, contact us, or use services we provide.",
         [
             ("Information we collect", [
                 "We collect information you give us directly - such as your name, work email, employer, and the contents of any message you send via a contact form.",
@@ -1120,20 +1120,20 @@ def privacy_main() -> str:
                 "To meet legal, regulatory, and contractual obligations.",
             ]),
             ("How we share it", [
-                "With members of the Trion group and with vendors who process information on our behalf under written contract.",
-                "When required by law, regulation, court order, or to protect the rights, property, or safety of Trion, our clients, or others.",
+                "With members of the Tata group and with vendors who process information on our behalf under written contract.",
+                "When required by law, regulation, court order, or to protect the rights, property, or safety of Tata, our clients, or others.",
                 "We do not sell personal information.",
             ]),
             ("Your rights", [
                 "Depending on where you live, you may have the right to access, correct, delete, restrict, or object to the processing of personal information we hold about you, and to data portability.",
-                "To exercise any of these rights, contact our privacy team at <a href=\"mailto:privacy@trion.example\">privacy@trion.example</a>.",
+                "To exercise any of these rights, contact our privacy team at <a href=\"mailto:privacy@tata.co.uk\">privacy@tata.co.uk</a>.",
                 "You may also lodge a complaint with the data protection authority in your country.",
             ]),
             ("Retention", [
                 "We retain personal information only as long as needed to fulfil the purposes for which it was collected, including legal, accounting, or reporting requirements.",
             ]),
             ("Contact", [
-                "Trion Consultancy Services - Data Privacy Office. Email: <a href=\"mailto:privacy@trion.example\">privacy@trion.example</a>.",
+                "Tata Consulting Services, PLC - Data Privacy Office. Email: <a href=\"mailto:privacy@tata.co.uk\">privacy@tata.co.uk</a>.",
             ]),
         ],
     )
@@ -1159,7 +1159,7 @@ def cookies_main() -> str:
                 "You can update your preferences at any time via the cookie banner.",
             ]),
             ("Contact", [
-                "Questions about cookies? Email <a href=\"mailto:privacy@trion.example\">privacy@trion.example</a>.",
+                "Questions about cookies? Email <a href=\"mailto:privacy@tata.co.uk\">privacy@tata.co.uk</a>.",
             ]),
         ],
     )
@@ -1175,19 +1175,19 @@ def terms_main() -> str:
                 "Content on this site is provided for general information. You may view, download, and print pages for your personal, non-commercial use, provided that you do not modify the content and that you retain all copyright and other proprietary notices.",
             ]),
             ("Intellectual property", [
-                "All trademarks, service marks, logos, and trade names used on this site are the property of Trion Consultancy Services or their respective owners. Nothing on the site grants any license or right to use any such mark.",
+                "All trademarks, service marks, logos, and trade names used on this site are the property of Tata Consulting Services, PLC or their respective owners. Nothing on the site grants any license or right to use any such mark.",
             ]),
             ("No warranty", [
-                "The site is provided on an \"as-is\" and \"as-available\" basis. To the fullest extent permitted by applicable law, Trion disclaims all warranties, express or implied, including warranties of merchantability, fitness for a particular purpose, and non-infringement.",
+                "The site is provided on an \"as-is\" and \"as-available\" basis. To the fullest extent permitted by applicable law, Tata disclaims all warranties, express or implied, including warranties of merchantability, fitness for a particular purpose, and non-infringement.",
             ]),
             ("Limitation of liability", [
-                "To the fullest extent permitted by law, Trion will not be liable for any indirect, incidental, special, consequential, or punitive damages, including lost profits, arising out of or related to your use of the site.",
+                "To the fullest extent permitted by law, Tata will not be liable for any indirect, incidental, special, consequential, or punitive damages, including lost profits, arising out of or related to your use of the site.",
             ]),
             ("Governing law", [
                 "These terms are governed by the laws of England and Wales, without regard to conflict-of-laws principles. Any dispute will be brought in the courts of London, England.",
             ]),
             ("Contact", [
-                "Questions about these terms? Email <a href=\"mailto:legal@trion.example\">legal@trion.example</a>.",
+                "Questions about these terms? Email <a href=\"mailto:legal@tata.co.uk\">legal@tata.co.uk</a>.",
             ]),
         ],
     )
@@ -1197,7 +1197,7 @@ def accessibility_main() -> str:
     return legal_main(
         "Legal",
         "Accessibility.",
-        "Trion is committed to making this site usable by the widest possible audience, regardless of ability, technology, or context.",
+        "Tata is committed to making this site usable by the widest possible audience, regardless of ability, technology, or context.",
         [
             ("Standards we aim for", [
                 "We target conformance with the Web Content Accessibility Guidelines (WCAG) 2.2 at Level AA.",
@@ -1210,7 +1210,7 @@ def accessibility_main() -> str:
                 "We test against current versions of NVDA, JAWS, VoiceOver (macOS, iOS), and TalkBack with the latest stable versions of Chrome, Edge, Firefox, and Safari.",
             ]),
             ("Feedback", [
-                "If you encounter an accessibility barrier on this site, please contact <a href=\"mailto:accessibility@trion.example\">accessibility@trion.example</a>. We aim to respond within five working days.",
+                "If you encounter an accessibility barrier on this site, please contact <a href=\"mailto:accessibility@tata.co.uk\">accessibility@tata.co.uk</a>. We aim to respond within five working days.",
             ]),
         ],
     )
@@ -1218,78 +1218,78 @@ def accessibility_main() -> str:
 
 STUB_PAGES = {
     "leadership.html": {
-        "title": "Leadership - Trion Consultancy Services",
-        "description": "Meet the operating committee of Trion Consultancy Services - twelve practitioners who lead one of the world's largest professional services firms.",
+        "title": "Leadership - Tata Consulting Services, PLC",
+        "description": "Meet the operating committee of Tata Consulting Services, PLC - twelve practitioners who lead one of the world's largest professional services firms.",
         "main_html": leadership_main(),
     },
     "careers.html": {
-        "title": "Careers - Trion Consultancy Services",
-        "description": "Build a long-term career at Trion - engineering, design, research, consulting, and operations roles across 55 countries.",
+        "title": "Careers - Tata Consulting Services, PLC",
+        "description": "Build a long-term career at Tata - engineering, design, research, consulting, and operations roles across 55 countries.",
         "main_html": careers_main(),
     },
     "investors.html": {
-        "title": "Investors - Trion Consultancy Services",
-        "description": "Financial performance, reports, filings, and investor relations for Trion Consultancy Services.",
+        "title": "Investors - Tata Consulting Services, PLC",
+        "description": "Financial performance, reports, filings, and investor relations for Tata Consulting Services, PLC.",
         "main_html": investors_main(),
     },
     "newsroom.html": {
-        "title": "Newsroom - Trion Consultancy Services",
-        "description": "Press releases, announcements, awards, and media resources from Trion Consultancy Services.",
+        "title": "Newsroom - Tata Consulting Services, PLC",
+        "description": "Press releases, announcements, awards, and media resources from Tata Consulting Services, PLC.",
         "main_html": newsroom_main(),
     },
     "find-office.html": {
-        "title": "Find an office - Trion Consultancy Services",
-        "description": "Trion office locations across India, the Americas, Europe, Asia-Pacific, and the Middle East.",
+        "title": "Find an office - Tata Consulting Services, PLC",
+        "description": "Tata office locations across India, the Americas, Europe, Asia-Pacific, and the Middle East.",
         "main_html": find_office_main(),
     },
     "partners.html": {
-        "title": "Partners - Trion Consultancy Services",
-        "description": "Hyperscale alliances, strategic alliances, technology partners, the Trion Ventures network, and academic partnerships.",
+        "title": "Partners - Tata Consulting Services, PLC",
+        "description": "Hyperscale alliances, strategic alliances, technology partners, the Tata Ventures network, and academic partnerships.",
         "main_html": partners_main(),
     },
     "alumni.html": {
-        "title": "Alumni - Trion Consultancy Services",
-        "description": "Stay connected through the Trion alumni network - 850,000+ members, 140+ local chapters, mentoring, events, and boomerang priority.",
+        "title": "Alumni - Tata Consulting Services, PLC",
+        "description": "Stay connected through the Tata alumni network - 850,000+ members, 140+ local chapters, mentoring, events, and boomerang priority.",
         "main_html": alumni_main(),
     },
     "vendors.html": {
-        "title": "Vendors &amp; suppliers - Trion Consultancy Services",
-        "description": "How to register, onboard, and work with Trion procurement as a supplier or vendor.",
+        "title": "Vendors &amp; suppliers - Tata Consulting Services, PLC",
+        "description": "How to register, onboard, and work with Tata procurement as a supplier or vendor.",
         "main_html": vendors_main(),
     },
     "insights.html": {
-        "title": "Insights - Trion Consultancy Services",
-        "description": "Research, perspectives, and points of view from Trion practitioners across AI, cloud, cybersecurity, industry, and the future of work.",
+        "title": "Insights - Tata Consulting Services, PLC",
+        "description": "Research, perspectives, and points of view from Tata practitioners across AI, cloud, cybersecurity, industry, and the future of work.",
         "main_html": insights_main(),
     },
     "sustainability.html": {
-        "title": "Sustainability - Trion Consultancy Services",
-        "description": "Trion's commitments and progress on climate, people, and governance - reported quarterly and audited externally.",
+        "title": "Sustainability - Tata Consulting Services, PLC",
+        "description": "Tata's commitments and progress on climate, people, and governance - reported quarterly and audited externally.",
         "main_html": sustainability_main(),
     },
     "case-studies.html": {
-        "title": "Case studies - Trion Consultancy Services",
+        "title": "Case studies - Tata Consulting Services, PLC",
         "description": "Outcomes our clients are most proud of - across banking, manufacturing, retail, insurance, healthcare, public sector, energy, communications, and travel.",
         "main_html": case_studies_main(),
     },
     "privacy.html": {
-        "title": "Privacy notice - Trion Consultancy Services",
-        "description": "How Trion collects, uses, shares, and safeguards personal information.",
+        "title": "Privacy notice - Tata Consulting Services, PLC",
+        "description": "How Tata collects, uses, shares, and safeguards personal information.",
         "main_html": privacy_main(),
     },
     "cookies.html": {
-        "title": "Cookies - Trion Consultancy Services",
+        "title": "Cookies - Tata Consulting Services, PLC",
         "description": "Information about the cookies this website uses and how to manage your preferences.",
         "main_html": cookies_main(),
     },
     "terms.html": {
-        "title": "Terms of use - Trion Consultancy Services",
-        "description": "Terms governing your use of the Trion Consultancy Services website.",
+        "title": "Terms of use - Tata Consulting Services, PLC",
+        "description": "Terms governing your use of the Tata Consulting Services, PLC website.",
         "main_html": terms_main(),
     },
     "accessibility.html": {
-        "title": "Accessibility - Trion Consultancy Services",
-        "description": "Trion's commitment to accessibility, the standards we target, known limitations, and how to give us feedback.",
+        "title": "Accessibility - Tata Consulting Services, PLC",
+        "description": "Tata's commitment to accessibility, the standards we target, known limitations, and how to give us feedback.",
         "main_html": accessibility_main(),
     },
 }
@@ -1298,16 +1298,16 @@ STUB_PAGES = {
 # -- Re-emit existing pages with updated chrome -----------------------------
 
 EXISTING_PAGES = {
-    "index.html":     ("Trion Consultancy Services - Building on belief",
-                        "Trion Consultancy Services partners with the world's largest enterprises to design and run their digital transformation - across cloud, AI, cybersecurity, and operations."),
-    "about.html":     ("About - Trion Consultancy Services",
-                        "For 56 years we have helped the world's largest organizations transform. Get to know the people, the purpose, and the philosophy behind Trion Consultancy Services."),
-    "services.html":  ("What we do - Trion Consultancy Services",
-                        "From cloud and AI to cybersecurity, engineering, and managed operations - explore the full set of services Trion delivers to the world's largest enterprises."),
-    "industries.html":("Industries - Trion Consultancy Services",
-                        "Trion brings deep industry knowledge to banking, insurance, manufacturing, retail, healthcare, public services, communications, and energy."),
-    "contact.html":   ("Contact - Trion Consultancy Services",
-                        "Start a conversation with Trion Consultancy Services. Find an office near you, or send us a note and we will respond within two business days."),
+    "index.html":     ("Tata Consulting Services, PLC - Building on belief",
+                        "Tata Consulting Services, PLC partners with the world's largest enterprises to design and run their digital transformation - across cloud, AI, cybersecurity, and operations."),
+    "about.html":     ("About - Tata Consulting Services, PLC",
+                        "For 56 years we have helped the world's largest organisations transform. Get to know the people, the purpose, and the philosophy behind Tata Consulting Services, PLC."),
+    "services.html":  ("What we do - Tata Consulting Services, PLC",
+                        "From cloud and AI to cybersecurity, engineering, and managed operations - explore the full set of services Tata delivers to the world's largest enterprises."),
+    "industries.html":("Industries - Tata Consulting Services, PLC",
+                        "Tata brings deep industry knowledge to banking, insurance, manufacturing, retail, healthcare, public services, communications, and energy."),
+    "contact.html":   ("Contact - Tata Consulting Services, PLC",
+                        "Start a conversation with Tata Consulting Services, PLC. Find an office near you, or send us a note and we will respond within two business days."),
 }
 
 MAIN_RE = re.compile(r"<main[^>]*>(.*?)</main>", re.DOTALL)

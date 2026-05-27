@@ -4,7 +4,7 @@ Thanks for your interest in improving this site. This document explains how to s
 
 ## What this is
 
-A static marketing site for Trion Consultancy Services. Plain HTML, CSS, and vanilla JavaScript, with no runtime build step. A Python script generates pages from a shared chrome template so the header, nav, and footer stay in sync across the site.
+A static marketing site for Tata Consulting Services, PLC. Plain HTML, CSS, and vanilla JavaScript, with no runtime build step. A Python script generates pages from a shared chrome template so the header, nav, and footer stay in sync across the site.
 
 ## Prerequisites
 

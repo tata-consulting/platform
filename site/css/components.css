@@ -547,16 +547,52 @@
 .story-card__media {
   aspect-ratio: 16 / 10;
   background: var(--surface-muted);
+  background-size: cover;
+  background-position: center;
   position: relative;
   overflow: hidden;
+  transition: transform var(--t-slow) var(--ease);
+}
+
+.story-card__media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--t-slow) var(--ease);
+}
+
+.story-card:hover .story-card__media img {
+  transform: scale(1.05);
 }
 
 .story-card__media::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 50%, rgba(26, 0, 51, 0.4) 100%);
+  background: linear-gradient(180deg, transparent 50%, rgba(26, 0, 51, 0.55) 100%);
+  pointer-events: none;
 }
+
+/* Optional inline illustration over media */
+.story-card__media-glyph {
+  position: absolute;
+  right: var(--s-5);
+  top: var(--s-5);
+  width: 56px;
+  height: 56px;
+  border-radius: var(--r-md);
+  background: rgba(255,255,255,0.16);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.95);
+  z-index: 1;
+}
+.story-card__media-glyph svg { width: 26px; height: 26px; }
 
 .story-card__body {
   padding: var(--s-8);
@@ -1021,7 +1057,21 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  background-size: cover;
+  background-position: center;
 }
+
+.leader-card__photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.92) contrast(1.02);
+  transition: transform var(--t-slow) var(--ease);
+}
+
+.leader-card:hover .leader-card__photo img { transform: scale(1.04); }
 
 .leader-card__photo::before {
   content: "";
@@ -1383,4 +1433,95 @@
 /* Body lock when mobile menu open --------------------------- */
 body.menu-open {
   overflow: hidden;
+}
+
+/* Trusted by logos strip ----------------------------------- */
+.trusted {
+  padding-block: clamp(48px, 6vw, 80px);
+  background: var(--surface);
+  border-top: 1px solid var(--hairline);
+  border-bottom: 1px solid var(--hairline);
+}
+.trusted__head {
+  text-align: center;
+  margin-bottom: var(--s-10);
+}
+.trusted__head p {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+}
+.trusted__row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--s-8) var(--s-6);
+  align-items: center;
+  justify-items: center;
+}
+@media (min-width: 640px) { .trusted__row { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 900px) { .trusted__row { grid-template-columns: repeat(6, 1fr); } }
+.trusted__logo {
+  height: 32px;
+  width: auto;
+  max-width: 100%;
+  color: var(--text-muted);
+  opacity: 0.78;
+  transition: opacity var(--t-med) var(--ease), color var(--t-med) var(--ease);
+}
+.trusted__logo:hover { opacity: 1; color: var(--text-strong); }
+
+/* Section--image: hero-style section with background image */
+.section--image {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  overflow: hidden;
+}
+.section--image::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(26,0,51,0.7) 0%, rgba(26,0,51,0.85) 100%);
+}
+.section--image > .container { position: relative; }
+
+/* Photo grid (general purpose) */
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--s-4);
+}
+@media (min-width: 768px) { .photo-grid { grid-template-columns: repeat(4, 1fr); } }
+.photo-grid img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: var(--r-md);
+  display: block;
+}
+
+/* Decorative pattern background */
+.pattern-grid {
+  background-image:
+    linear-gradient(rgba(95, 36, 159, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(95, 36, 159, 0.06) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* Inline media object (image with caption) */
+.media-figure {
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  border: 1px solid var(--hairline);
+  background: var(--surface);
+}
+.media-figure img { display: block; width: 100%; height: auto; }
+.media-figure figcaption {
+  padding: var(--s-4) var(--s-5);
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  border-top: 1px solid var(--hairline);
 }
