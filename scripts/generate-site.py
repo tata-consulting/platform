@@ -56,11 +56,10 @@ CHROME_TOP = """<!doctype html>
   <div class="utility-bar">
     <div class="container utility-bar__inner">
       <a href="find-office.html" aria-label="United Kingdom - English. Find an office in another region."><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></svg> United Kingdom - English</a>
-      <a href="https://platform.tata-consulting.co.uk" rel="noopener" target="_blank" aria-label="Open the Tata Consulting Services Internal Developer Platform"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3M7 9l-2 2 2 2M17 9l2 2-2 2M13 8l-2 6"/></svg> Platform</a>
       <a href="investors.html">Investors</a>
       <a href="newsroom.html">Newsroom</a>
       <a href="alumni.html">Alumni</a>
-      <a href="contact.html?topic=sign-in">Sign in</a>
+      <a href="https://platform.tata-consulting.co.uk" rel="noopener" target="_blank" aria-label="Open the Tata Consulting Services Internal Developer Platform"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3M7 9l-2 2 2 2M17 9l2 2-2 2M13 8l-2 6"/></svg> Platform</a>
     </div>
   </div>
 
@@ -504,7 +503,7 @@ def investors_main() -> str:
             <span class="eyebrow" style="color: var(--brand-accent); display:block; margin-bottom: var(--s-3);">Talk to IR</span>
             <h2 style="margin-bottom: var(--s-6);">Direct line to the team.</h2>
             <p style="color: var(--text-on-dark-muted); font-size: 1.0625rem; line-height: 1.6; margin-bottom: var(--s-8);">For analyst inquiries, shareholder questions, or scheduled briefings, reach our investor relations team directly.</p>
-            <a class="arrow-link arrow-link--light" href="mailto:ir@tata.co.uk">ir@tata.co.uk
+            <a class="arrow-link arrow-link--light" href="mailto:ir@tata-consulting.co.uk">ir@tata-consulting.co.uk
               {ARROW}
             </a>
           </div>
@@ -574,7 +573,7 @@ def newsroom_main() -> str:
             <span class="eyebrow" style="display:block; margin-bottom: var(--s-3);">Media inquiries</span>
             <h2 style="margin-bottom: var(--s-6);">Working on a story?</h2>
             <p class="muted" style="font-size: 1.0625rem; line-height: 1.6; margin-bottom: var(--s-8);">For journalist or analyst inquiries, briefings, or interview requests, our global communications team responds within one business day.</p>
-            <a class="arrow-link" href="mailto:press@tata.co.uk">press@tata.co.uk
+            <a class="arrow-link" href="mailto:press@tata-consulting.co.uk">press@tata-consulting.co.uk
               {ARROW}
             </a>
           </div>
@@ -844,7 +843,7 @@ def vendors_main() -> str:
             <span class="eyebrow" style="color: var(--brand-accent); display:block; margin-bottom: var(--s-3);">Procurement team</span>
             <h2 style="margin-bottom: var(--s-6);">Talk to a buyer.</h2>
             <p style="color: var(--text-on-dark-muted); font-size: 1.0625rem; line-height: 1.6; margin-bottom: var(--s-8);">For questions on category strategy, RFP timing, payment terms, or onboarding status, reach the regional procurement team.</p>
-            <a class="arrow-link arrow-link--light" href="mailto:procurement@tata.co.uk">procurement@tata.co.uk
+            <a class="arrow-link arrow-link--light" href="mailto:procurement@tata-consulting.co.uk">procurement@tata-consulting.co.uk
               {ARROW}
             </a>
           </div>
@@ -1127,14 +1126,14 @@ def privacy_main() -> str:
             ]),
             ("Your rights", [
                 "Depending on where you live, you may have the right to access, correct, delete, restrict, or object to the processing of personal information we hold about you, and to data portability.",
-                "To exercise any of these rights, contact our privacy team at <a href=\"mailto:privacy@tata.co.uk\">privacy@tata.co.uk</a>.",
+                "To exercise any of these rights, contact our privacy team at <a href=\"mailto:privacy@tata-consulting.co.uk\">privacy@tata-consulting.co.uk</a>.",
                 "You may also lodge a complaint with the data protection authority in your country.",
             ]),
             ("Retention", [
                 "We retain personal information only as long as needed to fulfil the purposes for which it was collected, including legal, accounting, or reporting requirements.",
             ]),
             ("Contact", [
-                "Tata Consulting Services, PLC - Data Privacy Office. Email: <a href=\"mailto:privacy@tata.co.uk\">privacy@tata.co.uk</a>.",
+                "Tata Consulting Services, PLC - Data Privacy Office. Email: <a href=\"mailto:privacy@tata-consulting.co.uk\">privacy@tata-consulting.co.uk</a>.",
             ]),
         ],
     )
@@ -1160,7 +1159,7 @@ def cookies_main() -> str:
                 "You can update your preferences at any time via the cookie banner.",
             ]),
             ("Contact", [
-                "Questions about cookies? Email <a href=\"mailto:privacy@tata.co.uk\">privacy@tata.co.uk</a>.",
+                "Questions about cookies? Email <a href=\"mailto:privacy@tata-consulting.co.uk\">privacy@tata-consulting.co.uk</a>.",
             ]),
         ],
     )
@@ -1188,7 +1187,7 @@ def terms_main() -> str:
                 "These terms are governed by the laws of England and Wales, without regard to conflict-of-laws principles. Any dispute will be brought in the courts of London, England.",
             ]),
             ("Contact", [
-                "Questions about these terms? Email <a href=\"mailto:legal@tata.co.uk\">legal@tata.co.uk</a>.",
+                "Questions about these terms? Email <a href=\"mailto:legal@tata-consulting.co.uk\">legal@tata-consulting.co.uk</a>.",
             ]),
         ],
     )
@@ -1211,7 +1210,7 @@ def accessibility_main() -> str:
                 "We test against current versions of NVDA, JAWS, VoiceOver (macOS, iOS), and TalkBack with the latest stable versions of Chrome, Edge, Firefox, and Safari.",
             ]),
             ("Feedback", [
-                "If you encounter an accessibility barrier on this site, please contact <a href=\"mailto:accessibility@tata.co.uk\">accessibility@tata.co.uk</a>. We aim to respond within five working days.",
+                "If you encounter an accessibility barrier on this site, please contact <a href=\"mailto:accessibility@tata-consulting.co.uk\">accessibility@tata-consulting.co.uk</a>. We aim to respond within five working days.",
             ]),
         ],
     )
