@@ -586,9 +586,9 @@ def newsroom_main() -> str:
 
 
 FIND_OFFICE_LIST = [
-    ("Mumbai - Global HQ",    "Tata House<br />N. M. Marg, Apollo Bunder<br />Mumbai 400001, India",                                                      "+91 22 6666 7777",  "+912266667777"),
+    ("Mumbai - Global HQ",    "Tata House<br />N. M. Marg, Apollo Bunder<br />Mumbai 400001, India",                                                      "+91 22 6666 7777",  "+912267789595"),
     ("Bengaluru",             "Tata Park, Whitefield Main Road<br />Whitefield, Bengaluru 560066<br />India",                                              "+91 80 2222 1234",  "+918022221234"),
-    ("Delhi NCR",             "Tata Tower, DLF Cyber City Phase III<br />Gurugram 122002<br />India",                                                       "+91 124 444 5555",  "+911244445555"),
+    ("Delhi NCR",             "Tata Tower, DLF Cyber City Phase III<br />Gurugram 122002<br />India",                                                       "+91 124 444 5555",  "+911244745235"),
     ("New York",              "101 Park Avenue, 26th Floor<br />New York, NY 10178<br />United States",                                                      "+1 212 555 0100",   "+12125550100"),
     ("Toronto",               "199 Bay Street, 30th Floor<br />Toronto, ON M5L 1G9<br />Canada",                                                             "+1 416 555 0150",   "+14165550150"),
     ("London",                "17 Old Bailey<br />London EC4M 7EG<br />United Kingdom",                                                                      "+44 20 7220 0800",  "+442072200800"),
