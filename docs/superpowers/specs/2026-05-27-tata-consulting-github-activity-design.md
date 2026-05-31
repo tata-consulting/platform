@@ -29,13 +29,13 @@ Generate a realistic, coherent story of engineering activity across the `tata-co
 
 ### Phase 1 - Cloud Foundations (Apr 14 - May 4)
 
-**Repos:** `tcs-cloud-foundations`, `crossplane`, `terraform-docs`
+**Repos:** `tcs-cloud-foundations`, `meshery`, `terraform-docs`
 **Lead accounts:** `hamza-mohd`, `arjunmehta-git`, `sarajkrishnasingh`, `winkletinkle`
 
 **Issues:**
 - VPC module design and multi-region strategy
 - IAM baseline policy framework
-- Crossplane XRD design for AWS resources
+- Meshery model design for AWS resources
 - Add guardrail checklist for foundation changes (existing #2)
 - Terraform module versioning strategy
 - Cloud foundations onboarding guide
@@ -43,14 +43,14 @@ Generate a realistic, coherent story of engineering activity across the `tata-co
 **PRs (mix of merged + open):**
 - feat: AWS VPC Terraform module with multi-AZ support
 - feat: IAM baseline roles and policies
-- feat: Crossplane XRD for AWS RDS
-- feat: Crossplane XRD for AWS S3
+- feat: Meshery model for AWS RDS
+- feat: Meshery model for AWS S3
 - docs: cloud foundations architecture overview
 - chore: terraform-docs integration for module autodoc
 
 **Commits to existing repos:**
 - Terraform modules: `modules/vpc/`, `modules/iam/`, `modules/rds/`
-- Crossplane compositions: `compositions/aws-rds.yaml`, `compositions/aws-s3.yaml`
+- Meshery designs: `designs/aws-rds.yaml`, `designs/aws-s3.yaml`
 - Meeting notes: `docs/meetings/2026-04-14-cloud-foundations-kickoff.md`
 - Meeting notes: `docs/meetings/2026-04-28-guardrail-review.md`
 - Architecture diagram (Mermaid): cloud foundation layers
