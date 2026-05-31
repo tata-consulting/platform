@@ -774,7 +774,7 @@ def alumni_main() -> str:
               {ARROW}
             </a>
           </div>
-          <div class="split__media media--neon reveal"></div>
+          <div class="split__media media--neon reveal"><img style="object-fit: cover center; width: 100%;" src="assets/images/alumni.jpg" /></div>
         </div>
       </div>
     </section>
