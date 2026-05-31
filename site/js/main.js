@@ -247,6 +247,281 @@
   }
 
   /* ------------------------------------------------------------------
+     Site search - accessible overlay backed by a lazy-loaded JSON index
+     (site/search-index.json, emitted by scripts/generate-site.py).
+     ------------------------------------------------------------------ */
+  const searchRoot = document.getElementById('site-search');
+  const searchTriggers = document.querySelectorAll('[data-search-open]');
+
+  if (searchRoot && searchTriggers.length) {
+    const input = searchRoot.querySelector('.site-search__input');
+    const resultsEl = searchRoot.querySelector('.site-search__results');
+    const statusEl = searchRoot.querySelector('.site-search__status');
+    const closers = searchRoot.querySelectorAll('[data-search-close]');
+    const indexUrl = searchRoot.getAttribute('data-search-index') || 'search-index.json';
+    const MAX_RESULTS = 8;
+
+    let indexPromise = null; // cached fetch - the index is fetched at most once
+    let records = null;
+    let lastFocused = null;
+    let current = []; // result records currently rendered
+    let activeIndex = -1; // keyboard-highlighted result
+
+    const escapeHtml = (s) =>
+      s.replace(/[&<>"']/g, (c) =>
+        ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])
+      );
+    const escapeRegExp = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const tokenize = (q) => q.toLowerCase().split(/\s+/).filter(Boolean);
+
+    const loadIndex = () => {
+      if (!indexPromise) {
+        indexPromise = fetch(indexUrl)
+          .then((r) => {
+            if (!r.ok) throw new Error('HTTP ' + r.status);
+            return r.json();
+          })
+          .then((data) => {
+            records = Array.isArray(data) ? data : [];
+            return records;
+          })
+          .catch((err) => {
+            indexPromise = null; // allow a retry on the next open
+            throw err;
+          });
+      }
+      return indexPromise;
+    };
+
+    // AND semantics: a record qualifies only if every term appears somewhere.
+    // Title hits weigh heaviest, then description, then body.
+    const search = (query) => {
+      const terms = tokenize(query);
+      if (!terms.length || !records) return [];
+      const phrase = query.toLowerCase();
+      const scored = [];
+
+      for (const rec of records) {
+        const title = (rec.t || '').toLowerCase();
+        const desc = (rec.d || '').toLowerCase();
+        const body = (rec.b || '').toLowerCase();
+        let score = 0;
+        let qualifies = true;
+
+        for (const term of terms) {
+          const inTitle = title.includes(term);
+          const inDesc = desc.includes(term);
+          const inBody = body.includes(term);
+          if (!inTitle && !inDesc && !inBody) {
+            qualifies = false;
+            break;
+          }
+          if (inTitle) score += title.startsWith(term) ? 12 : 8;
+          if (inDesc) score += 4;
+          if (inBody) score += 2;
+        }
+
+        if (!qualifies) continue;
+        if (title.includes(phrase)) score += 6; // exact phrase in title
+        scored.push({ rec, score });
+      }
+
+      scored.sort((a, b) => b.score - a.score || a.rec.t.localeCompare(b.rec.t));
+      return scored.slice(0, MAX_RESULTS).map((s) => s.rec);
+    };
+
+    // Highlight on the raw text, escaping every segment so matched terms can
+    // never inject markup.
+    const highlight = (text, terms) => {
+      if (!terms.length) return escapeHtml(text);
+      const re = new RegExp('(' + terms.map(escapeRegExp).join('|') + ')', 'gi');
+      let out = '';
+      let last = 0;
+      let m;
+      while ((m = re.exec(text)) !== null) {
+        out += escapeHtml(text.slice(last, m.index)) + '<mark>' + escapeHtml(m[0]) + '</mark>';
+        last = m.index + m[0].length;
+        if (m.index === re.lastIndex) re.lastIndex++; // guard against zero-length matches
+      }
+      return out + escapeHtml(text.slice(last));
+    };
+
+    // A snippet centred on the first matching term, preferring body context.
+    const snippet = (rec, terms) => {
+      const haystack = rec.b && rec.b.length ? rec.b : rec.d || '';
+      const lower = haystack.toLowerCase();
+      let pos = -1;
+      for (const term of terms) {
+        const i = lower.indexOf(term);
+        if (i !== -1 && (pos === -1 || i < pos)) pos = i;
+      }
+      const start = pos > 60 ? pos - 60 : 0;
+      let slice = haystack.slice(start, start + 180);
+      if (start > 0) slice = '…' + slice;
+      if (start + 180 < haystack.length) slice += '…';
+      return highlight(slice, terms);
+    };
+
+    const setActive = (i) => {
+      const items = resultsEl.children;
+      if (!items.length) {
+        activeIndex = -1;
+        input.removeAttribute('aria-activedescendant');
+        return;
+      }
+      if (i < 0) i = items.length - 1;
+      if (i >= items.length) i = 0;
+      activeIndex = i;
+      Array.from(items).forEach((li, idx) => {
+        const on = idx === i;
+        li.classList.toggle('is-active', on);
+        li.setAttribute('aria-selected', on ? 'true' : 'false');
+        if (on) {
+          input.setAttribute('aria-activedescendant', li.id);
+          li.scrollIntoView({ block: 'nearest' });
+        }
+      });
+    };
+
+    const go = (rec) => {
+      if (rec && rec.u) window.location.href = rec.u;
+    };
+
+    const render = (query) => {
+      const terms = tokenize(query);
+      current = query ? search(query) : [];
+      activeIndex = -1;
+      resultsEl.innerHTML = '';
+      input.removeAttribute('aria-activedescendant');
+
+      if (!query) {
+        statusEl.textContent = '';
+        input.setAttribute('aria-expanded', 'false');
+        return;
+      }
+      if (!current.length) {
+        statusEl.textContent = 'No results for “' + query + '”.';
+        input.setAttribute('aria-expanded', 'false');
+        return;
+      }
+
+      statusEl.textContent =
+        current.length + ' result' + (current.length === 1 ? '' : 's') + ' for “' + query + '”.';
+      input.setAttribute('aria-expanded', 'true');
+
+      current.forEach((rec, i) => {
+        const li = document.createElement('li');
+        li.className = 'site-search__result';
+        li.id = 'site-search-result-' + i;
+        li.setAttribute('role', 'option');
+        li.setAttribute('aria-selected', 'false');
+
+        const a = document.createElement('a');
+        a.className = 'site-search__result-link';
+        a.href = rec.u;
+        a.tabIndex = -1;
+        a.innerHTML =
+          '<span class="site-search__result-title">' + highlight(rec.t || rec.u, terms) + '</span>' +
+          '<span class="site-search__result-snippet">' + snippet(rec, terms) + '</span>';
+
+        li.appendChild(a);
+        li.addEventListener('mouseenter', () => setActive(i));
+        li.addEventListener('click', () => go(rec));
+        resultsEl.appendChild(li);
+      });
+    };
+
+    const open = () => {
+      if (!searchRoot.hidden) return;
+      lastFocused = document.activeElement;
+
+      // If the mobile menu is open, fold it away first so search owns the screen.
+      const mm = document.querySelector('.mobile-menu');
+      const mt = document.querySelector('.mobile-toggle');
+      if (mm && mm.classList.contains('is-open')) {
+        mm.classList.remove('is-open');
+        if (mt) mt.setAttribute('aria-expanded', 'false');
+      }
+
+      searchRoot.hidden = false;
+      document.body.classList.add('search-open');
+      document.body.classList.remove('menu-open');
+      searchTriggers.forEach((t) => t.setAttribute('aria-expanded', 'true'));
+
+      loadIndex()
+        .then(() => {
+          if (input.value.trim()) render(input.value.trim());
+        })
+        .catch(() => {
+          statusEl.textContent = 'Search is unavailable right now. Please try again later.';
+        });
+
+      requestAnimationFrame(() => {
+        input.focus();
+        input.select();
+      });
+    };
+
+    const close = () => {
+      if (searchRoot.hidden) return;
+      searchRoot.hidden = true;
+      document.body.classList.remove('search-open');
+      searchTriggers.forEach((t) => t.setAttribute('aria-expanded', 'false'));
+      if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
+    };
+
+    // Keep focus inside the panel while it is open. Result links are removed
+    // from the tab order (arrow keys drive them), so this cycles input <-> close.
+    const trapTab = (e) => {
+      const focusable = Array.from(
+        searchRoot.querySelectorAll('input, button:not([disabled])')
+      ).filter((el) => el.offsetParent !== null);
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
+
+    searchTriggers.forEach((t) => t.addEventListener('click', open));
+    closers.forEach((c) => c.addEventListener('click', close));
+    input.addEventListener('input', () => render(input.value.trim()));
+
+    searchRoot.addEventListener('keydown', (e) => {
+      switch (e.key) {
+        case 'Escape':
+          e.preventDefault();
+          close();
+          break;
+        case 'ArrowDown':
+          e.preventDefault();
+          setActive(activeIndex + 1);
+          break;
+        case 'ArrowUp':
+          e.preventDefault();
+          setActive(activeIndex - 1);
+          break;
+        case 'Enter':
+          if (current.length) {
+            e.preventDefault();
+            go(current[activeIndex >= 0 ? activeIndex : 0]);
+          }
+          break;
+        case 'Tab':
+          trapTab(e);
+          break;
+        default:
+          break;
+      }
+    });
+  }
+
+  /* ------------------------------------------------------------------
      Newsletter form - prevent submit, brief feedback
      ------------------------------------------------------------------ */
   const newsletter = document.querySelector('.newsletter__form');

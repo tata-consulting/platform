@@ -51,7 +51,7 @@ CHROME_TOP = """<!doctype html>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" />
   <link rel="stylesheet" href="css/base.css" />
-  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/components.css" />{head_extra}
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -627,13 +627,39 @@ FIND_OFFICE_LIST = [
 ]
 
 
+# Offices that get a subtle highlight and a link to their own page. Keyed by
+# the office name in FIND_OFFICE_LIST. London is the UK Engineering Centre of
+# Excellence and has a dedicated page (london.html).
+FEATURED_OFFICES = {
+    "London": {"href": "london.html", "badge": "Engineering Centre of Excellence"},
+}
+
+
+def office_card(name: str, addr: str, tel_display: str, tel_e164: str) -> str:
+    feature = FEATURED_OFFICES.get(name)
+    classes = "office-card reveal"
+    badge = ""
+    extra_link = ""
+    if feature:
+        classes += " office-card--featured"
+        badge = f'            <span class="office-card__badge">{feature["badge"]}</span>\n'
+        extra_link = (
+            f'\n            <a class="office-card__link" href="{feature["href"]}">Explore the London office'
+            f'\n              {ARROW}\n            </a>'
+        )
+    return (
+        f'          <div class="{classes}">\n'
+        f'{badge}'
+        f'            <h3>{name}</h3>\n'
+        f'            <address>{addr}</address>\n'
+        f'            <a href="tel:{tel_e164}">{tel_display}</a>{extra_link}\n'
+        f'          </div>'
+    )
+
+
 def find_office_main() -> str:
     cards = "\n".join(
-        f"""          <div class="office-card reveal">
-            <h3>{name}</h3>
-            <address>{addr}</address>
-            <a href="tel:{tel_e164}">{tel_display}</a>
-          </div>"""
+        office_card(name, addr, tel_display, tel_e164)
         for (name, addr, tel_display, tel_e164) in FIND_OFFICE_LIST
     )
     return (
@@ -1266,6 +1292,14 @@ CASE_STUDIES = [
            ("Network &amp; infrastructure", "network-infrastructure.html", "Industrial connectivity, edge resilience, and plant observability."),
            ("Managed services", "managed-services.html", "24x7 control-room support for shop-floor operations and supplier signals."),
        ],
+       "delivered_from": {
+           "heading": "Engineered by our London centre of excellence.",
+           "body": "The industrial data layer, edge operations, and digital twin rooms behind this programme were built by our London Engineering Centre of Excellence - the same team behind our IoT, cloud-native, and Internal Developer Platform work.",
+           "name": "London",
+           "address": "17 Old Bailey<br />London EC4M 7EG<br />United Kingdom",
+           "href": "london.html",
+           "badge": "Engineering Centre of Excellence",
+       },
    },
    {
        "slug": "case-retail-continuous-delivery.html",
@@ -1873,6 +1907,41 @@ def service_detail_main(cfg: dict) -> str:
    )
 
 
+def render_delivered_from(info: dict | None) -> str:
+   """Optional "Delivered from" band tying a case to a Tata office.
+
+   Rendered only when a case config supplies a ``delivered_from`` block, so the
+   shared case template stays unchanged for cases without a featured location.
+   """
+   if not info:
+       return ""
+   return f"""
+   <section class="section section--muted" aria-labelledby="delivered-from-title">
+     <div class="container">
+       <div class="split">
+         <div class="split__body reveal">
+           <span class="eyebrow" style="display:block; margin-bottom: var(--s-3);">Delivered from</span>
+           <h2 id="delivered-from-title">{info["heading"]}</h2>
+           <p>{info["body"]}</p>
+           <a class="arrow-link" href="{info["href"]}">Explore the London office
+             {ARROW}
+           </a>
+         </div>
+         <div class="reveal">
+           <div class="office-card office-card--featured">
+             <span class="office-card__badge">{info["badge"]}</span>
+             <h3>{info["name"]}</h3>
+             <address>{info["address"]}</address>
+             <a class="office-card__link" href="{info["href"]}">Explore the London office
+               {ARROW}
+             </a>
+           </div>
+         </div>
+       </div>
+     </div>
+   </section>"""
+
+
 def case_detail_main(cfg: dict) -> str:
    stats = render_stats(cfg["stats"])
    workstreams = render_capability_tiles(cfg["workstreams"])
@@ -1880,6 +1949,7 @@ def case_detail_main(cfg: dict) -> str:
    outcomes = render_detail_panels(cfg["outcomes"])
    related_services = render_related_service_tiles(cfg["related_services"])
    graphic = case_graphic_svg(cfg["graphic_title"], cfg["graphic_steps"], cfg["graphic_metrics"])
+   delivered_from = render_delivered_from(cfg.get("delivered_from"))
    return (
        page_hero("Case study", cfg["title"], cfg["lead"])
        + f"""
@@ -1966,6 +2036,7 @@ def case_detail_main(cfg: dict) -> str:
        </div>
      </div>
    </section>
+{delivered_from}
 """
        + cta_strip("Want the full delivery playbook for a similar transformation?", "Request the deeper dive", "contact.html")
    )
@@ -2261,15 +2332,65 @@ EXISTING_PAGES = {
                         "Tata brings deep industry knowledge to banking, insurance, manufacturing, retail, healthcare, public services, communications, and energy."),
     "contact.html":   ("Contact - Tata Consulting Services, PLC",
                         "Start a conversation with Tata Consulting Services, PLC. Find an office near you, or send us a note and we will respond within two business days."),
+    "london.html":    ("London - Engineering Centre of Excellence - Tata Consulting Services, PLC",
+                        "The Tata Consulting Services, PLC London office is an engineering centre of excellence specialising in cloud, cloud-native, IoT, DevOps, AI, and automation - including next-generation Internal Developer Platforms, container orchestration (Kubernetes, OpenShift), and Developer Experience (DevEx)."),
+    "idp.html":       ("Internal Developer Platform - Tata Consulting Services, PLC",
+                        "The Tata Internal Developer Platform is built and operated by the London Engineering Centre of Excellence on an open, cloud-native, AI-enabled stack. Service provider-grade architecture, strict multi-tenancy, policy-as-code RBAC, and a developer experience worth opening every morning - for hundreds of thousands of Tata engineers and client teams."),
 }
 
 MAIN_RE = re.compile(r"<main[^>]*>(.*?)</main>", re.DOTALL)
+HEAD_RE = re.compile(r"<head\b[^>]*>(.*?)</head>", re.DOTALL | re.IGNORECASE)
+HEAD_STYLE_RE = re.compile(r"[ \t]*<style\b[^>]*>.*?</style>", re.DOTALL | re.IGNORECASE)
+
+# Bespoke per-page <head> additions the standard chrome does not carry. The
+# London and IDP pages use JetBrains Mono for code/architecture callouts; their
+# inline <style> blocks are preserved automatically (see preserve_head_extra).
+JETBRAINS_MONO_LINK = (
+    '  <link rel="stylesheet" '
+    'href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" />'
+)
+PAGE_HEAD_EXTRA = {
+    "london.html": JETBRAINS_MONO_LINK,
+    "idp.html": JETBRAINS_MONO_LINK,
+}
 
 
-def emit_page(path: Path, title: str, description: str, main_inner: str) -> None:
-    main_inner = main_inner.strip("\n")
+def preserve_head_extra(filename: str, old_html: str) -> str:
+    """Collect <head> additions that must survive re-emission of an existing page.
+
+    The chrome owns the head's shared parts; anything page-specific (an extra
+    font declared in PAGE_HEAD_EXTRA, plus any inline <style> blocks the page
+    carries in its own <head>) is preserved verbatim so the generator can manage
+    these pages without flattening their bespoke styling.
+    """
+    parts = []
+    extra_font = PAGE_HEAD_EXTRA.get(filename)
+    if extra_font:
+        parts.append(extra_font)
+
+    head_match = HEAD_RE.search(old_html)
+    if head_match:
+        for style in HEAD_STYLE_RE.findall(head_match.group(1)):
+            parts.append(style.strip("\n"))
+
+    return "\n".join(parts)
+
+
+def emit_page(
+    path: Path,
+    title: str,
+    description: str,
+    main_inner: str,
+    head_extra: str = "",
+) -> None:
+    # strip() (not strip("\n")): the body is re-wrapped with its own surrounding
+    # whitespace on every run, so trailing spaces left by strip("\n") would
+    # accumulate a blank line per regeneration. Full strip gives a fixed point.
+    main_inner = main_inner.strip()
+    head_slot = f"\n{head_extra}" if head_extra else ""
     body = f'  <main id="main">\n{main_inner}\n  </main>\n'
-    full = CHROME_TOP.format(title=title, description=description) + body + CHROME_BOTTOM
+    top = CHROME_TOP.format(title=title, description=description, head_extra=head_slot)
+    full = top + body + CHROME_BOTTOM
     path.write_text(full, encoding="utf-8")
 
 
@@ -2371,7 +2492,8 @@ def main() -> int:
     written = []
     search_records = []
 
-    # Regenerate existing pages, preserving their <main> bodies.
+    # Regenerate existing pages, preserving their <main> bodies and any
+    # bespoke <head> additions.
     for filename, (title, description) in EXISTING_PAGES.items():
         path = SITE_DIR / filename
         if not path.exists():
@@ -2381,7 +2503,8 @@ def main() -> int:
         if not m:
             raise SystemExit(f"no <main> block in {path}")
         main_inner = m.group(1)
-        emit_page(path, title, description, main_inner)
+        head_extra = preserve_head_extra(filename, old)
+        emit_page(path, title, description, main_inner, head_extra=head_extra)
         search_records.append(search_record(filename, title, description, main_inner))
         written.append(filename)
 

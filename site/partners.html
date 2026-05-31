@@ -80,7 +80,7 @@
       </nav>
 
       <div class="header-cta">
-        <button class="header-icon-btn" type="button" aria-label="Search">
+        <button class="header-icon-btn" type="button" data-search-open aria-label="Search" aria-haspopup="dialog" aria-controls="site-search" aria-expanded="false">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
         </button>
         <a class="btn btn--primary" href="contact.html">Contact us
@@ -95,6 +95,10 @@
   </header>
 
   <div class="mobile-menu" id="mobile-menu">
+    <button class="mobile-menu__search" type="button" data-search-open aria-haspopup="dialog" aria-controls="site-search" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      Search
+    </button>
     <ul>
       <li><a href="services.html">What we do</a></li>
       <li><a href="industries.html">Industries</a></li>
@@ -108,8 +112,27 @@
     </a>
   </div>
 
+  <div class="site-search" id="site-search" data-search-index="search-index.json" hidden>
+    <div class="site-search__backdrop" data-search-close></div>
+    <div class="site-search__panel" role="dialog" aria-modal="true" aria-labelledby="site-search-label">
+      <h2 class="sr-only" id="site-search-label">Search this site</h2>
+      <form class="site-search__form" role="search" autocomplete="off">
+        <svg class="site-search__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <input class="site-search__input" id="site-search-input" type="search" role="combobox"
+               placeholder="Search services, industries, insights&hellip;" aria-label="Search this site"
+               aria-controls="site-search-results" aria-expanded="false" aria-autocomplete="list"
+               autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" />
+        <button class="site-search__close" type="button" data-search-close aria-label="Close search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
+      </form>
+      <p class="site-search__status" id="site-search-status" role="status" aria-live="polite"></p>
+      <ul class="site-search__results" id="site-search-results" role="listbox" aria-label="Search results"></ul>
+    </div>
+  </div>
+
   <main id="main">
-    <section class="page-hero">
+<section class="page-hero">
       <div class="container page-hero__inner">
         <span class="eyebrow">Partners</span>
         <h1>Strong on our own. Stronger together.</h1>
