@@ -487,7 +487,32 @@
           <div class="section-head__title">
             <span class="eyebrow">How it fits together</span>
             <h2 id="architecture-title">An open, cloud-native stack, top to bottom.</h2>
-            <p class="lead" style="margin-top: var(--s-5);">An AI-enabled collaboration suite sits at the top of the platform: Meshery's infrastructure as design surface that lets architects, platform engineers, and developers model, deploy, and continuously reconcile cloud and cloud native components with a longtail of technologies. Beneath it we layer the developer surface (GitLab-integrated), the platform services, and a hardened runtime fabric spanning container orchestration (Kubernetes, OpenShift), serverless (Knative, AWS Lambda, Azure Functions), and a service mesh (Istio, Linkerd) - all sitting on hybrid and multi-cloud (GCP, Azure, AWS) infrastructure.</p>
+            <p class="lead" style="margin-top: var(--s-5);">An AI-enabled  collaboration suite sits at the top of the platform: Meshery's infrastructure-as-design surface that enables architects, platform engineers, security teams, and developers to model, govern, deploy, and continuously reconcile cloud and cloud-native components across a long tail of technologies. Acting as a common control plane for design, operations, and lifecycle management, it provides a shared system of record for platform architecture and application topology.
+            </p>
+            <p class="lead" style="margin-top: var(--s-5);">Beneath it, we layer the developer experience surface (GitLab-integrated), providing source control, CI/CD, GitOps workflows, artifact management, and self-service platform capabilities. This developer layer abstracts infrastructure complexity while maintaining consistency, security, and operational guardrails.
+            </p>
+            <p class="lead" style="margin-top: var(--s-5);">The platform services layer is composed of a set of CNCF and cloud-native building blocks that provide observability, security, networking, and application delivery capabilities:</p>
+            <ul>
+* **Prometheus** for metrics collection, monitoring, and alerting across applications and platform components.
+* **OpenTelemetry** for vendor-neutral instrumentation, distributed tracing, logs, and telemetry collection.
+* **Argo CD** for declarative GitOps-based application delivery and continuous reconciliation of desired state.
+* **cert-manager** for automated certificate issuance, renewal, and lifecycle management across clusters and services.
+* **Falco** for runtime threat detection, security monitoring, and behavioral anomaly detection within containerized workloads.
+* **Harbor** for secure container image and artifact registry services, including vulnerability scanning, signing, and provenance management.
+</ul>
+<p>
+These capabilities are complemented by policy enforcement, secrets management, service discovery, traffic management, and platform observability services that enable secure and reliable application operations at scale.
+</p>
+<p>
+At the runtime layer, the platform provides a hardened execution fabric spanning:</p>
+<ul>
+* **Container orchestration:** Kubernetes and Red Hat OpenShift for workload scheduling, cluster management, and resource orchestration.
+* **Serverless platforms:** Knative, AWS Lambda, and Azure Functions for event-driven and elastic application execution.
+* **Service mesh:** Istio and Linkerd for service-to-service communication, traffic management, resilience, security, and observability.
+</ul>
+<p>
+This runtime fabric operates consistently across hybrid and multi-cloud infrastructure environments including **Google Cloud Platform (GCP), Microsoft Azure, and Amazon Web Services (AWS)**, enabling workload portability, centralized governance, and operational consistency while supporting diverse deployment models ranging from traditional microservices to cloud-native and AI-enabled workloads.
+</p>
           </div>
         </div>
 
