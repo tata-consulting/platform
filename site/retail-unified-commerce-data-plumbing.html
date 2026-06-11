@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Unified commerce: the data plumbing nobody warned you about. - Tata Consulting Services, PLC</title>
+  <meta name="description" content="Why unified-commerce programmes fail first in the integration layer, and the data, inventory, and event patterns that stand up under peak retail demand." />
+  <script>document.documentElement.classList.add('js')</script>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/components.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="utility-bar">
+    <div class="container utility-bar__inner">
+      <a href="find-office.html" aria-label="United Kingdom - English. Find an office in another region."><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></svg> United Kingdom - English</a>
+      <a href="investors.html">Investors</a>
+      <a href="newsroom.html">Newsroom</a>
+      <a href="alumni.html">Alumni</a>
+      <a href="https://platform.tata-consulting.co.uk" rel="noopener" target="_blank" aria-label="Open the Tata Consulting Services Internal Developer Platform"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3M7 9l-2 2 2 2M17 9l2 2-2 2M13 8l-2 6"/></svg> Platform</a>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="site-header__logo" href="index.html" aria-label="Tata Consulting Services, PLC - Home">
+<img src="assets/logo/tcs-logo-black.svg" alt="Tata Consulting Services, PLC" class="site-header__logo-img" width="160" height="46" />
+      </a>
+
+      <nav class="primary-nav" aria-label="Primary">
+        <ul class="primary-nav__list">
+          <li class="primary-nav__item primary-nav__item--has-mega">
+            <a class="primary-nav__link" href="services.html" aria-expanded="false" aria-haspopup="true">
+              What we do
+              <svg class="primary-nav__caret" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
+            </a>
+            <div class="mega" role="menu">
+              <div class="mega__grid">
+                <div class="mega__col">
+                  <h4>Build</h4>
+                  <ul>
+                    <li><a href="services.html#cloud">Cloud transformation</a></li>
+                    <li><a href="services.html#ai">AI &amp; data</a></li>
+                    <li><a href="services.html#security">Cybersecurity</a></li>
+                    <li><a href="services.html#engineering">Engineering &amp; R&amp;D</a></li>
+                  </ul>
+                </div>
+                <div class="mega__col">
+                  <h4>Run</h4>
+                  <ul>
+                    <li><a href="managed-services.html">Managed services</a></li>
+                    <li><a href="enterprise-applications.html">Enterprise applications</a></li>
+                    <li><a href="network-infrastructure.html">Network &amp; infrastructure</a></li>
+                    <li><a href="business-operations.html">Business operations</a></li>
+                  </ul>
+                </div>
+                <div class="mega__col">
+                  <h4>Transform</h4>
+                  <ul>
+                    <li><a href="services.html#consulting">Strategy &amp; consulting</a></li>
+                    <li><a href="services.html#xd">Experience design</a></li>
+                    <li><a href="services.html#sustainability">Sustainability</a></li>
+                    <li><a href="services.html#platforms">Industry platforms</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="primary-nav__item"><a class="primary-nav__link" href="industries.html">Industries</a></li>
+          <li class="primary-nav__item"><a class="primary-nav__link" href="insights.html">Insights</a></li>
+          <li class="primary-nav__item"><a class="primary-nav__link" href="careers.html">Careers</a></li>
+          <li class="primary-nav__item"><a class="primary-nav__link" href="about.html">About</a></li>
+          <li class="primary-nav__item"><a class="primary-nav__link" href="investors.html">Investors</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-cta">
+        <button class="header-icon-btn" type="button" data-search-open aria-label="Search" aria-haspopup="dialog" aria-controls="site-search" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        </button>
+        <a class="btn btn--primary" href="contact.html">Contact us
+          <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <button class="mobile-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open navigation">
+        <span class="mobile-toggle__bars" aria-hidden="true"><span></span><span></span><span></span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <button class="mobile-menu__search" type="button" data-search-open aria-haspopup="dialog" aria-controls="site-search" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      Search
+    </button>
+    <ul>
+      <li><a href="services.html">What we do</a></li>
+      <li><a href="industries.html">Industries</a></li>
+      <li><a href="insights.html">Insights</a></li>
+      <li><a href="careers.html">Careers</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="investors.html">Investors</a></li>
+    </ul>
+    <a class="btn btn--primary" href="contact.html">Contact us
+      <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+
+  <div class="site-search" id="site-search" data-search-index="search-index.json" hidden>
+    <div class="site-search__backdrop" data-search-close></div>
+    <div class="site-search__panel" role="dialog" aria-modal="true" aria-labelledby="site-search-label">
+      <h2 class="sr-only" id="site-search-label">Search this site</h2>
+      <form class="site-search__form" role="search" autocomplete="off">
+        <svg class="site-search__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <input class="site-search__input" id="site-search-input" type="search" role="combobox"
+               placeholder="Search services, industries, insights&hellip;" aria-label="Search this site"
+               aria-controls="site-search-results" aria-expanded="false" aria-autocomplete="list"
+               autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" />
+        <button class="site-search__close" type="button" data-search-close aria-label="Close search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
+      </form>
+      <p class="site-search__status" id="site-search-status" role="status" aria-live="polite"></p>
+      <ul class="site-search__results" id="site-search-results" role="listbox" aria-label="Search results"></ul>
+    </div>
+  </div>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="container page-hero__inner">
+        <span class="eyebrow">Industry brief - Retail</span>
+        <h1>Unified commerce: the data plumbing nobody warned you about.</h1>
+        <p>Unified commerce sounds like a front-end promise, but it usually breaks in the plumbing underneath: product truth, inventory visibility, order-state consistency, and the event choreography connecting stores, fulfilment, and digital channels during peak demand.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="stats">
+          <div class="stat reveal">
+            <div class="stat__num">37</div>
+            <div class="stat__label">systems is the median number of product, inventory, order, pricing, and fulfilment interfaces touched in large retail platform programmes</div>
+          </div>
+          <div class="stat reveal">
+            <div class="stat__num">220 ms</div>
+            <div class="stat__label">is the response-time threshold many retailers target for inventory and promise checks under high conversion moments</div>
+          </div>
+          <div class="stat reveal">
+            <div class="stat__num">99.95%</div>
+            <div class="stat__label">availability is the practical minimum for the services underpinning basket, order, and fulfilment confirmation paths</div>
+          </div>
+          <div class="stat reveal">
+            <div class="stat__num">1 record</div>
+            <div class="stat__label">for customer, order, and inventory intent matters more than a single system if retailers want channels to behave consistently</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--muted">
+      <div class="container">
+        <div class="split">
+          <div class="split__body reveal">
+            <h2>Retailers rarely fail on the experience concept. They fail on state management.</h2>
+            <p>When unified-commerce transformations stall, the visible symptom is usually a broken customer promise: inaccurate stock, delayed refunds, inconsistent pricing, or a service team unable to explain what happened. The underlying issue is that too many channel and fulfilment systems are trying to own the same state at once.</p>
+            <p>Retailers that withstand peak periods invest early in authoritative events, inventory confidence rules, and recovery flows for when a store, OMS, payment service, or warehouse update arrives late or out of order. The customer promise is only as strong as the state model behind it.</p>
+          </div>
+          <div class="reveal">
+
+            <div class="detail-graphic media--sunset">
+              <svg viewBox="0 0 520 360" aria-hidden="true">
+                <path d="M72 188 H422" stroke="rgba(255,255,255,0.28)" stroke-width="4" stroke-linecap="round" />
+                <path d="M72 188 C126 118, 188 130, 240 182 S338 254, 422 188" stroke="rgba(255,255,255,0.2)" stroke-width="3" fill="none" />
+                <text x="38" y="52" fill="rgba(255,255,255,0.74)" font-size="12" font-weight="600" letter-spacing="2" font-family="Inter, sans-serif">INSIGHT FRAME</text>
+                <text x="38" y="84" fill="white" font-size="28" font-weight="800" font-family="Inter, sans-serif">Commerce signal</text>
+                <text x="38" y="112" fill="white" font-size="28" font-weight="800" font-family="Inter, sans-serif">flow</text>
+                <text x="38" y="142" fill="rgba(255,255,255,0.78)" font-size="13" font-family="Inter, sans-serif">The data layers retailers need to keep channels and fulfilment aligned.</text>
+                <rect x="336" y="42" width="146" height="54" rx="16" fill="rgba(10,15,35,0.44)" stroke="rgba(255,255,255,0.18)" />
+                <text x="354" y="67" fill="white" font-size="21" font-weight="800" font-family="Inter, sans-serif">37</text>
+                <text x="354" y="84" fill="rgba(255,255,255,0.74)" font-size="12" font-family="Inter, sans-serif">connected systems</text>
+                <rect x="336" y="112" width="146" height="54" rx="16" fill="rgba(10,15,35,0.44)" stroke="rgba(255,255,255,0.18)" />
+                <text x="354" y="137" fill="white" font-size="21" font-weight="800" font-family="Inter, sans-serif">220 ms</text>
+                <text x="354" y="154" fill="rgba(255,255,255,0.74)" font-size="12" font-family="Inter, sans-serif">promise-check target</text>
+                
+            <circle cx="74" cy="188" r="14" fill="rgba(255,255,255,0.95)" />
+            <circle cx="74" cy="188" r="28" fill="none" stroke="rgba(255,255,255,0.2)" />
+            <text x="74" y="232" fill="rgba(255,255,255,0.9)" font-size="11" font-weight="600" text-anchor="middle" font-family="Inter, sans-serif">Product</text>
+            <text x="74" y="246" fill="rgba(255,255,255,0.9)" font-size="11" font-weight="600" text-anchor="middle" font-family="Inter, sans-serif">truth</text>
+            <circle cx="184" cy="188" r="14" fill="rgba(255,255,255,0.95)" />
+            <circle cx="184" cy="188" r="28" fill="none" stroke="rgba(255,255,255,0.2)" />
+            <text x="184" y="232" fill="rgba(255,255,255,0.9)" font-size="11" font-weight="600" text-anchor="middle" font-family="Inter, sans-serif">Inventory</text>
+            <text x="184" y="246" fill="rgba(255,255,255,0.9)" font-size="11" font-weight="600" text-anchor="middle" font-family="Inter, sans-serif">events</text>
+            <circle cx="296" cy="188" r="14" fill="rgba(255,255,255,0.95)" />
+            <circle cx="296" cy="188" r="28" fill="none" stroke="rgba(255,255,255,0.2)" />
+            <text x="296" y="238" fill="rgba(255,255,255,0.9)" font-size="11" font-weight="600" text-anchor="middle" font-family="Inter, sans-serif">Order state</text>
+            <circle cx="410" cy="188" r="14" fill="rgba(255,255,255,0.95)" />
+            <circle cx="410" cy="188" r="28" fill="none" stroke="rgba(255,255,255,0.2)" />
+            <text x="410" y="232" fill="rgba(255,255,255,0.9)" font-size="11" font-weight="600" text-anchor="middle" font-family="Inter, sans-serif">Recovery</text>
+            <text x="410" y="246" fill="rgba(255,255,255,0.9)" font-size="11" font-weight="600" text-anchor="middle" font-family="Inter, sans-serif">logic</text>
+              </svg>
+            </div>
+            <p class="detail-caption">The strongest programmes choose where truth lives, publish inventory confidence clearly, and design for recovery when distributed systems disagree.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head__title" style="margin-bottom: var(--s-12); max-width: 760px;">
+          <span class="eyebrow">Insight findings</span>
+          <h2 style="margin-top: var(--s-3);">The retail data patterns that hold up under pressure.</h2>
+        </div>
+        <div class="grid grid--4">
+          <div class="detail-panel reveal">
+            <span class="detail-panel__label">Pattern 01</span>
+            <h3>Inventory confidence matters more than pretend precision</h3>
+            <p>Retailers perform better when channels can express confidence, substitution rules, and reservation timing instead of pretending all stock is perfectly current.</p>
+          </div>
+          <div class="detail-panel reveal">
+            <span class="detail-panel__label">Pattern 02</span>
+            <h3>Order state must be event-driven and observable</h3>
+            <p>Teams need a shared order timeline that can survive partial failures across payment, warehouse, carrier, and customer-service systems.</p>
+          </div>
+          <div class="detail-panel reveal">
+            <span class="detail-panel__label">Pattern 03</span>
+            <h3>Store systems cannot be treated as edge exceptions</h3>
+            <p>Store inventory, fulfilment actions, and colleague workflows must be part of the same architecture or the customer promise fractures at pickup and returns.</p>
+          </div>
+          <div class="detail-panel reveal">
+            <span class="detail-panel__label">Pattern 04</span>
+            <h3>Peak resilience is designed, not load-tested into existence</h3>
+            <p>Retailers with the fewest peak incidents deliberately simplify dependency paths, precompute key promises, and rehearse degraded-mode operations.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--dark">
+      <div class="container">
+        <div class="section-head__title" style="margin-bottom: var(--s-12); max-width: 760px;">
+          <span class="eyebrow" style="color: var(--brand-accent);">Execution priorities</span>
+          <h2 style="margin-top: var(--s-3);">What to stabilise before scaling new journeys.</h2>
+        </div>
+        <div class="grid grid--4">
+          <div class="detail-panel reveal">
+            <span class="detail-panel__label">Priority 01</span>
+            <h3>Define authoritative sources by state, not by application</h3>
+            <p>Make it explicit which service owns catalog truth, inventory intent, order milestones, and customer-notification triggers.</p>
+          </div>
+          <div class="detail-panel reveal">
+            <span class="detail-panel__label">Priority 02</span>
+            <h3>Publish inventory confidence and reservation logic</h3>
+            <p>Give channels and stores clear rules for what can be promised, substituted, or delayed when stock signals diverge.</p>
+          </div>
+          <div class="detail-panel reveal">
+            <span class="detail-panel__label">Priority 03</span>
+            <h3>Instrument the unhappy paths</h3>
+            <p>Track split shipments, failed handoffs, partial cancellations, and refund delays as first-class product metrics.</p>
+          </div>
+          <div class="detail-panel reveal">
+            <span class="detail-panel__label">Priority 04</span>
+            <h3>Rehearse peak operations with degraded dependencies</h3>
+            <p>Plan how stores, service teams, and fulfilment centres will work if a promise engine, carrier feed, or inventory sync is unavailable at the worst moment.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head__title" style="margin-bottom: var(--s-12); max-width: 760px;">
+          <span class="eyebrow">High-value moves</span>
+          <h2 style="margin-top: var(--s-3);">Where retailers are getting traction fastest.</h2>
+        </div>
+        <div class="grid grid--3">
+          <div class="detail-panel reveal">
+            <span class="detail-panel__label">Move 01</span>
+            <h3>Order tracking is becoming the shared truth surface</h3>
+            <p>Retailers are giving colleagues and customers the same operational timeline so exceptions can be resolved from a common understanding.</p>
+          </div>
+          <div class="detail-panel reveal">
+            <span class="detail-panel__label">Move 02</span>
+            <h3>Returns are driving architecture clean-up</h3>
+            <p>Because returns expose every inconsistency in order, payment, and inventory state, they are becoming a forcing function for better commerce plumbing.</p>
+          </div>
+          <div class="detail-panel reveal">
+            <span class="detail-panel__label">Move 03</span>
+            <h3>Store fulfilment is moving from workaround to core capability</h3>
+            <p>Leading retailers design stores into the same orchestration model as warehouses so click-and-collect and ship-from-store can scale without operational chaos.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--muted">
+      <div class="container">
+        <div class="quote">
+          <div class="quote__mark">"</div>
+          <blockquote>Unified commerce is really a state-management problem with a brand promise wrapped around it.</blockquote>
+          <cite><strong>Sofia Reyes</strong> - Retail Transformation Partner, Tata Consulting Services</cite>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head__title" style="margin-bottom: var(--s-12); max-width: 760px;">
+          <span class="eyebrow">Related reading</span>
+          <h2 style="margin-top: var(--s-3);">Explore adjacent insights from the same research stream.</h2>
+        </div>
+        <div class="grid grid--3">
+          <a class="service-tile reveal" href="frontline-ai-augmentation-study.html">
+            <span class="story-card__tag">Workforce study</span>
+            <h3>What 8,400 frontline workers told us about AI augmentation.</h3>
+            <p>Findings from our frontline workforce study on where AI actually helps, where it creates friction, and what workers need before they trust augmentation at scale.</p>
+            <div class="service-tile__footer">
+              <span class="service-tile__num">Read</span>
+              <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+          <a class="service-tile reveal" href="scope-3-data-engineering-playbook.html">
+            <span class="story-card__tag">ESG &amp; sustainability</span>
+            <h3>Scope 3 reporting: the data engineering challenge nobody is talking about.</h3>
+            <p>How organisations are building the data, supplier, and evidence pipelines needed for credible Scope 3 reporting when the source data is incomplete, inconsistent, and distributed.</p>
+            <div class="service-tile__footer">
+              <span class="service-tile__num">Read</span>
+              <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+          <a class="service-tile reveal" href="zero-trust-posture-enterprise-lessons.html">
+            <span class="story-card__tag">Cybersecurity</span>
+            <h3>Zero trust is a posture, not a product. Five enterprises explain why.</h3>
+            <p>Lessons from five enterprises on why zero trust only works when identity, segmentation, telemetry, device trust, and operating habits move together.</p>
+            <div class="service-tile__footer">
+              <span class="service-tile__num">Read</span>
+              <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-strip">
+      <div class="container cta-strip__inner">
+        <h2>Planning a retail platform reset?</h2>
+        <a class="btn btn--ghost-light" href="contact.html">Request the unified-commerce architecture brief
+          <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="newsletter">
+        <div class="newsletter__copy">
+          <h3>Get the Tata brief.</h3>
+          <p>One email per month - the research, signals, and points of view we'd want a friend in the industry to see.</p>
+        </div>
+        <form class="newsletter__form" novalidate>
+          <label class="sr-only" for="newsletter-email">Work email</label>
+          <input id="newsletter-email" type="email" placeholder="you@company.com" autocomplete="email" />
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+
+      <div class="site-footer__grid">
+        <div class="site-footer__brand">
+<img src="assets/logo/tcs-logo-white.svg" alt="Tata Consulting Services, PLC" class="site-footer__logo-img" width="160" height="46" />
+          <h3>Building on belief.</h3>
+          <p>Tata Consulting Services, PLC partners with the world's largest enterprises to design, build, and run their digital transformation.</p>
+        </div>
+        <div class="site-footer__col">
+          <h4>What we do</h4>
+          <ul>
+            <li><a href="services.html#cloud">Cloud</a></li>
+            <li><a href="services.html#ai">AI &amp; data</a></li>
+            <li><a href="services.html#security">Cybersecurity</a></li>
+            <li><a href="services.html#engineering">Engineering</a></li>
+            <li><a href="services.html#consulting">Consulting</a></li>
+          </ul>
+        </div>
+        <div class="site-footer__col">
+          <h4>Industries</h4>
+          <ul>
+            <li><a href="industries.html#banking">Banking</a></li>
+            <li><a href="industries.html#insurance">Insurance</a></li>
+            <li><a href="industries.html#manufacturing">Manufacturing</a></li>
+            <li><a href="industries.html#retail">Retail</a></li>
+            <li><a href="industries.html#healthcare">Healthcare</a></li>
+          </ul>
+        </div>
+        <div class="site-footer__col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About us</a></li>
+            <li><a href="leadership.html">Leadership</a></li>
+            <li><a href="careers.html">Careers</a></li>
+            <li><a href="investors.html">Investors</a></li>
+            <li><a href="newsroom.html">Newsroom</a></li>
+            <li><a href="sustainability.html">Sustainability</a></li>
+          </ul>
+        </div>
+        <div class="site-footer__col">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="contact.html">Contact us</a></li>
+            <li><a href="find-office.html">Find an office</a></li>
+            <li><a href="partners.html">Partners</a></li>
+            <li><a href="alumni.html">Alumni</a></li>
+            <li><a href="vendors.html">Vendors</a></li>
+            <li><a href="insights.html">Insights</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="site-footer__legal">
+        <ul>
+          <li><a href="privacy.html">Privacy notice</a></li>
+          <li><a href="cookies.html">Cookies</a></li>
+          <li><a href="terms.html">Terms of use</a></li>
+          <li><a href="accessibility.html">Accessibility</a></li>
+          <li><a href="case-studies.html">Case studies</a></li>
+        </ul>
+      </div>
+      <div class="site-footer__bottom">
+        <p>&copy; <span data-year>2026</span> Tata Consulting Services, PLC. All rights reserved.</p>
+        <div class="site-footer__social" aria-label="Social links">
+          <a href="https://www.linkedin.com/company/tata-consulting-services" aria-label="LinkedIn on LinkedIn" rel="noopener" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14zM8.34 18.34V9.86H5.67v8.48h2.67zM7 8.68a1.54 1.54 0 110-3.08 1.54 1.54 0 010 3.08zm11.34 9.66v-4.64c0-2.49-1.33-3.65-3.1-3.65a2.67 2.67 0 00-2.43 1.34V9.86H10.13c.04.75 0 8.48 0 8.48h2.68v-4.74c0-.24.02-.48.09-.65.19-.48.63-.98 1.36-.98.96 0 1.34.73 1.34 1.8v4.57h2.74z"/></svg></a>
+          <a href="https://x.com/tata_consulting" aria-label="Tata on X" rel="noopener" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="https://www.youtube.com/@tata-consulting" aria-label="Tata on YouTube" rel="noopener" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a2.999 2.999 0 00-2.111-2.122C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.387.564A2.999 2.999 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a2.999 2.999 0 002.111 2.122C4.495 20.5 12 20.5 12 20.5s7.505 0 9.387-.564a2.999 2.999 0 002.111-2.122C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.546 15.568V8.432L15.818 12z"/></svg></a>
+          <a href="https://www.facebook.com/tataconsulting" aria-label="Tata on Facebook" rel="noopener" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 10-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.51 1.49-3.9 3.78-3.9 1.1 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.77l-.44 2.89h-2.33v6.99A10 10 0 0022 12z"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

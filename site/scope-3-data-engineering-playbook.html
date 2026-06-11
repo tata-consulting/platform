@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Scope 3 reporting: the data engineering challenge nobody is talking about. - Tata Consulting Services, PLC</title>
+  <meta name="description" content="How organisations are building the data, supplier, and evidence pipelines needed for credible Scope 3 reporting when the source data is incomplete, inconsistent, and distributed." />
+  <script>document.documentElement.classList.add('js')</script>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/components.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="utility-bar">
+    <div class="container utility-bar__inner">
+      <a href="find-office.html" aria-label="United Kingdom - English. Find an office in another region."><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></svg> United Kingdom - English</a>
+      <a href="investors.html">Investors</a>
+      <a href="newsroom.html">Newsroom</a>
+      <a href="alumni.html">Alumni</a>
+      <a href="https://platform.tata-consulting.co.uk" rel="noopener" target="_blank" aria-label="Open the Tata Consulting Services Internal Developer Platform"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3M7 9l-2 2 2 2M17 9l2 2-2 2M13 8l-2 6"/></svg> Platform</a>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="site-header__logo" href="index.html" aria-label="Tata Consulting Services, PLC - Home">
+<img src="assets/logo/tcs-logo-black.svg" alt="Tata Consulting Services, PLC" class="site-header__logo-img" width="160" height="46" />
+      </a>
+
+      <nav class="primary-nav" aria-label="Primary">
+        <ul class="primary-nav__list">
+          <li class="primary-nav__item primary-nav__item--has-mega">
+            <a class="primary-nav__link" href="services.html" aria-expanded="false" aria-haspopup="true">
+              What we do
+              <svg class="primary-nav__caret" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
+            </a>
+            <div class="mega" role="menu">
+              <div class="mega__grid">
+                <div class="mega__col">
+                  <h4>Build</h4>
+                  <ul>
+                    <li><a href="services.html#cloud">Cloud transformation</a></li>
+                    <li><a href="services.html#ai">AI &amp; data</a></li>
+                    <li><a href="services.html#security">Cybersecurity</a></li>
+                    <li><a href="services.html#engineering">Engineering &amp; R&amp;D</a></li>
+                  </ul>
+                </div>
+                <div class="mega__col">
+                  <h4>Run</h4>
+                  <ul>
+                    <li><a href="managed-services.html">Managed services</a></li>
+                    <li><a href="enterprise-applications.html">Enterprise applications</a></li>
+                    <li><a href="network-infrastructure.html">Network &amp; infrastructure</a></li>
+                    <li><a href="business-operations.html">Business operations</a></li>
+                  </ul>
+                </div>
+                <div class="mega__col">
+                  <h4>Transform</h4>
+                  <ul>
+                    <li><a href="services.html#consulting">Strategy &amp; consulting</a></li>
+                    <li><a href="services.html#xd">Experience design</a></li>
+                    <li><a href="services.html#sustainability">Sustainability</a></li>
+                    <li><a href="services.html#platforms">Industry platforms</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="primary-nav__item"><a class="primary-nav__link" href="industries.html">Industries</a></li>
+          <li class="primary-nav__item"><a class="primary-nav__link" href="insights.html">Insights</a></li>
+          <li class="primary-nav__item"><a class="primary-nav__link" href="careers.html">Careers</a></li>
+          <li class="primary-nav__item"><a class="primary-nav__link" href="about.html">About</a></li>
+          <li class="primary-nav__item"><a class="primary-nav__link" href="investors.html">Investors</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-cta">
+        <button class="header-icon-btn" type="button" data-search-open aria-label="Search" aria-haspopup="dialog" aria-controls="site-search" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        </button>
+        <a class="btn btn--primary" href="contact.html">Contact us
+          <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <button class="mobile-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open navigation">
+        <span class="mobile-toggle__bars" aria-hidden="true"><span></span><span></span><span></span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <button class="mobile-menu__search" type="button" data-search-open aria-haspopup="dialog" aria-controls="site-search" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      Search
+    </button>
+    <ul>
+      <li><a href="services.html">What we do</a></li>
+      <li><a href="industries.html">Industries</a></li>
+      <li><a href="insights.html">Insights</a></li>
+      <li><a href="careers.html">Careers</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="investors.html">Investors</a></li>
+    </ul>
+    <a class="btn btn--primary" href="contact.html">Contact us
+      <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+
+  <div class="site-search" id="site-search" data-search-index="search-index.json" hidden>
+    <div class="site-search__backdrop" data-search-close></div>
+    <div class="site-search__panel" role="dialog" aria-modal="true" aria-labelledby="site-search-label">
+      <h2 class="sr-only" id="site-search-label">Search this site</h2>
+      <form class="site-search__form" role="search" autocomplete="off">
+        <svg class="site-search__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <input class="site-search__input" id="site-search-input" type="search" role="combobox"
+               placeholder="Search services, industries, insights&hellip;" aria-label="Search this site"
+               aria-controls="site-search-results" aria-expanded="false" aria-autocomplete="list"
+               autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" />
+        <button class="site-search__close" type="button" data-search-close aria-label="Close search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
+      </form>
+      <p class="site-search__status" id="site-search-status" role="status" aria-live="polite"></p>
+      <ul class="site-search__results" id="site-search-results" role="listbox" aria-label="Search results"></ul>
+    </div>
+  </div>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="container page-hero__inner">
+        <span class="eyebrow">ESG &amp; sustainability</span>
+        <h1>Scope 3 reporting: the data engineering challenge nobody is talking about.</h1>
+        <p>Scope 3 reporting is often framed as a disclosure tooling problem, but the hardest work sits underneath: building a supply, spend, product, and evidence pipeline that can withstand missing data, shifting supplier maturity, and audit questions that arrive long after the number is published.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="stats">
+          <div class="stat reveal">
+            <div class="stat__num">4</div>
+            <div class="stat__label">client programmes informed this playbook, spanning manufacturing, consumer goods, financial services, and technology</div>
+          </div>
+          <div class="stat reveal">
+            <div class="stat__num">67%</div>
+            <div class="stat__label">of supplier records in our sample required estimation, enrichment, or rule-based fallback before they could support reporting</div>
+          </div>
+          <div class="stat reveal">
+            <div class="stat__num">11</div>
+            <div class="stat__label">source systems is the median count feeding a credible Scope 3 model, from ERP and procurement to product, logistics, and supplier portals</div>
+          </div>
+          <div class="stat reveal">
+            <div class="stat__num">1 graph</div>
+            <div class="stat__label">of emissions evidence, lineage, and assumptions is becoming more valuable than one static reporting table</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--muted">
+      <div class="container">
+        <div class="split">
+          <div class="split__body reveal">
+            <h2>The real bottleneck is evidence quality, not dashboard presentation.</h2>
+            <p>Most organisations begin their Scope 3 journey by looking for a reporting platform. Very quickly, they discover the harder problem: supplier data is partial, spend taxonomies are inconsistent, logistics records live elsewhere, and product structures are not arranged for carbon attribution or auditability.</p>
+            <p>The programmes progressing fastest are treating Scope 3 as a data-engineering and operating-model challenge. They are designing lineage, fallbacks, controls, and supplier-engagement loops so the number can improve over time rather than simply being published once a year with caveats nobody can unwind.</p>
+          </div>
+          <div class="reveal">
+
+            <div class="detail-graphic media--ember">
+              <svg viewBox="0 0 520 360" aria-hidden="true">
+                <path d="M72 188 H422" stroke="rgba(255,255,255,0.28)" stroke-width="4" stroke-linecap="round" />
+                <path d="M72 188 C126 118, 188 130, 240 182 S338 254, 422 188" stroke="rgba(255,255,255,0.2)" stroke-width="3" fill="none" />
+                <text x="38" y="52" fill="rgba(255,255,255,0.74)" font-size="12" font-weight="600" letter-spacing="2" font-family="Inter, sans-serif">INSIGHT FRAME</text>
+                <text x="38" y="84" fill="white" font-size="28" font-weight="800" font-family="Inter, sans-serif">Evidence</text>
+                <text x="38" y="112" fill="white" font-size="28" font-weight="800" font-family="Inter, sans-serif">pipeline</text>
+                <text x="38" y="142" fill="rgba(255,255,255,0.78)" font-size="13" font-family="Inter, sans-serif">What it takes to turn fragmented supply data into defensible Scope 3 reporting.</text>
+                <rect x="336" y="42" width="146" height="54" rx="16" fill="rgba(10,15,35,0.44)" stroke="rgba(255,255,255,0.18)" />
+                <text x="354" y="67" fill="white" font-size="21" font-weight="800" font-family="Inter, sans-serif">67%</text>
+                <text x="354" y="84" fill="rgba(255,255,255,0.74)" font-size="12" font-family="Inter, sans-serif">records need enrichment</text>
+                <rect x="336" y="112" width="146" height="54" rx="16" fill="rgba(10,15,35,0.44)" stroke="rgba(255,255,255,0.18)" />
+                <text x="354" y="137" fill="white" font-size="21" font-weight="800" font-family="Inter, sans-serif">11</text>
+                <text x="354" y="154" fill="rgba(255,255,255,0.74)" font-size="12" font-family="Inter, sans-serif">source systems linked</text>
+                
+            <circle cx="74" cy="188" r="14" fill="rgba(255,255,255,0.95)" />
+            <circle cx="74" cy="188" r="28" fill="none" stroke="rgba(255,255,255,0.2)" />
+            <text x="74" y="232" fill="rgba(255,255,255,0.9)" font-size="11" font-weight="600" text-anchor="middle" font-family="Inter, sans-serif">Source</text>
+            <text x="74" y="246" fill="rgba(255,255,255,0.9)" font-size="11" font-weight="600" text-anchor="middle" font-family="Inter, sans-serif">mapping</text>
+            <circle cx="184" cy="188" r="14" fill="rgba(255,255,255,0.95)" />
+            <circle cx="184" cy="188" r="28" fill="none" stroke="rgba(255,255,255,0.2)" />
+            <text x="184" y="232" fill="rgba(255,255,255,0.9)" font-size="11" font-weight="600" text-anchor="middle" font-family="Inter, sans-serif">Supplier</text>
+            <text x="184" y="246" fill="rgba(255,255,255,0.9)" font-size="11" font-weight="600" text-anchor="middle" font-family="Inter, sans-serif">capture</text>
+            <circle cx="296" cy="188" r="14" fill="rgba(255,255,255,0.95)" />
+            <circle cx="296" cy="188" r="28" fill="none" stroke="rgba(255,255,255,0.2)" />
+            <text x="296" y="232" fill="rgba(255,255,255,0.9)" font-size="11" font-weight="600" text-anchor="middle" font-family="Inter, sans-serif">Estimation</text>
+            <text x="296" y="246" fill="rgba(255,255,255,0.9)" font-size="11" font-weight="600" text-anchor="middle" font-family="Inter, sans-serif">logic</text>
+            <circle cx="410" cy="188" r="14" fill="rgba(255,255,255,0.95)" />
+            <circle cx="410" cy="188" r="28" fill="none" stroke="rgba(255,255,255,0.2)" />
+            <text x="410" y="232" fill="rgba(255,255,255,0.9)" font-size="11" font-weight="600" text-anchor="middle" font-family="Inter, sans-serif">Audit</text>
+            <text x="410" y="246" fill="rgba(255,255,255,0.9)" font-size="11" font-weight="600" text-anchor="middle" font-family="Inter, sans-serif">lineage</text>
+              </svg>
+            </div>
+            <p class="detail-caption">The most credible programmes build an evidence chain from source mapping through supplier engagement to fallback logic and auditable lineage.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head__title" style="margin-bottom: var(--s-12); max-width: 760px;">
+          <span class="eyebrow">Insight findings</span>
+          <h2 style="margin-top: var(--s-3);">What makes Scope 3 data programmes credible.</h2>
+        </div>
+        <div class="grid grid--4">
+          <div class="detail-panel reveal">
+            <span class="detail-panel__label">Requirement 01</span>
+            <h3>Spend data alone is not enough</h3>
+            <p>Finance and procurement records help with initial coverage, but credible reporting improves materially when product, logistics, and supplier-specific factors are brought into the model.</p>
+          </div>
+          <div class="detail-panel reveal">
+            <span class="detail-panel__label">Requirement 02</span>
+            <h3>Fallback logic has to be explicit and governed</h3>
+            <p>Estimates are unavoidable early on, but teams need clear hierarchy rules for when they use primary supplier data, industry factors, or proxy assumptions.</p>
+          </div>
+          <div class="detail-panel reveal">
+            <span class="detail-panel__label">Requirement 03</span>
+            <h3>Supplier engagement needs its own operating rhythm</h3>
+            <p>Requesting better data is not a once-a-year compliance exercise. The most mature teams run recurring supplier support, escalation, and data-quality feedback loops.</p>
+          </div>
+          <div class="detail-panel reveal">
+            <span class="detail-panel__label">Requirement 04</span>
+            <h3>Auditability is a product feature</h3>
+            <p>Teams that store assumptions, lineage, approval points, and data changes together can answer assurance questions faster and improve the model with more confidence.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--dark">
+      <div class="container">
+        <div class="section-head__title" style="margin-bottom: var(--s-12); max-width: 760px;">
+          <span class="eyebrow" style="color: var(--brand-accent);">Build sequence</span>
+          <h2 style="margin-top: var(--s-3);">The build sequence that is working best.</h2>
+        </div>
+        <div class="grid grid--4">
+          <div class="detail-panel reveal">
+            <span class="detail-panel__label">Step 01</span>
+            <h3>Map the emissions-relevant data landscape</h3>
+            <p>Identify the source systems, owners, refresh cycles, and quality issues that matter most for your material categories.</p>
+          </div>
+          <div class="detail-panel reveal">
+            <span class="detail-panel__label">Step 02</span>
+            <h3>Create a hierarchy for primary, secondary, and proxy factors</h3>
+            <p>Document exactly how each category will be populated today and how it should mature as better supplier data becomes available.</p>
+          </div>
+          <div class="detail-panel reveal">
+            <span class="detail-panel__label">Step 03</span>
+            <h3>Stand up an evidence model, not just a reporting table</h3>
+            <p>Store lineage, transformation rules, exceptions, and approvals so each metric can be traced back and challenged if needed.</p>
+          </div>
+          <div class="detail-panel reveal">
+            <span class="detail-panel__label">Step 04</span>
+            <h3>Operationalise supplier improvement</h3>
+            <p>Treat supplier data uplift as a managed programme with segmentation, support materials, and escalation paths instead of a static annual request.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head__title" style="margin-bottom: var(--s-12); max-width: 760px;">
+          <span class="eyebrow">Practical gains</span>
+          <h2 style="margin-top: var(--s-3);">Where teams are making the fastest progress.</h2>
+        </div>
+        <div class="grid grid--3">
+          <div class="detail-panel reveal">
+            <span class="detail-panel__label">Gain 01</span>
+            <h3>Procurement teams are using carbon data to prioritise engagement</h3>
+            <p>Better lineage allows category leaders to focus supplier improvement efforts where emissions and spend are both material.</p>
+          </div>
+          <div class="detail-panel reveal">
+            <span class="detail-panel__label">Gain 02</span>
+            <h3>Product teams are getting more useful design signals</h3>
+            <p>When emissions factors connect to product and bill-of-material structures, sustainability conversations move earlier into design trade-offs.</p>
+          </div>
+          <div class="detail-panel reveal">
+            <span class="detail-panel__label">Gain 03</span>
+            <h3>Reporting teams are reducing audit scramble</h3>
+            <p>Evidence models make it easier to answer how a number was calculated, where assumptions changed, and which suppliers are still on proxy data.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--muted">
+      <div class="container">
+        <div class="quote">
+          <div class="quote__mark">"</div>
+          <blockquote>Scope 3 maturity comes from engineering the evidence path, not from buying a prettier reporting surface.</blockquote>
+          <cite><strong>Anand Krishnan</strong> - Sustainability Data Lead, Tata Consulting Services</cite>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head__title" style="margin-bottom: var(--s-12); max-width: 760px;">
+          <span class="eyebrow">Related reading</span>
+          <h2 style="margin-top: var(--s-3);">Explore adjacent insights from the same research stream.</h2>
+        </div>
+        <div class="grid grid--3">
+          <a class="service-tile reveal" href="zero-trust-posture-enterprise-lessons.html">
+            <span class="story-card__tag">Cybersecurity</span>
+            <h3>Zero trust is a posture, not a product. Five enterprises explain why.</h3>
+            <p>Lessons from five enterprises on why zero trust only works when identity, segmentation, telemetry, device trust, and operating habits move together.</p>
+            <div class="service-tile__footer">
+              <span class="service-tile__num">Read</span>
+              <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+          <a class="service-tile reveal" href="ai-premium-enterprise-returns.html">
+            <span class="story-card__tag">Annual study - 1,200 CEOs</span>
+            <h3>The AI Premium: where leaders are seeing returns, and where they aren&#x27;t.</h3>
+            <p>Our 12th annual CEO study shows how AI value is concentrating, what separates the 14% pulling away, and the portfolio decisions that create durable returns.</p>
+            <div class="service-tile__footer">
+              <span class="service-tile__num">Read</span>
+              <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+          <a class="service-tile reveal" href="genai-production-playbook.html">
+            <span class="story-card__tag">Perspective</span>
+            <h3>Beyond the pilot: what it actually takes to put GenAI into production.</h3>
+            <p>A field guide drawn from 340 enterprise GenAI deployments on the controls, operating choices, and release patterns that move use cases from pilot to production.</p>
+            <div class="service-tile__footer">
+              <span class="service-tile__num">Read</span>
+              <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-strip">
+      <div class="container cta-strip__inner">
+        <h2>Building a Scope 3 data foundation?</h2>
+        <a class="btn btn--ghost-light" href="contact.html">Request the data-engineering playbook
+          <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="newsletter">
+        <div class="newsletter__copy">
+          <h3>Get the Tata brief.</h3>
+          <p>One email per month - the research, signals, and points of view we'd want a friend in the industry to see.</p>
+        </div>
+        <form class="newsletter__form" novalidate>
+          <label class="sr-only" for="newsletter-email">Work email</label>
+          <input id="newsletter-email" type="email" placeholder="you@company.com" autocomplete="email" />
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+
+      <div class="site-footer__grid">
+        <div class="site-footer__brand">
+<img src="assets/logo/tcs-logo-white.svg" alt="Tata Consulting Services, PLC" class="site-footer__logo-img" width="160" height="46" />
+          <h3>Building on belief.</h3>
+          <p>Tata Consulting Services, PLC partners with the world's largest enterprises to design, build, and run their digital transformation.</p>
+        </div>
+        <div class="site-footer__col">
+          <h4>What we do</h4>
+          <ul>
+            <li><a href="services.html#cloud">Cloud</a></li>
+            <li><a href="services.html#ai">AI &amp; data</a></li>
+            <li><a href="services.html#security">Cybersecurity</a></li>
+            <li><a href="services.html#engineering">Engineering</a></li>
+            <li><a href="services.html#consulting">Consulting</a></li>
+          </ul>
+        </div>
+        <div class="site-footer__col">
+          <h4>Industries</h4>
+          <ul>
+            <li><a href="industries.html#banking">Banking</a></li>
+            <li><a href="industries.html#insurance">Insurance</a></li>
+            <li><a href="industries.html#manufacturing">Manufacturing</a></li>
+            <li><a href="industries.html#retail">Retail</a></li>
+            <li><a href="industries.html#healthcare">Healthcare</a></li>
+          </ul>
+        </div>
+        <div class="site-footer__col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About us</a></li>
+            <li><a href="leadership.html">Leadership</a></li>
+            <li><a href="careers.html">Careers</a></li>
+            <li><a href="investors.html">Investors</a></li>
+            <li><a href="newsroom.html">Newsroom</a></li>
+            <li><a href="sustainability.html">Sustainability</a></li>
+          </ul>
+        </div>
+        <div class="site-footer__col">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="contact.html">Contact us</a></li>
+            <li><a href="find-office.html">Find an office</a></li>
+            <li><a href="partners.html">Partners</a></li>
+            <li><a href="alumni.html">Alumni</a></li>
+            <li><a href="vendors.html">Vendors</a></li>
+            <li><a href="insights.html">Insights</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="site-footer__legal">
+        <ul>
+          <li><a href="privacy.html">Privacy notice</a></li>
+          <li><a href="cookies.html">Cookies</a></li>
+          <li><a href="terms.html">Terms of use</a></li>
+          <li><a href="accessibility.html">Accessibility</a></li>
+          <li><a href="case-studies.html">Case studies</a></li>
+        </ul>
+      </div>
+      <div class="site-footer__bottom">
+        <p>&copy; <span data-year>2026</span> Tata Consulting Services, PLC. All rights reserved.</p>
+        <div class="site-footer__social" aria-label="Social links">
+          <a href="https://www.linkedin.com/company/tata-consulting-services" aria-label="LinkedIn on LinkedIn" rel="noopener" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14zM8.34 18.34V9.86H5.67v8.48h2.67zM7 8.68a1.54 1.54 0 110-3.08 1.54 1.54 0 010 3.08zm11.34 9.66v-4.64c0-2.49-1.33-3.65-3.1-3.65a2.67 2.67 0 00-2.43 1.34V9.86H10.13c.04.75 0 8.48 0 8.48h2.68v-4.74c0-.24.02-.48.09-.65.19-.48.63-.98 1.36-.98.96 0 1.34.73 1.34 1.8v4.57h2.74z"/></svg></a>
+          <a href="https://x.com/tata_consulting" aria-label="Tata on X" rel="noopener" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="https://www.youtube.com/@tata-consulting" aria-label="Tata on YouTube" rel="noopener" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a2.999 2.999 0 00-2.111-2.122C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.387.564A2.999 2.999 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a2.999 2.999 0 002.111 2.122C4.495 20.5 12 20.5 12 20.5s7.505 0 9.387-.564a2.999 2.999 0 002.111-2.122C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.546 15.568V8.432L15.818 12z"/></svg></a>
+          <a href="https://www.facebook.com/tataconsulting" aria-label="Tata on Facebook" rel="noopener" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 10-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.51 1.49-3.9 3.78-3.9 1.1 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.77l-.44 2.89h-2.33v6.99A10 10 0 0022 12z"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

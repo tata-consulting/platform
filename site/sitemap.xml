@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.tata-consulting.co.uk/about.html</loc>
@@ -82,7 +82,7 @@
   </url>
   <url>
     <loc>https://www.tata-consulting.co.uk/</loc>
-    <lastmod>2026-05-31</lastmod>
+    <lastmod>2026-06-11</lastmod>
   </url>
   <url>
     <loc>https://www.tata-consulting.co.uk/industries.html</loc>
@@ -90,7 +90,7 @@
   </url>
   <url>
     <loc>https://www.tata-consulting.co.uk/insights.html</loc>
-    <lastmod>2026-05-31</lastmod>
+    <lastmod>2026-06-11</lastmod>
   </url>
   <url>
     <loc>https://www.tata-consulting.co.uk/investors.html</loc>
@@ -139,5 +139,41 @@
   <url>
     <loc>https://www.tata-consulting.co.uk/vendors.html</loc>
     <lastmod>2026-05-31</lastmod>
+  </url>
+  <url>
+    <loc>https://www.tata-consulting.co.uk/ai-premium-enterprise-returns.html</loc>
+    <lastmod>2026-06-11</lastmod>
+  </url>
+  <url>
+    <loc>https://www.tata-consulting.co.uk/genai-production-playbook.html</loc>
+    <lastmod>2026-06-11</lastmod>
+  </url>
+  <url>
+    <loc>https://www.tata-consulting.co.uk/ai-operating-model-small-teams.html</loc>
+    <lastmod>2026-06-11</lastmod>
+  </url>
+  <url>
+    <loc>https://www.tata-consulting.co.uk/cloud-unit-economics-reset.html</loc>
+    <lastmod>2026-06-11</lastmod>
+  </url>
+  <url>
+    <loc>https://www.tata-consulting.co.uk/banking-core-modernisation-playbooks.html</loc>
+    <lastmod>2026-06-11</lastmod>
+  </url>
+  <url>
+    <loc>https://www.tata-consulting.co.uk/retail-unified-commerce-data-plumbing.html</loc>
+    <lastmod>2026-06-11</lastmod>
+  </url>
+  <url>
+    <loc>https://www.tata-consulting.co.uk/frontline-ai-augmentation-study.html</loc>
+    <lastmod>2026-06-11</lastmod>
+  </url>
+  <url>
+    <loc>https://www.tata-consulting.co.uk/scope-3-data-engineering-playbook.html</loc>
+    <lastmod>2026-06-11</lastmod>
+  </url>
+  <url>
+    <loc>https://www.tata-consulting.co.uk/zero-trust-posture-enterprise-lessons.html</loc>
+    <lastmod>2026-06-11</lastmod>
   </url>
 </urlset>
