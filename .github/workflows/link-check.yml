@@ -1,6 +1,7 @@
 name: Site build + link-check
 
 on:
+  workflow_dispatch: {}
   push:
     branches: [ master ]
   pull_request:
