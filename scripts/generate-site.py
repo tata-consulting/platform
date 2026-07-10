@@ -58,24 +58,24 @@ CHROME_TOP = """<!doctype html>
 
   <div class="utility-bar">
     <div class="container utility-bar__inner">
-      <a href="find-office.html" aria-label="United Kingdom - English. Find an office in another region."><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></svg> United Kingdom - English</a>
-      <a href="investors.html">Investors</a>
-      <a href="newsroom.html">Newsroom</a>
-      <a href="alumni.html">Alumni</a>
+      <a href="/find-office.html" aria-label="United Kingdom - English. Find an office in another region."><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></svg> United Kingdom - English</a>
+      <a href="/investors.html">Investors</a>
+      <a href="/newsroom.html">Newsroom</a>
+      <a href="/alumni.html">Alumni</a>
       <a href="https://platform.tata-consulting.co.uk" rel="noopener" target="_blank" aria-label="Open the Tata Consulting Services Internal Developer Platform"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3M7 9l-2 2 2 2M17 9l2 2-2 2M13 8l-2 6"/></svg> Platform</a>
     </div>
   </div>
 
   <header class="site-header">
     <div class="container site-header__inner">
-      <a class="site-header__logo" href="index.html" aria-label="Tata Consulting Services, PLC - Home">
+      <a class="site-header__logo" href="/index.html" aria-label="Tata Consulting Services, PLC - Home">
 """ + WORDMARK_LIGHT + """
       </a>
 
       <nav class="primary-nav" aria-label="Primary">
         <ul class="primary-nav__list">
           <li class="primary-nav__item primary-nav__item--has-mega">
-            <a class="primary-nav__link" href="services.html" aria-expanded="false" aria-haspopup="true">
+            <a class="primary-nav__link" href="/services.html" aria-expanded="false" aria-haspopup="true">
               What we do
               <svg class="primary-nav__caret" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
             </a>
@@ -84,7 +84,7 @@ CHROME_TOP = """<!doctype html>
                 <div class="mega__col">
                   <h4>Build</h4>
                   <ul>
-                    <li><a href="services.html#cloud">Cloud transformation</a></li>
+                    <li><a href="/services.html#cloud">Cloud transformation</a></li>
                     <li><a href="services.html#ai">AI &amp; data</a></li>
                     <li><a href="services.html#security">Cybersecurity</a></li>
                     <li><a href="services.html#engineering">Engineering &amp; R&amp;D</a></li>
@@ -94,15 +94,15 @@ CHROME_TOP = """<!doctype html>
                   <h4>Run</h4>
                   <ul>
                     <li><a href="managed-services.html">Managed services</a></li>
-                    <li><a href="enterprise-applications.html">Enterprise applications</a></li>
-                    <li><a href="network-infrastructure.html">Network &amp; infrastructure</a></li>
-                    <li><a href="business-operations.html">Business operations</a></li>
+                    <li><a href="/enterprise-applications.html">Enterprise applications</a></li>
+                    <li><a href="/network-infrastructure.html">Network &amp; infrastructure</a></li>
+                    <li><a href="/business-operations.html">Business operations</a></li>
                   </ul>
                 </div>
                 <div class="mega__col">
                   <h4>Transform</h4>
                   <ul>
-                    <li><a href="services.html#consulting">Strategy &amp; consulting</a></li>
+                    <li><a href="/services.html#consulting">Strategy &amp; consulting</a></li>
                     <li><a href="services.html#xd">Experience design</a></li>
                     <li><a href="services.html#sustainability">Sustainability</a></li>
                     <li><a href="services.html#platforms">Industry platforms</a></li>
@@ -112,10 +112,10 @@ CHROME_TOP = """<!doctype html>
             </div>
           </li>
           <li class="primary-nav__item"><a class="primary-nav__link" href="industries.html">Industries</a></li>
-          <li class="primary-nav__item"><a class="primary-nav__link" href="insights.html">Insights</a></li>
-          <li class="primary-nav__item"><a class="primary-nav__link" href="careers.html">Careers</a></li>
-          <li class="primary-nav__item"><a class="primary-nav__link" href="about.html">About</a></li>
-          <li class="primary-nav__item"><a class="primary-nav__link" href="investors.html">Investors</a></li>
+          <li class="primary-nav__item"><a class="primary-nav__link" href="/insights.html">Insights</a></li>
+          <li class="primary-nav__item"><a class="primary-nav__link" href="/careers.html">Careers</a></li>
+          <li class="primary-nav__item"><a class="primary-nav__link" href="/about.html">About</a></li>
+          <li class="primary-nav__item"><a class="primary-nav__link" href="/investors.html">Investors</a></li>
         </ul>
       </nav>
 
@@ -123,7 +123,7 @@ CHROME_TOP = """<!doctype html>
         <button class="header-icon-btn" type="button" data-search-open aria-label="Search" aria-haspopup="dialog" aria-controls="site-search" aria-expanded="false">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
         </button>
-        <a class="btn btn--primary" href="contact.html">Contact us
+        <a class="btn btn--primary" href="/contact.html">Contact us
           """ + ARROW + """
         </a>
       </div>
@@ -140,14 +140,14 @@ CHROME_TOP = """<!doctype html>
       Search
     </button>
     <ul>
-      <li><a href="services.html">What we do</a></li>
-      <li><a href="industries.html">Industries</a></li>
-      <li><a href="insights.html">Insights</a></li>
-      <li><a href="careers.html">Careers</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="investors.html">Investors</a></li>
+      <li><a href="/services.html">What we do</a></li>
+      <li><a href="/industries.html">Industries</a></li>
+      <li><a href="/insights.html">Insights</a></li>
+      <li><a href="/careers.html">Careers</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/investors.html">Investors</a></li>
     </ul>
-    <a class="btn btn--primary" href="contact.html">Contact us
+    <a class="btn btn--primary" href="/contact.html">Contact us
       """ + ARROW + """
     </a>
   </div>
@@ -197,7 +197,7 @@ CHROME_BOTTOM = """
         <div class="site-footer__col">
           <h4>What we do</h4>
           <ul>
-            <li><a href="services.html#cloud">Cloud</a></li>
+            <li><a href="/services.html#cloud">Cloud</a></li>
             <li><a href="services.html#ai">AI &amp; data</a></li>
             <li><a href="services.html#security">Cybersecurity</a></li>
             <li><a href="services.html#engineering">Engineering</a></li>
@@ -218,32 +218,32 @@ CHROME_BOTTOM = """
           <h4>Company</h4>
           <ul>
             <li><a href="about.html">About us</a></li>
-            <li><a href="leadership.html">Leadership</a></li>
-            <li><a href="careers.html">Careers</a></li>
-            <li><a href="investors.html">Investors</a></li>
-            <li><a href="newsroom.html">Newsroom</a></li>
-            <li><a href="sustainability.html">Sustainability</a></li>
+            <li><a href="/leadership.html">Leadership</a></li>
+            <li><a href="/careers.html">Careers</a></li>
+            <li><a href="/investors.html">Investors</a></li>
+            <li><a href="/newsroom.html">Newsroom</a></li>
+            <li><a href="/sustainability.html">Sustainability</a></li>
           </ul>
         </div>
         <div class="site-footer__col">
           <h4>Connect</h4>
           <ul>
-            <li><a href="contact.html">Contact us</a></li>
-            <li><a href="find-office.html">Find an office</a></li>
-            <li><a href="partners.html">Partners</a></li>
-            <li><a href="alumni.html">Alumni</a></li>
-            <li><a href="vendors.html">Vendors</a></li>
-            <li><a href="insights.html">Insights</a></li>
+            <li><a href="/contact.html">Contact us</a></li>
+            <li><a href="/find-office.html">Find an office</a></li>
+            <li><a href="/partners.html">Partners</a></li>
+            <li><a href="/alumni.html">Alumni</a></li>
+            <li><a href="/vendors.html">Vendors</a></li>
+            <li><a href="/insights.html">Insights</a></li>
           </ul>
         </div>
       </div>
       <div class="site-footer__legal">
         <ul>
-          <li><a href="privacy.html">Privacy notice</a></li>
-          <li><a href="cookies.html">Cookies</a></li>
-          <li><a href="terms.html">Terms of use</a></li>
-          <li><a href="accessibility.html">Accessibility</a></li>
-          <li><a href="case-studies.html">Case studies</a></li>
+          <li><a href="/privacy.html">Privacy notice</a></li>
+          <li><a href="/cookies.html">Cookies</a></li>
+          <li><a href="/terms.html">Terms of use</a></li>
+          <li><a href="/accessibility.html">Accessibility</a></li>
+          <li><a href="/case-studies.html">Case studies</a></li>
         </ul>
       </div>
       <div class="site-footer__bottom">
@@ -281,7 +281,7 @@ def cta_strip(headline: str, btn_text: str, btn_href: str) -> str:
     <section class="cta-strip">
       <div class="container cta-strip__inner">
         <h2>{headline}</h2>
-        <a class="btn btn--ghost-light" href="{btn_href}">{btn_text}
+        <a class="btn btn--ghost-light" href="/{btn_href}">{btn_text}
           {ARROW}
         </a>
       </div>
@@ -412,32 +412,32 @@ def careers_main() -> str:
             <span class="eyebrow">Open roles</span>
             <h2>Hiring across 14 disciplines.</h2>
           </div>
-          <a class="arrow-link" href="contact.html">Browse all roles
+          <a class="arrow-link" href="/contact.html">Browse all roles
             """ + ARROW + """
           </a>
         </div>
         <div class="grid grid--3">
-          <a class="service-tile reveal" href="contact.html">
+          <a class="service-tile reveal" href="/contact.html">
             <h3>Software engineer - Cloud platforms</h3>
             <div class="service-tile__footer"><span class="service-tile__num">Multiple - Global</span></div>
           </a>
-          <a class="service-tile reveal" href="contact.html">
+          <a class="service-tile reveal" href="/contact.html">
             <h3>AI/ML engineer</h3>
             <div class="service-tile__footer"><span class="service-tile__num">Bengaluru / Pune / Toronto</span></div>
           </a>
-          <a class="service-tile reveal" href="contact.html">
+          <a class="service-tile reveal" href="/contact.html">
             <h3>Cybersecurity consultant</h3>
             <div class="service-tile__footer"><span class="service-tile__num">London / Frankfurt / Singapore</span></div>
           </a>
-          <a class="service-tile reveal" href="contact.html">
+          <a class="service-tile reveal" href="/contact.html">
             <h3>Product designer</h3>
             <div class="service-tile__footer"><span class="service-tile__num">New York / Amsterdam</span></div>
           </a>
-          <a class="service-tile reveal" href="contact.html">
+          <a class="service-tile reveal" href="/contact.html">
             <h3>Data engineer</h3>
             <div class="service-tile__footer"><span class="service-tile__num">Multiple - Global</span></div>
           </a>
-          <a class="service-tile reveal" href="contact.html">
+          <a class="service-tile reveal" href="/contact.html">
             <h3>SAP S/4HANA architect</h3>
             <div class="service-tile__footer"><span class="service-tile__num">Walldorf / Mumbai</span></div>
           </a>
@@ -489,32 +489,32 @@ def investors_main() -> str:
             <span class="eyebrow">Reports &amp; filings</span>
             <h2>For your due diligence shelf.</h2>
           </div>
-          <a class="arrow-link" href="contact.html">Request investor pack
+          <a class="arrow-link" href="/contact.html">Request investor pack
             {ARROW}
           </a>
         </div>
         <div class="grid grid--3">
-          <a class="service-tile reveal" href="contact.html">
+          <a class="service-tile reveal" href="/contact.html">
             <h3>Annual report 2025</h3>
             <div class="service-tile__footer"><span class="service-tile__num">PDF - 14.2 MB</span>{ARROW}</div>
           </a>
-          <a class="service-tile reveal" href="contact.html">
+          <a class="service-tile reveal" href="/contact.html">
             <h3>Q4 FY25 earnings transcript</h3>
             <div class="service-tile__footer"><span class="service-tile__num">PDF - 1.1 MB</span>{ARROW}</div>
           </a>
-          <a class="service-tile reveal" href="contact.html">
+          <a class="service-tile reveal" href="/contact.html">
             <h3>Sustainability report 2025</h3>
             <div class="service-tile__footer"><span class="service-tile__num">PDF - 8.6 MB</span>{ARROW}</div>
           </a>
-          <a class="service-tile reveal" href="contact.html">
+          <a class="service-tile reveal" href="/contact.html">
             <h3>Proxy statement 2025</h3>
             <div class="service-tile__footer"><span class="service-tile__num">PDF - 2.3 MB</span>{ARROW}</div>
           </a>
-          <a class="service-tile reveal" href="contact.html">
+          <a class="service-tile reveal" href="/contact.html">
             <h3>Corporate governance</h3>
             <div class="service-tile__footer"><span class="service-tile__num">Code of conduct &amp; bylaws</span>{ARROW}</div>
           </a>
-          <a class="service-tile reveal" href="contact.html">
+          <a class="service-tile reveal" href="/contact.html">
             <h3>Historical financials</h3>
             <div class="service-tile__footer"><span class="service-tile__num">10-year ledger</span>{ARROW}</div>
           </a>
@@ -560,7 +560,7 @@ def newsroom_main() -> str:
               <h3 class="story-card__title">{title}</h3>
               <p class="story-card__excerpt">{excerpt}</p>
               <div class="story-card__footer">
-                <a class="arrow-link" href="contact.html">Read release
+                <a class="arrow-link" href="/contact.html">Read release
                   {ARROW}
                 </a>
               </div>
@@ -582,7 +582,7 @@ def newsroom_main() -> str:
             <span class="eyebrow">Recent</span>
             <h2>Latest announcements.</h2>
           </div>
-          <a class="arrow-link" href="newsroom.html#archive">Archive
+          <a class="arrow-link" href="/newsroom.html#archive">Archive
             {ARROW}
           </a>
         </div>
@@ -644,7 +644,7 @@ def office_card(name: str, addr: str, tel_display: str, tel_e164: str) -> str:
         classes += " office-card--featured"
         badge = f'            <span class="office-card__badge">{feature["badge"]}</span>\n'
         extra_link = (
-            f'\n            <a class="office-card__link" href="{feature["href"]}">Explore the London office'
+            f'\n            <a class="office-card__link" href="/{feature["href"]}">Explore the London office'
             f'\n              {ARROW}\n            </a>'
         )
     return (
@@ -700,7 +700,7 @@ def partners_main() -> str:
               <h3 class="story-card__title">{title}</h3>
               <p class="story-card__excerpt">{body}</p>
               <div class="story-card__footer">
-                <a class="arrow-link" href="contact.html">Explore partnership
+                <a class="arrow-link" href="/contact.html">Explore partnership
                   {ARROW}
                 </a>
               </div>
@@ -770,7 +770,7 @@ def alumni_main() -> str:
             <h2 style="margin-bottom: var(--s-6);">Join the alumni network.</h2>
             <p class="muted" style="font-size: 1.0625rem; line-height: 1.6; margin-bottom: var(--s-4);">Verify your alumnus status to unlock the directory, local events, mentoring, and access to internal job postings during boomerang season.</p>
             <p class="muted" style="font-size: 1.0625rem; line-height: 1.6; margin-bottom: var(--s-8);">If you left within the last five years, your verification is automatic from your last-known work email.</p>
-            <a class="btn btn--primary" href="contact.html">Verify and join
+            <a class="btn btn--primary" href="/contact.html">Verify and join
               {ARROW}
             </a>
           </div>
@@ -833,28 +833,28 @@ def vendors_main() -> str:
           <h2 style="margin-top: var(--s-3);">Four steps to becoming an approved Tata supplier.</h2>
         </div>
         <div class="grid grid--4">
-          <a class="service-tile reveal" href="contact.html">
+          <a class="service-tile reveal" href="/contact.html">
             <h3>Register interest</h3>
             <div class="service-tile__footer">
               <span class="service-tile__num">Step 01</span>
               {ARROW}
             </div>
           </a>
-          <a class="service-tile reveal" href="contact.html">
+          <a class="service-tile reveal" href="/contact.html">
             <h3>Due diligence</h3>
             <div class="service-tile__footer">
               <span class="service-tile__num">Step 02</span>
               {ARROW}
             </div>
           </a>
-          <a class="service-tile reveal" href="contact.html">
+          <a class="service-tile reveal" href="/contact.html">
             <h3>Master agreement</h3>
             <div class="service-tile__footer">
               <span class="service-tile__num">Step 03</span>
               {ARROW}
             </div>
           </a>
-          <a class="service-tile reveal" href="contact.html">
+          <a class="service-tile reveal" href="/contact.html">
             <h3>Activate &amp; invoice</h3>
             <div class="service-tile__footer">
               <span class="service-tile__num">Step 04</span>
@@ -929,7 +929,7 @@ def insights_main() -> str:
               <h3 class="story-card__title">{title}</h3>
               <p class="story-card__excerpt">{excerpt}</p>
               <div class="story-card__footer">
-                <a class="arrow-link" href="contact.html">Read
+                <a class="arrow-link" href="/contact.html">Read
                   {ARROW}
                 </a>
               </div>
@@ -951,7 +951,7 @@ def insights_main() -> str:
             <span class="eyebrow">Featured</span>
             <h2>Reports, briefings, and points of view.</h2>
           </div>
-          <a class="arrow-link" href="contact.html">Subscribe to our newsletter
+          <a class="arrow-link" href="/contact.html">Subscribe to our newsletter
             {ARROW}
           </a>
         </div>
@@ -1054,20 +1054,20 @@ def sustainability_main() -> str:
             <span class="eyebrow">Reports &amp; disclosures</span>
             <h2>Read the detail.</h2>
           </div>
-          <a class="arrow-link" href="contact.html">Subscribe to ESG updates
+          <a class="arrow-link" href="/contact.html">Subscribe to ESG updates
             {ARROW}
           </a>
         </div>
         <div class="grid grid--3">
-          <a class="service-tile reveal" href="contact.html">
+          <a class="service-tile reveal" href="/contact.html">
             <h3>Sustainability report 2025</h3>
             <div class="service-tile__footer"><span class="service-tile__num">PDF - 8.6 MB</span>{ARROW}</div>
           </a>
-          <a class="service-tile reveal" href="contact.html">
+          <a class="service-tile reveal" href="/contact.html">
             <h3>CDP climate disclosure</h3>
             <div class="service-tile__footer"><span class="service-tile__num">PDF - 3.1 MB</span>{ARROW}</div>
           </a>
-          <a class="service-tile reveal" href="contact.html">
+          <a class="service-tile reveal" href="/contact.html">
             <h3>SASB framework alignment</h3>
             <div class="service-tile__footer"><span class="service-tile__num">PDF - 1.8 MB</span>{ARROW}</div>
           </a>
@@ -1795,7 +1795,7 @@ def render_related_case_cards(case_slugs: list[str]) -> str:
              <h3 class="story-card__title">{study["title"]}</h3>
              <p class="story-card__excerpt">{study["excerpt"]}</p>
              <div class="story-card__footer">
-               <a class="arrow-link" href="{study["slug"]}">Read the case
+               <a class="arrow-link" href="/{study["slug"]}">Read the case
                  {ARROW}
                </a>
              </div>
@@ -1893,7 +1893,7 @@ def service_detail_main(cfg: dict) -> str:
            <span class="eyebrow" style="color: var(--brand-accent);">Where it shows up</span>
            <h2>Case studies that map to this service.</h2>
          </div>
-         <a class="arrow-link arrow-link--light" href="case-studies.html">See all case studies
+         <a class="arrow-link arrow-link--light" href="/case-studies.html">See all case studies
            {ARROW}
          </a>
        </div>
@@ -1923,7 +1923,7 @@ def render_delivered_from(info: dict | None) -> str:
            <span class="eyebrow" style="display:block; margin-bottom: var(--s-3);">Delivered from</span>
            <h2 id="delivered-from-title">{info["heading"]}</h2>
            <p>{info["body"]}</p>
-           <a class="arrow-link" href="{info["href"]}">Explore the London office
+           <a class="arrow-link" href="/{info["href"]}">Explore the London office
              {ARROW}
            </a>
          </div>
@@ -2051,7 +2051,7 @@ def case_studies_main() -> str:
              <h3 class="story-card__title">{study["title"]}</h3>
              <p class="story-card__excerpt">{study["excerpt"]}</p>
              <div class="story-card__footer">
-               <a class="arrow-link" href="{study["slug"]}">Read the case
+               <a class="arrow-link" href="/{study["slug"]}">Read the case
                  {ARROW}
                </a>
              </div>
