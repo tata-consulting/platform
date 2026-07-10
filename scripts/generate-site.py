@@ -25,13 +25,13 @@ from pathlib import Path
 SITE_DIR = Path(__file__).resolve().parents[1] / "site"
 
 WORDMARK_LIGHT = (
-    '<img src="assets/logo/tcs-logo-black.svg" '
+    '<img src="/assets/logo/tcs-logo-black.svg" '
     'alt="Tata Consulting Services, PLC" '
     'class="site-header__logo-img" width="160" height="46" />'
 )
 
 WORDMARK_DARK = (
-    '<img src="assets/logo/tcs-logo-white.svg" '
+    '<img src="/assets/logo/tcs-logo-white.svg" '
     'alt="Tata Consulting Services, PLC" '
     'class="site-footer__logo-img" width="160" height="46" />'
 )
@@ -46,12 +46,12 @@ CHROME_TOP = """<!doctype html>
   <title>{title}</title>
   <meta name="description" content="{description}" />
   <script>document.documentElement.classList.add('js')</script>
-  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" />
-  <link rel="stylesheet" href="css/base.css" />
-  <link rel="stylesheet" href="css/components.css" />{head_extra}
+  <link rel="stylesheet" href="/css/base.css" />
+  <link rel="stylesheet" href="/css/components.css" />{head_extra}
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -774,7 +774,7 @@ def alumni_main() -> str:
               {ARROW}
             </a>
           </div>
-          <div class="split__media media--neon reveal"><img style="object-fit: cover center; width: 100%;" src="assets/images/alumni.jpg" /></div>
+          <div class="split__media media--neon reveal"><img style="object-fit: cover center; width: 100%;" src="/assets/images/alumni.jpg" /></div>
         </div>
       </div>
     </section>
