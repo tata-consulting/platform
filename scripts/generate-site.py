@@ -631,7 +631,7 @@ FIND_OFFICE_LIST = [
 # the office name in FIND_OFFICE_LIST. London is the UK Engineering Centre of
 # Excellence and has a dedicated page (london.html).
 FEATURED_OFFICES = {
-    "London": {"href": "london.html", "badge": "Engineering Centre of Excellence"},
+    "London": {"href": "coe/london.html", "badge": "Engineering Centre of Excellence"},
 }
 
 
@@ -1297,7 +1297,7 @@ CASE_STUDIES = [
            "body": "The industrial data layer, edge operations, and digital twin rooms behind this programme were built by our London Engineering Centre of Excellence - the same team behind our IoT, cloud-native, and Internal Developer Platform work.",
            "name": "London",
            "address": "17 Old Bailey<br />London EC4M 7EG<br />United Kingdom",
-           "href": "london.html",
+           "href": "coe/london.html",
            "badge": "Engineering Centre of Excellence",
        },
    },
@@ -2332,7 +2332,7 @@ EXISTING_PAGES = {
                         "Tata brings deep industry knowledge to banking, insurance, manufacturing, retail, healthcare, public services, communications, and energy."),
     "contact.html":   ("Contact - Tata Consulting Services, PLC",
                         "Start a conversation with Tata Consulting Services, PLC. Find an office near you, or send us a note and we will respond within two business days."),
-    "london.html":    ("London - Engineering Centre of Excellence - Tata Consulting Services, PLC",
+    "coe/london.html":    ("London - Engineering Centre of Excellence - Tata Consulting Services, PLC",
                         "The Tata Consulting Services, PLC London office is an engineering centre of excellence specialising in cloud, cloud-native, IoT, DevOps, AI, and automation - including next-generation Internal Developer Platforms, container orchestration (Kubernetes, OpenShift), and Developer Experience (DevEx)."),
     "idp.html":       ("Internal Developer Platform - Tata Consulting Services, PLC",
                         "The Tata Internal Developer Platform is built and operated by the London Engineering Centre of Excellence on an open, cloud-native, AI-enabled stack. Service provider-grade architecture, strict multi-tenancy, policy-as-code RBAC, and a developer experience worth opening every morning - for hundreds of thousands of Tata engineers and client teams."),
@@ -2350,7 +2350,7 @@ JETBRAINS_MONO_LINK = (
     'href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" />'
 )
 PAGE_HEAD_EXTRA = {
-    "london.html": JETBRAINS_MONO_LINK,
+    "coe/london.html": JETBRAINS_MONO_LINK,
     "idp.html": JETBRAINS_MONO_LINK,
 }
 
