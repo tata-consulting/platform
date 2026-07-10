@@ -1,0 +1,56 @@
+name: Site build + link-check
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build-and-link-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+
+      - name: Generate site
+        run: |
+          python3 scripts/generate-site.py
+
+      - name: Link check (internal links only)
+        env:
+          SITE_DIR: ${{ github.workspace }}/site
+        run: |
+          python3 - <<'PY'
+import re
+from pathlib import Path
+import sys
+site=Path('${{ github.workspace }}') / 'site'
+missing=0
+for f in site.rglob('*.html'):
+    text=f.read_text(encoding='utf-8')
+    links=set(re.findall(r'(?:href|src)=["\']([^"\']+)["\']',text))
+    for u in links:
+        if not u or u.startswith(('http:','https:','mailto:','tel:','#')):
+            continue
+        target = site / u.lstrip('/')
+        if target.is_dir():
+            target = target / 'index.html'
+        if not target.exists():
+            print(f"MISSING: {f.relative_to(site)} -> {u}")
+            missing += 1
+if missing:
+    print(f"Found {missing} missing internal links")
+    sys.exit(1)
+else:
+    print('All internal links resolve to files in site/')
+PY
