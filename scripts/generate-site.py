@@ -2334,7 +2334,7 @@ EXISTING_PAGES = {
                         "Start a conversation with Tata Consulting Services, PLC. Find an office near you, or send us a note and we will respond within two business days."),
     "coe/london.html":    ("London - Engineering Centre of Excellence - Tata Consulting Services, PLC",
                         "The Tata Consulting Services, PLC London office is an engineering centre of excellence specialising in cloud, cloud-native, IoT, DevOps, AI, and automation - including next-generation Internal Developer Platforms, container orchestration (Kubernetes, OpenShift), and Developer Experience (DevEx)."),
-    "idp.html":       ("Internal Developer Platform - Tata Consulting Services, PLC",
+    "coe/idp.html":       ("Internal Developer Platform - Tata Consulting Services, PLC",
                         "The Tata Internal Developer Platform is built and operated by the London Engineering Centre of Excellence on an open, cloud-native, AI-enabled stack. Service provider-grade architecture, strict multi-tenancy, policy-as-code RBAC, and a developer experience worth opening every morning - for hundreds of thousands of Tata engineers and client teams."),
 }
 
@@ -2351,7 +2351,7 @@ JETBRAINS_MONO_LINK = (
 )
 PAGE_HEAD_EXTRA = {
     "coe/london.html": JETBRAINS_MONO_LINK,
-    "idp.html": JETBRAINS_MONO_LINK,
+    "coe/idp.html": JETBRAINS_MONO_LINK,
 }
 
 
