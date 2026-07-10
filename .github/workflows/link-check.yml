@@ -41,10 +41,18 @@ missing=0
 for f in site.rglob('*.html'):
     text=f.read_text(encoding='utf-8')
     links=set(re.findall(r'(?:href|src)=["\']([^"\']+)["\']',text))
-    # strip fragments and query strings when checking filesystem existence
+    # strip fragments and query strings and normalize paths when checking filesystem existence
     for u in links:
-        if not u or u.startswith(('http:','https:','mailto:','tel:','#')):
+        if not u or u.startswith(('http:','https:','mailto:','tel:')):
             continue
+        # ignore pure in-page fragments
+        if u.startswith('#'):
+            continue
+        # remove fragment and query
+        u = u.split('#',1)[0].split('?',1)[0]
+        if not u:
+            continue
+        # map to site filesystem path
         target = site / u.lstrip('/')
         if target.is_dir():
             target = target / 'index.html'
