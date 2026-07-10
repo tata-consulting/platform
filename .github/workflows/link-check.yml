@@ -34,7 +34,8 @@ jobs:
 import re
 from pathlib import Path
 import sys
-site=Path('${{ github.workspace }}') / 'site'
+import os
+site=Path(os.environ.get('SITE_DIR', Path('.').resolve()))
 missing=0
 for f in site.rglob('*.html'):
     text=f.read_text(encoding='utf-8')
