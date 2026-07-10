@@ -39,6 +39,7 @@ missing=0
 for f in site.rglob('*.html'):
     text=f.read_text(encoding='utf-8')
     links=set(re.findall(r'(?:href|src)=["\']([^"\']+)["\']',text))
+    # strip fragments and query strings when checking filesystem existence
     for u in links:
         if not u or u.startswith(('http:','https:','mailto:','tel:','#')):
             continue
