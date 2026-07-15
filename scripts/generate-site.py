@@ -192,7 +192,7 @@ CHROME_BOTTOM = """
         <div class="site-footer__brand">
 """ + WORDMARK_DARK + """
           <h3>Building on belief.</h3>
-          <p>TCS Labs, PLC — a subsidiary of Tata Consultancy Services — partners with the world's largest enterprises to design, build, and run their digital transformation.</p>
+          <p>TCS Labs, PLC, a subsidiary of Tata Consultancy Services, partners with the world's largest enterprises to design, build, and run their digital transformation.</p>
         </div>
         <div class="site-footer__col">
           <h4>What we do</h4>
