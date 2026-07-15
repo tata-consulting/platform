@@ -43,18 +43,18 @@ jobs:
           links=set(re.findall(r'(?:href|src)=["\']([^"\']+)["\']',text))
           # strip fragments and query strings when checking filesystem existence
           for u in links:
-              if not u or u.startswith(('http:','https:','mailto:','tel:','#')):
-                  continue
-              u_path = u.split('#',1)[0].split('?',1)[0]
-              target = site / u_path.lstrip('/')
-              if target.is_dir():
-                  target = target / 'index.html'
-              if not target.exists():
-                  print(f"MISSING: {f.relative_to(site)} -> {u}")
-                  missing += 1
-          if missing:
-              print(f"Found {missing} missing internal links")
-              sys.exit(1)
-          else:
-              print('All internal links resolve to files in site/')
+            if not u or u.startswith(('http:','https:','mailto:','tel:','#')):
+                continue
+            u_path = u.split('#',1)[0].split('?',1)[0]
+            target = site / u_path.lstrip('/')
+            if target.is_dir():
+                target = target / 'index.html'
+            if not target.exists():
+                print(f"MISSING: {f.relative_to(site)} -> {u}")
+                missing += 1
+            if missing:
+                print(f"Found {missing} missing internal links")
+                sys.exit(1)
+            else:
+                print('All internal links resolve to files in site/')
           PY
