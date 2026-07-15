@@ -32,36 +32,36 @@ jobs:
           SITE_DIR: ${{ github.workspace }}/site
         run: |
           python3 - <<'PY'
-import re
-from pathlib import Path
-import sys
-import os
-site=Path(os.environ.get('SITE_DIR', Path('.').resolve()))
-missing=0
-for f in site.rglob('*.html'):
-    text=f.read_text(encoding='utf-8')
-    links=set(re.findall(r'(?:href|src)=["\']([^"\']+)["\']',text))
-    # strip fragments and query strings and normalize paths when checking filesystem existence
-    for u in links:
-        if not u or u.startswith(('http:','https:','mailto:','tel:')):
-            continue
-        # ignore pure in-page fragments
-        if u.startswith('#'):
-            continue
-        # remove fragment and query
-        u = u.split('#',1)[0].split('?',1)[0]
-        if not u:
-            continue
-        # map to site filesystem path
-        target = site / u.lstrip('/')
-        if target.is_dir():
-            target = target / 'index.html'
-        if not target.exists():
-            print(f"MISSING: {f.relative_to(site)} -> {u}")
-            missing += 1
-if missing:
-    print(f"Found {missing} missing internal links")
-    sys.exit(1)
-else:
-    print('All internal links resolve to files in site/')
-PY
+          import re
+          from pathlib import Path
+          import sys
+          import os
+          site=Path(os.environ.get('SITE_DIR', Path('.').resolve()))
+          missing=0
+          for f in site.rglob('*.html'):
+              text=f.read_text(encoding='utf-8')
+              links=set(re.findall(r'(?:href|src)=["\']([^"\']+)["\']',text))
+              # strip fragments and query strings and normalize paths when checking filesystem existence
+              for u in links:
+                  if not u or u.startswith(('http:','https:','mailto:','tel:')):
+                      continue
+                  # ignore pure in-page fragments
+                  if u.startswith('#'):
+                      continue
+                  # remove fragment and query
+                  u = u.split('#',1)[0].split('?',1)[0]
+                  if not u:
+                      continue
+                  # map to site filesystem path
+                  target = site / u.lstrip('/')
+                  if target.is_dir():
+                      target = target / 'index.html'
+                  if not target.exists():
+                      print(f"MISSING: {f.relative_to(site)} -> {u}")
+                      missing += 1
+          if missing:
+              print(f"Found {missing} missing internal links")
+              sys.exit(1)
+          else:
+              print('All internal links resolve to files in site/')
+          PY
