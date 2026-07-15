@@ -612,15 +612,15 @@ def newsroom_main() -> str:
 
 
 FIND_OFFICE_LIST = [
-    ("Mumbai - Global HQ",    "Tata House<br />N. M. Marg, Apollo Bunder<br />Mumbai 400001, India",                                                      "+91 22 6666 7777",  "+912267789595"),
-    ("Bengaluru",             "Tata Park, Whitefield Main Road<br />Whitefield, Bengaluru 560066<br />India",                                              "+91 80 2222 1234",  "+918022221234"),
+    ("Mumbai - Global HQ",    "Tata House<br />N. M. Marg, Apollo Bunder<br />Mumbai 400001, India",                                                      "+91 22 6665 8282",  "+912266658282"),
+    ("Bengaluru",             "Tata Park, Whitefield Main Road<br />Whitefield, Bengaluru 560066<br />India",                                              "+91 80 672 57000.",  "+918067257000"),
     ("Delhi NCR",             "Tata Tower, DLF Cyber City Phase III<br />Gurugram 122002<br />India",                                                       "+91 124 444 5555",  "+911244745235"),
     ("New York",              "101 Park Avenue, 26th Floor<br />New York, NY 10178<br />United States",                                                      "+1 212 555 0100",   "+12125550100"),
     ("Toronto",               "199 Bay Street, 30th Floor<br />Toronto, ON M5L 1G9<br />Canada",                                                             "+1 416 555 0150",   "+14165550150"),
     ("London",                "17 Old Bailey<br />London EC4M 7EG<br />United Kingdom",                                                                      "+44 20 7220 0800",  "+442072200800"),
     ("Frankfurt",             "Trianon, Mainzer Landstraße 16<br />60325 Frankfurt am Main<br />Germany",                                                    "+49 69 2222 0700",  "+496922220700"),
     ("Amsterdam",             "Vinoly Building, Claude Debussylaan 80<br />1082 MD Amsterdam<br />Netherlands",                                              "+31 20 521 0500",   "+31205210500"),
-    ("Singapore",             "Marina Bay Financial Centre, Tower 3<br />12 Marina Boulevard<br />Singapore 018982",                                         "+65 6222 0222",     "+6562220222"),
+    ("Singapore",             "Marina Bay Financial Centre, Tower 3<br />12 Marina Boulevard<br />Singapore 018982",                                         "+65 6654 1550",     "+6566541550"),
     ("Tokyo",                 "Marunouchi Building, 21F<br />2-4-1 Marunouchi, Chiyoda-ku<br />Tokyo 100-6321, Japan",                                       "+81 3 5222 0900",   "+81352220900"),
     ("Sydney",                "Tower One, International Towers<br />100 Barangaroo Avenue, Sydney NSW 2000<br />Australia",                                  "+61 2 8224 0900",   "+61282240900"),
     ("São Paulo",             "Avenida Paulista, 1842<br />Bela Vista, São Paulo - SP<br />Brazil 01310-200",                                                "+55 11 3000 0400",  "+551130000400"),
