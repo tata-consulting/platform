@@ -14,7 +14,10 @@
   }
 
   /* ------------------------------------------------------------------
-     Mega menu - hover on desktop, click/keyboard on touch
+     Mega menu - click/keyboard to open and close, on both desktop and
+     touch. (Previously opened/closed on hover, which meant the menu
+     could vanish out from under the visitor's pointer the moment it
+     drifted off the trigger while crossing into the panel.)
      ------------------------------------------------------------------ */
   const navItems = document.querySelectorAll('.primary-nav__item--has-mega');
 
@@ -36,9 +39,6 @@
     const toggle = () => {
       item.classList.contains('is-open') ? close() : open();
     };
-
-    item.addEventListener('mouseenter', open);
-    item.addEventListener('mouseleave', close);
 
     trigger.addEventListener('click', (e) => {
       e.preventDefault();
