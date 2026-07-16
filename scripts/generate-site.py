@@ -908,34 +908,36 @@ def vendors_main() -> str:
 
 
 INSIGHTS_ARTICLES = [
-    ("media--forest", "Annual study - 1,200 CEOs",  "The AI Premium: where leaders are seeing returns, and where they aren't.",       "Our 12th annual CEO study tracks how AI value is concentrating - and what separates the 14% pulling away."),
-    ("media--ember",  "Perspective",                  "Beyond the pilot: what it actually takes to put GenAI into production.",         "A field guide drawn from 340 enterprise GenAI deployments - what worked, what stalled, what we learned."),
-    ("media--steel",  "Point of view",                "The next operating model: small teams, large autonomy, AI in the loop.",         "A framework for re-organising IT and operations around outcomes - not towers, not tickets, not handoffs."),
-    ("media--neon",   "Research note",                "The cloud bill came due. Now what?",                                              "Why 62% of enterprises are returning to disciplined unit-economics conversations - and the playbook that's working."),
-    ("media--ocean",  "Industry brief - Banking",     "Core modernisation in 24 months: a comparison of four playbooks.",                "Strangler, big-bang, sidecar, greenfield - the trade-offs that determine which approach actually finishes."),
-    ("media--sunset", "Industry brief - Retail",      "Unified commerce: the data plumbing nobody warned you about.",                    "Why retail platforms break in the integration layer first - and the patterns that hold up under Black Friday."),
-    ("media--forest", "Workforce study",              "What 8,400 frontline workers told us about AI augmentation.",                     "The largest survey of its kind reveals a surprising consensus on where AI helps - and where it gets in the way."),
-    ("media--ember",  "ESG &amp; sustainability",     "Scope 3 reporting: the data engineering challenge nobody is talking about.",     "Most carbon disclosure tools assume data you don't have. Here's how four clients built the pipeline that actually works."),
-    ("media--steel",  "Cybersecurity",                "Zero trust is a posture, not a product. Five enterprises explain why.",          "Architecture, identity, segmentation, telemetry, and culture - the five layers that actually have to move together."),
+    ("media--forest", "Annual study - 1,200 CEOs",  "The AI Premium: where leaders are seeing returns, and where they aren't.",       "Our 12th annual CEO study tracks how AI value is concentrating - and what separates the 14% pulling away.", "ai-premium-enterprise-returns.html", "thanh-bui-1040813866-38468384.jpg", "AI Premium report cover"),
+    ("media--ember",  "Perspective",                  "Beyond the pilot: what it actually takes to put GenAI into production.",         "A field guide drawn from 340 enterprise GenAI deployments - what worked, what stalled, what we learned.", "genai-production-playbook.html", "pedrohypolito-38407874.jpg", "GenAI production report cover"),
+    ("media--steel",  "Point of view",                "The next operating model: small teams, large autonomy, AI in the loop.",         "A framework for re-organising IT and operations around outcomes - not towers, not tickets, not handoffs.", "ai-operating-model-small-teams.html", "lucas-gramatica-2154251402-36840819.jpg", "Operating model report cover"),
+    ("media--neon",   "Research note",                "The cloud bill came due. Now what?",                                              "Why 62% of enterprises are returning to disciplined unit-economics conversations - and the playbook that's working.", "cloud-unit-economics-reset.html", "oandremoura-38240864.jpg", "Cloud bill report cover"),
+    ("media--ocean",  "Industry brief - Banking",     "Core modernisation in 24 months: a comparison of four playbooks.",                "Strangler, big-bang, sidecar, greenfield - the trade-offs that determine which approach actually finishes.", "banking-core-modernisation-playbooks.html", "fernando-silva-2157007356-35570021.jpg", "Core modernisation report cover"),
+    ("media--sunset", "Industry brief - Retail",      "Unified commerce: the data plumbing nobody warned you about.",                    "Why retail platforms break in the integration layer first - and the patterns that hold up under Black Friday.", "retail-unified-commerce-data-plumbing.html", "retail-commerce-sample.jpg", "Unified commerce report cover"),
+    ("media--forest", "Workforce study",              "What 8,400 frontline workers told us about AI augmentation.",                     "The largest survey of its kind reveals a surprising consensus on where AI helps - and where it gets in the way.", "frontline-ai-augmentation-study.html", "workforce-ai-sample.jpg", "Workforce study report cover"),
+    ("media--ember",  "ESG &amp; sustainability",     "Scope 3 reporting: the data engineering challenge nobody is talking about.",     "Most carbon disclosure tools assume data you don't have. Here's how four clients built the pipeline that actually works.", "scope-3-data-engineering-playbook.html", "scope-3-data-sample.jpg", "Scope 3 report cover"),
+    ("media--steel",  "Cybersecurity",                "Zero trust is a posture, not a product. Five enterprises explain why.",          "Architecture, identity, segmentation, telemetry, and culture - the five layers that actually have to move together.", "zero-trust-posture-enterprise-lessons.html", "zero-trust-security-sample.jpg", "Zero trust report cover"),
 ]
 
 
 def insights_main() -> str:
     cards = "\n".join(
         f"""          <article class="story-card reveal">
-            <div class="story-card__media {variant}"></div>
+            <div class="story-card__media {variant}">
+              <img src="/assets/insights-thumbs/{image}" alt="{image_alt}" width="560" height="320" />
+            </div>
             <div class="story-card__body">
               <span class="story-card__tag">{tag}</span>
               <h3 class="story-card__title">{title}</h3>
               <p class="story-card__excerpt">{excerpt}</p>
               <div class="story-card__footer">
-                <a class="arrow-link" href="/contact.html">Read
+                <a class="arrow-link" href="/{slug}">Read
                   {ARROW}
                 </a>
               </div>
             </div>
           </article>"""
-        for (variant, tag, title, excerpt) in INSIGHTS_ARTICLES
+        for (variant, tag, title, excerpt, slug, image, image_alt) in INSIGHTS_ARTICLES
     )
     return (
         page_hero(
