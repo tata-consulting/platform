@@ -371,6 +371,7 @@ def careers_main() -> str:
           </div>"""
         for (title, body) in CAREERS_REASONS
     )
+    role_tiles = render_career_role_tiles()
     return (
         page_hero(
             "Careers",
@@ -417,34 +418,13 @@ def careers_main() -> str:
           </a>
         </div>
         <div class="grid grid--3">
-          <a class="service-tile reveal" href="/contact.html">
-            <h3>Software engineer - Cloud platforms</h3>
-            <div class="service-tile__footer"><span class="service-tile__num">Multiple - Global</span></div>
-          </a>
-          <a class="service-tile reveal" href="/contact.html">
-            <h3>AI/ML engineer</h3>
-            <div class="service-tile__footer"><span class="service-tile__num">Bengaluru / Pune / Toronto</span></div>
-          </a>
-          <a class="service-tile reveal" href="/contact.html">
-            <h3>Cybersecurity consultant</h3>
-            <div class="service-tile__footer"><span class="service-tile__num">London / Frankfurt / Singapore</span></div>
-          </a>
-          <a class="service-tile reveal" href="/contact.html">
-            <h3>Product designer</h3>
-            <div class="service-tile__footer"><span class="service-tile__num">New York / Amsterdam</span></div>
-          </a>
-          <a class="service-tile reveal" href="/contact.html">
-            <h3>Data engineer</h3>
-            <div class="service-tile__footer"><span class="service-tile__num">Multiple - Global</span></div>
-          </a>
-          <a class="service-tile reveal" href="/contact.html">
-            <h3>SAP S/4HANA architect</h3>
-            <div class="service-tile__footer"><span class="service-tile__num">Walldorf / Mumbai</span></div>
-          </a>
+""" + role_tiles + """
         </div>
       </div>
     </section>
 """ + cta_strip("Don't see your role? Send us your CV anyway.", "Send a note", "contact.html"))
+
+
 
 
 INVESTORS_HIGHLIGHTS = [
@@ -2100,6 +2080,259 @@ CASE_STUDY_PAGE_STUBS = {
 }
 
 
+CAREER_ROLES = [
+    {
+        "slug": "career-software-engineer-cloud-platforms.html",
+        "variant": "media--ocean",
+        "title": "Software engineer - Cloud platforms",
+        "locations": "Multiple - Global",
+        "meta_title": "Software engineer, Cloud platforms - Careers - Tata Consulting Services, PLC",
+        "meta_description": "Design and operate the multi-cloud infrastructure and platform tooling behind client migrations run at global scale. Multiple locations, worldwide.",
+        "lead": "You'll design and operate the multi-cloud infrastructure underneath our largest client migrations, with production ownership from day one.",
+        "summary": [
+            "You'll join a platform engineering group that designs, builds, and operates the cloud infrastructure underneath our largest client migrations - workloads spanning AWS, Azure, and GCP, often across regulated industries where downtime has a real cost.",
+            "This isn't a maintenance role. You'll be shipping infrastructure-as-code, container platforms, and CI/CD tooling that client teams depend on directly, with production ownership from day one.",
+        ],
+        "responsibilities": [
+            ("Build", "Design and build cloud infrastructure", "Author Terraform and Kubernetes manifests for multi-tenant environments serving enterprise clients, with an eye toward cost, security, and repeatability."),
+            ("Operate", "Own what you ship in production", "Carry rotation for the platforms you build. Write the runbooks, tune the alerts, and be the first call when something breaks."),
+            ("Improve", "Raise the platform's floor", "Find the manual step nobody's automated yet and remove it. Every quarter, the platform should need less human intervention than the one before."),
+        ],
+        "requirements": [
+            ("Must have", "3+ years in cloud infrastructure", "Production experience with at least one major cloud provider and infrastructure-as-code (Terraform, Pulumi, or CloudFormation)."),
+            ("Must have", "Container orchestration", "Comfortable operating Kubernetes in production - not just deploying to it, but debugging it at 2am."),
+            ("Preferred", "A scripting language", "Python or Go, well enough to write tooling, not just glue code."),
+            ("Preferred", "Regulated-industry exposure", "Prior work in banking, insurance, or healthcare, where change control and audit trails are part of the job."),
+        ],
+    },
+    {
+        "slug": "career-ai-ml-engineer.html",
+        "variant": "media--neon",
+        "title": "AI/ML engineer",
+        "locations": "Bengaluru / Pune / Toronto",
+        "meta_title": "AI/ML engineer - Careers - Tata Consulting Services, PLC",
+        "meta_description": "Take machine learning models from notebook to production for enterprise clients - MLOps, model serving, and the evaluation discipline that keeps them honest.",
+        "lead": "You'll take machine learning models from a data scientist's notebook to production - MLOps, model serving, and the evaluation discipline that keeps them honest.",
+        "summary": [
+            "You'll work alongside our AI &amp; Data practice to take models from a data scientist's notebook into production systems that enterprise clients actually run - which means MLOps, model serving, monitoring, and the evaluation discipline that catches drift before a client does.",
+            "Clients bring genuinely hard problems: fraud detection at transaction-time latency, demand forecasting across volatile supply chains, document extraction pipelines that have to be right, not just plausible.",
+        ],
+        "responsibilities": [
+            ("Build", "Productionise models", "Turn research-quality models into services with defined SLAs - versioned, monitored, and rollback-able like any other production system."),
+            ("Evaluate", "Own the evaluation harness", "Build and maintain the offline and online evaluation suites that tell us - before the client does - when a model's performance has degraded."),
+            ("Partner", "Work directly with client data science teams", "Pair with client-side practitioners to transfer the operational discipline, not just hand over a deployed endpoint."),
+        ],
+        "requirements": [
+            ("Must have", "2+ years shipping ML in production", "Experience taking at least one model beyond a notebook - training pipelines, serving infrastructure, monitoring."),
+            ("Must have", "Strong Python", "Comfortable across the modern ML stack - PyTorch or TensorFlow, plus the surrounding tooling (MLflow, Airflow, or equivalents)."),
+            ("Preferred", "MLOps platform experience", "Kubeflow, SageMaker, Vertex AI, or a comparable production ML platform."),
+            ("Preferred", "Domain exposure", "Prior work in fraud, forecasting, or document/NLP pipelines is a strong plus."),
+        ],
+    },
+    {
+        "slug": "career-cybersecurity-consultant.html",
+        "variant": "media--steel",
+        "title": "Cybersecurity consultant",
+        "locations": "London / Frankfurt / Singapore",
+        "meta_title": "Cybersecurity consultant - Careers - Tata Consulting Services, PLC",
+        "meta_description": "Advise enterprise clients on zero-trust architecture, identity, and incident readiness - assessment through to implementation, across regulated industries.",
+        "lead": "You'll advise enterprise clients on zero-trust architecture, identity, and incident readiness - assessment through to hands-on implementation.",
+        "summary": [
+            "You'll advise enterprise clients across banking, insurance, and public sector on security posture - from architecture review and threat modelling through to hands-on implementation of identity, segmentation, and detection controls.",
+            "Our clients don't need another slide deck telling them they're at risk. They need someone who can sit with their platform teams and get zero-trust principles actually implemented, on their timeline, without breaking the systems that run their business.",
+        ],
+        "responsibilities": [
+            ("Assess", "Run security assessments and audits", "Lead architecture reviews, threat modelling sessions, and control gap assessments against frameworks like NIST, ISO 27001, and industry-specific regulation."),
+            ("Advise", "Translate risk into a roadmap", "Turn assessment findings into a prioritised remediation plan the client's engineering teams can actually execute against."),
+            ("Implement", "Get hands-on where it counts", "Work directly alongside client teams on identity, network segmentation, and telemetry implementation - not just advisory from the sidelines."),
+        ],
+        "requirements": [
+            ("Must have", "4+ years in security consulting or engineering", "Direct experience advising on or implementing security architecture for enterprise environments."),
+            ("Must have", "A recognised certification", "CISSP, CISM, or equivalent - or a clear path to obtaining one within your first year, which we'll sponsor."),
+            ("Preferred", "Regulatory framework depth", "Familiarity with financial-services or public-sector compliance regimes (PCI DSS, DORA, FedRAMP, or local equivalents)."),
+            ("Preferred", "Client-facing consulting experience", "Comfortable running a workshop with a client CISO as well as a technical deep-dive with their platform engineers."),
+        ],
+    },
+    {
+        "slug": "career-product-designer.html",
+        "variant": "media--sunset",
+        "title": "Product designer",
+        "locations": "New York / Amsterdam",
+        "meta_title": "Product designer - Careers - Tata Consulting Services, PLC",
+        "meta_description": "Design digital products for enterprise clients - research, systems thinking, and craft, working directly with engineering from day one.",
+        "lead": "You'll design digital products for enterprise clients, embedded with engineering from research through to delivery.",
+        "summary": [
+            "You'll design digital products and experiences for enterprise clients - often replacing decades-old internal tools that the people using them have simply learned to tolerate.",
+            "This is a hands-on craft role embedded with engineering, not a design team working in isolation. You'll do the research, build the system, and stay involved through implementation - so what ships matches what you designed.",
+        ],
+        "responsibilities": [
+            ("Research", "Understand the people who'll use it", "Run discovery with end users - often frontline staff, not just the stakeholders who commissioned the project - to find where the real friction is."),
+            ("Design", "Build systems, not just screens", "Design coherent, scalable interaction and visual systems that hold up as a product grows past its first release."),
+            ("Partner", "Stay involved through delivery", "Work directly with engineering through implementation, reviewing built output against design intent rather than handing off and moving on."),
+        ],
+        "requirements": [
+            ("Must have", "4+ years in product design", "A portfolio showing shipped work, including the research and systems thinking behind it, not just final screens."),
+            ("Must have", "Enterprise or complex-workflow experience", "Comfortable designing for dense, multi-step, permission-gated workflows - not just consumer-simple flows."),
+            ("Preferred", "Design systems experience", "Prior work building or extending a component-based design system used by multiple teams."),
+            ("Preferred", "Fluency with engineering", "Enough front-end literacy to have a real conversation with the engineers building your designs."),
+        ],
+    },
+    {
+        "slug": "career-data-engineer.html",
+        "variant": "media--forest",
+        "title": "Data engineer",
+        "locations": "Multiple - Global",
+        "meta_title": "Data engineer - Careers - Tata Consulting Services, PLC",
+        "meta_description": "Build the pipelines and data platforms that power analytics, reporting, and AI for enterprise clients at global scale.",
+        "lead": "You'll build and operate the data pipelines and platforms that power analytics, reporting, and AI at global scale.",
+        "summary": [
+            "You'll build and operate the data pipelines and platforms that feed analytics, regulatory reporting, and AI workloads for enterprise clients - often moving petabyte-scale data out of legacy warehouses and into modern, governed platforms.",
+            "The work is unglamorous in the best way: data quality, lineage, and pipeline reliability, done well enough that the analysts and data scientists downstream never have to think about it.",
+        ],
+        "responsibilities": [
+            ("Build", "Design and build data pipelines", "Build batch and streaming pipelines using tools like Spark, Kafka, and Airflow, with data quality and lineage built in from the start, not bolted on after."),
+            ("Model", "Design data models clients can trust", "Design warehouse and lakehouse schemas that hold up under real query load and evolve without breaking every downstream consumer."),
+            ("Govern", "Make data trustworthy", "Implement the governance, cataloguing, and access-control layer that lets a client's analysts self-serve without a data engineer in the loop for every request."),
+        ],
+        "requirements": [
+            ("Must have", "3+ years in data engineering", "Production experience building and operating pipelines at meaningful scale - not just prototypes."),
+            ("Must have", "SQL and a pipeline framework", "Strong SQL plus hands-on experience with Spark, dbt, Airflow, or a comparable orchestration/transformation stack."),
+            ("Preferred", "Cloud data platform depth", "Experience with Snowflake, BigQuery, Databricks, or Redshift at production scale."),
+            ("Preferred", "Streaming experience", "Kafka or a comparable streaming platform, for clients moving from batch to near-real-time reporting."),
+        ],
+    },
+    {
+        "slug": "career-sap-s4hana-architect.html",
+        "variant": "media--ember",
+        "title": "SAP S/4HANA architect",
+        "locations": "Walldorf / Mumbai",
+        "meta_title": "SAP S/4HANA architect - Careers - Tata Consulting Services, PLC",
+        "meta_description": "Lead SAP S/4HANA transformation programmes for enterprise clients - architecture, migration strategy, and integration design.",
+        "lead": "You'll lead solution architecture for SAP S/4HANA transformation programmes, from migration strategy through to go-live.",
+        "summary": [
+            "You'll lead solution architecture for SAP S/4HANA transformation programmes - core ERP migrations for clients where the finance, supply chain, or manufacturing backbone genuinely cannot go down.",
+            "You'll set the migration strategy (greenfield, brownfield, or selective data transition), design the integration landscape around it, and stay accountable for the architecture through go-live, not just the design phase.",
+        ],
+        "responsibilities": [
+            ("Architect", "Own the target architecture", "Define the S/4HANA solution architecture, module scope, and integration landscape for large-scale ERP transformation programmes."),
+            ("Strategise", "Choose the right migration path", "Assess and recommend greenfield, brownfield, or selective data transition based on the client's data quality, customisation depth, and timeline."),
+            ("Govern", "Stay accountable through go-live", "Chair architecture review boards through build and cutover, resolving design conflicts before they become production incidents."),
+        ],
+        "requirements": [
+            ("Must have", "6+ years in SAP architecture", "Led solution architecture for at least one full S/4HANA implementation or migration, start to go-live."),
+            ("Must have", "Cross-module depth", "Strong grounding across FI/CO plus at least one of MM, SD, or PP, and how they integrate."),
+            ("Preferred", "SAP BTP and integration", "Experience with SAP Business Technology Platform and integration tooling (SAP PI/PO, Integration Suite, or equivalent)."),
+            ("Preferred", "Certification", "SAP-certified in S/4HANA architecture or a relevant module; we'll sponsor renewal and further certification."),
+        ],
+    },
+]
+
+CAREER_ROLES_BY_SLUG = {role["slug"]: role for role in CAREER_ROLES}
+
+
+def render_career_role_tiles() -> str:
+    return "\n".join(
+        f"""          <a class="service-tile reveal" href="/{role["slug"]}">
+            <h3>{role["title"]}</h3>
+            <div class="service-tile__footer"><span class="service-tile__num">{role["locations"]}</span>{ARROW}</div>
+          </a>"""
+        for role in CAREER_ROLES
+    )
+
+
+def render_related_career_tiles(exclude_slug: str) -> str:
+    others = [role for role in CAREER_ROLES if role["slug"] != exclude_slug][:3]
+    return "\n".join(
+        f"""          <a class="service-tile reveal" href="/{role["slug"]}">
+            <span class="story-card__tag">Also hiring</span>
+            <h3>{role["title"]}</h3>
+            <div class="service-tile__footer"><span class="service-tile__num">{role["locations"]}</span>{ARROW}</div>
+          </a>"""
+        for role in others
+    )
+
+
+def career_detail_main(role: dict) -> str:
+    intro_paras = "\n".join(f"          <p>{p}</p>" for p in role["summary"])
+    responsibilities = render_detail_panels(role["responsibilities"])
+    requirements = render_capability_tiles(role["requirements"])
+    related = render_related_career_tiles(role["slug"])
+    return (
+        page_hero("Open role - " + role["locations"], role["title"], role["lead"])
+        + f"""
+    <section class="section">
+      <div class="container">
+        <div class="split">
+          <div class="split__body reveal">
+            <h2>About the role.</h2>
+{intro_paras}
+            <a class="arrow-link" href="/contact.html">Apply for this role
+              {ARROW}
+            </a>
+          </div>
+          <div class="reveal">
+            <div class="detail-graphic {role["variant"]}"></div>
+            <p class="detail-caption">{role["locations"]}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--muted">
+      <div class="container">
+        <div class="section-head__title" style="margin-bottom: var(--s-12); max-width: 720px;">
+          <span class="eyebrow">What you'll do</span>
+          <h2 style="margin-top: var(--s-3);">The shape of the work.</h2>
+        </div>
+        <div class="grid grid--3">
+{responsibilities}
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head__title" style="margin-bottom: var(--s-12); max-width: 720px;">
+          <span class="eyebrow">What you'll bring</span>
+          <h2 style="margin-top: var(--s-3);">What we're looking for.</h2>
+        </div>
+        <div class="grid grid--4">
+{requirements}
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--dark">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-head__title">
+            <span class="eyebrow" style="color: var(--brand-accent);">Also hiring</span>
+            <h2>Other open roles you might like.</h2>
+          </div>
+          <a class="arrow-link arrow-link--light" href="/careers.html">See all open roles
+            {ARROW}
+          </a>
+        </div>
+        <div class="grid grid--3">
+{related}
+        </div>
+      </div>
+    </section>
+"""
+        + cta_strip(f"Ready to apply for {role['title']}?", "Send your CV", "contact.html")
+    )
+
+
+CAREER_ROLE_PAGE_STUBS = {
+    role["slug"]: {
+        "title": role["meta_title"],
+        "description": role["meta_description"],
+        "main_html": career_detail_main(role),
+    }
+    for role in CAREER_ROLES
+}
+
+
 def legal_main(eyebrow: str, title: str, lead: str, sections: list) -> str:
     body = ""
     for s in sections:
@@ -2298,6 +2531,7 @@ STUB_PAGES = {
     },
     **RUN_SERVICE_PAGE_STUBS,
     **CASE_STUDY_PAGE_STUBS,
+    **CAREER_ROLE_PAGE_STUBS,
     "privacy.html": {
         "title": "Privacy notice - Tata Consulting Services, PLC",
         "description": "How Tata collects, uses, shares, and safeguards personal information.",
