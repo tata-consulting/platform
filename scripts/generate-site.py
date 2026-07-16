@@ -522,19 +522,21 @@ def investors_main() -> str:
 
 
 NEWSROOM_RELEASES = [
-    ("media--ocean",  "May 14, 2026", "Press release",   "Tata expands European delivery footprint with new Madrid campus.", "Three thousand engineers, designers, and consultants will be based in the new center by 2028."),
-    ("media--neon",   "Apr 28, 2026", "Press release",   "Q4 FY25 results: revenue up 8.4% YoY, margin holds at 24.6%.", "Annual revenue crosses £23B; record TCV bookings driven by AI and cloud engagements."),
-    ("media--sunset", "Apr 02, 2026", "Announcement",    "Tata joins UN Climate Action Compact.", "Commits to net-zero across owned operations by 2030, full supply chain by 2040."),
-    ("media--forest", "Mar 18, 2026", "Press release",   "Strategic alliance with a leading hyperscaler expands managed AI services.", "Joint go-to-market across financial services, manufacturing, and healthcare."),
-    ("media--ember",  "Feb 24, 2026", "Award",           "Recognised as a Leader in the 2026 Cloud Services Magic Quadrant.", "Sixth consecutive year in the Leaders quadrant."),
-    ("media--steel",  "Jan 30, 2026", "Press release",   "Tata to acquire a specialist healthcare data engineering firm.", "Strengthens life sciences delivery in North America and Europe."),
+    ("media--ocean",  "May 14, 2026", "Press release",   "Tata expands European delivery footprint with new Madrid campus.", "Three thousand engineers, designers, and consultants will be based in the new center by 2028.", "newsroom-madrid-campus.jpg", "Modern glass office building exterior"),
+    ("media--neon",   "Apr 28, 2026", "Press release",   "Q4 FY25 results: revenue up 8.4% YoY, margin holds at 24.6%.", "Annual revenue crosses £23B; record TCV bookings driven by AI and cloud engagements.", "newsroom-q4-results.jpg", "Financial growth charts on screen"),
+    ("media--sunset", "Apr 02, 2026", "Announcement",    "Tata joins UN Climate Action Compact.", "Commits to net-zero across owned operations by 2030, full supply chain by 2040.", "newsroom-un-climate.jpg", "Wind turbines at sunset"),
+    ("media--forest", "Mar 18, 2026", "Press release",   "Strategic alliance with a leading hyperscaler expands managed AI services.", "Joint go-to-market across financial services, manufacturing, and healthcare.", "newsroom-hyperscaler-ai.jpg", "Data center server racks"),
+    ("media--ember",  "Feb 24, 2026", "Award",           "Recognised as a Leader in the 2026 Cloud Services Magic Quadrant.", "Sixth consecutive year in the Leaders quadrant.", "newsroom-magic-quadrant-award.jpg", "Gold award trophies"),
+    ("media--steel",  "Jan 30, 2026", "Press release",   "Tata to acquire a specialist healthcare data engineering firm.", "Strengthens life sciences delivery in North America and Europe.", "newsroom-healthcare-acquisition.jpg", "Medical vital signs monitor"),
 ]
 
 
 def newsroom_main() -> str:
     cards = "\n".join(
         f"""          <article class="story-card reveal">
-            <div class="story-card__media {variant}"></div>
+            <div class="story-card__media {variant}">
+              <img src="/assets/newsroom-thumbs/{image}" alt="{image_alt}" width="560" height="320" />
+            </div>
             <div class="story-card__body">
               <span class="story-card__tag">{date} - {kind}</span>
               <h3 class="story-card__title">{title}</h3>
@@ -546,7 +548,7 @@ def newsroom_main() -> str:
               </div>
             </div>
           </article>"""
-        for (variant, date, kind, title, excerpt) in NEWSROOM_RELEASES
+        for (variant, date, kind, title, excerpt, image, image_alt) in NEWSROOM_RELEASES
     )
     return (
         page_hero(
@@ -662,19 +664,21 @@ def find_office_main() -> str:
 
 
 PARTNER_LIST = [
-    ("media--neon",   "Hyperscale alliance",     "Cloud platforms",         "Co-engineering, joint go-to-market, and shared customer success across the three largest public-cloud providers."),
-    ("media--ocean",  "Strategic alliance",      "Core enterprise software", "Deep delivery practices around SAP, Oracle, Microsoft, Salesforce, ServiceNow, and Workday - implementation, migration, and managed run."),
-    ("media--sunset", "Technology partner",      "Data &amp; AI",            "Joint capabilities with Databricks, Snowflake, Confluent, and the leading model providers - to put AI into production, not pilots."),
-    ("media--forest", "Innovation network",      "Startups &amp; ventures",  "Tata Ventures invests in and co-builds with 80+ enterprise startups. We bring them into client engagements when their tech is ready."),
-    ("media--ember",  "Academic partnership",    "Research &amp; talent",    "Joint research centers with 30+ universities globally. Sponsored chairs, applied research, and a steady pipeline of graduate hires."),
-    ("media--steel",  "Industry consortia",      "Standards &amp; advocacy", "Active participation in cloud, AI safety, cybersecurity, and sustainability standards bodies - shaping the rules of the road."),
+    ("media--neon",   "Hyperscale alliance",     "Cloud platforms",         "Co-engineering, joint go-to-market, and shared customer success across the three largest public-cloud providers.", "partners-hyperscale-cloud.jpg", "Data center server racks"),
+    ("media--ocean",  "Strategic alliance",      "Core enterprise software", "Deep delivery practices around SAP, Oracle, Microsoft, Salesforce, ServiceNow, and Workday - implementation, migration, and managed run.", "partners-strategic-alliance.jpg", "Business partners shaking hands"),
+    ("media--sunset", "Technology partner",      "Data &amp; AI",            "Joint capabilities with Databricks, Snowflake, Confluent, and the leading model providers - to put AI into production, not pilots.", "partners-tech-ai.jpg", "Abstract digital network visualization"),
+    ("media--forest", "Innovation network",      "Startups &amp; ventures",  "Tata Ventures invests in and co-builds with 80+ enterprise startups. We bring them into client engagements when their tech is ready.", "partners-innovation-startups.jpg", "Startup team working in a modern office"),
+    ("media--ember",  "Academic partnership",    "Research &amp; talent",    "Joint research centers with 30+ universities globally. Sponsored chairs, applied research, and a steady pipeline of graduate hires.", "partners-academic.jpg", "Students walking on a university campus"),
+    ("media--steel",  "Industry consortia",      "Standards &amp; advocacy", "Active participation in cloud, AI safety, cybersecurity, and sustainability standards bodies - shaping the rules of the road.", "partners-consortia.jpg", "Empty modern conference room"),
 ]
 
 
 def partners_main() -> str:
     cards = "\n".join(
         f"""          <article class="story-card reveal">
-            <div class="story-card__media {variant}"></div>
+            <div class="story-card__media {variant}">
+              <img src="/assets/partners-thumbs/{image}" alt="{image_alt}" width="560" height="320" />
+            </div>
             <div class="story-card__body">
               <span class="story-card__tag">{tag}</span>
               <h3 class="story-card__title">{title}</h3>
@@ -686,7 +690,7 @@ def partners_main() -> str:
               </div>
             </div>
           </article>"""
-        for (variant, tag, title, body) in PARTNER_LIST
+        for (variant, tag, title, body, image, image_alt) in PARTNER_LIST
     )
     return (
         page_hero(
@@ -990,7 +994,9 @@ def sustainability_main() -> str:
         </div>
         <div class="grid grid--3">
           <div class="story-card reveal">
-            <div class="story-card__media media--forest"></div>
+            <div class="story-card__media media--forest">
+              <img src="/assets/sustainability-thumbs/sustainability-planet.jpg" alt="Wind turbine in an open field" width="560" height="320" />
+            </div>
             <div class="story-card__body">
               <span class="story-card__tag">Planet</span>
               <h3 class="story-card__title">Net-zero across owned operations by 2030.</h3>
@@ -998,7 +1004,9 @@ def sustainability_main() -> str:
             </div>
           </div>
           <div class="story-card reveal">
-            <div class="story-card__media media--sunset"></div>
+            <div class="story-card__media media--sunset">
+              <img src="/assets/sustainability-thumbs/sustainability-people.jpg" alt="Diverse team collaborating in an office" width="560" height="320" />
+            </div>
             <div class="story-card__body">
               <span class="story-card__tag">People</span>
               <h3 class="story-card__title">Equal opportunity by design.</h3>
@@ -1006,7 +1014,9 @@ def sustainability_main() -> str:
             </div>
           </div>
           <div class="story-card reveal">
-            <div class="story-card__media media--steel"></div>
+            <div class="story-card__media media--steel">
+              <img src="/assets/sustainability-thumbs/sustainability-governance.jpg" alt="Business professionals in a meeting" width="560" height="320" />
+            </div>
             <div class="story-card__body">
               <span class="story-card__tag">Governance</span>
               <h3 class="story-card__title">Trust as an operating discipline.</h3>
@@ -1183,6 +1193,7 @@ def case_graphic_svg(title: str, stages: list[str], metrics: list[tuple[str, str
 CASE_STUDIES = [
    {
        "slug": "case-banking-cloud-native.html",
+       "image_alt": "Financial market data on trading screens",
        "meta_title": "Retail bank cloud-native modernisation - Tata Consulting Services, PLC",
        "meta_description": "How Tata modernised a 220M-account retail bank to a cloud-native operating model in 18 months without customer-facing incidents.",
        "variant": "media--ocean",
@@ -1230,6 +1241,7 @@ CASE_STUDIES = [
    },
    {
        "slug": "case-connected-factory-oem.html",
+       "image_alt": "Industrial robotic arm on a factory production line",
        "meta_title": "Connected factory transformation - Tata Consulting Services, PLC",
        "meta_description": "How Tata connected 40 plants for a global OEM with real-time supply, quality, and production intelligence.",
        "variant": "media--neon",
@@ -1285,6 +1297,7 @@ CASE_STUDIES = [
    },
    {
        "slug": "case-retail-continuous-delivery.html",
+       "image_alt": "Warehouse aisle with forklift and stacked shelving",
        "meta_title": "Retail continuous delivery transformation - Tata Consulting Services, PLC",
        "meta_description": "How Tata moved a heritage retailer from quarterly releases to continuous delivery across 1,800 stores and digital channels.",
        "variant": "media--sunset",
@@ -1332,6 +1345,7 @@ CASE_STUDIES = [
    },
    {
        "slug": "case-insurance-claims-automation.html",
+       "image_alt": "Insurance policy documents on a desk",
        "meta_title": "Insurance claims automation - Tata Consulting Services, PLC",
        "meta_description": "How Tata automated property and casualty claims for a top-10 carrier with straight-through processing and faster outcomes.",
        "variant": "media--ember",
@@ -1379,6 +1393,7 @@ CASE_STUDIES = [
    },
    {
        "slug": "case-healthcare-member-experience.html",
+       "image_alt": "Empty hospital corridor",
        "meta_title": "Healthcare member experience platform - Tata Consulting Services, PLC",
        "meta_description": "How Tata consolidated 36 healthcare portals into one digital front door serving 22M lives.",
        "variant": "media--forest",
@@ -1426,6 +1441,7 @@ CASE_STUDIES = [
    },
    {
        "slug": "case-public-sector-digital-identity.html",
+       "image_alt": "Fingerprint scanner for secure digital identity",
        "meta_title": "Citizen identity transformation - Tata Consulting Services, PLC",
        "meta_description": "How Tata built a digital identity and service front door for 65M citizens while retiring 40 legacy systems.",
        "variant": "media--steel",
@@ -1473,6 +1489,7 @@ CASE_STUDIES = [
    },
    {
        "slug": "case-energy-grid-edge-intelligence.html",
+       "image_alt": "High-voltage power lines against a blue sky",
        "meta_title": "Grid-edge intelligence case study - Tata Consulting Services, PLC",
        "meta_description": "How Tata helped a European utility build grid-edge intelligence across nine countries and reduce customer outage minutes.",
        "variant": "media--ocean",
@@ -1520,6 +1537,7 @@ CASE_STUDIES = [
    },
    {
        "slug": "case-telco-5g-bss-modernisation.html",
+       "image_alt": "Telecommunications tower against a clear sky",
        "meta_title": "5G core and BSS modernisation - Tata Consulting Services, PLC",
        "meta_description": "How Tata launched 5G core services and modernised BSS in parallel for a tier-1 telecommunications operator.",
        "variant": "media--neon",
@@ -1567,6 +1585,7 @@ CASE_STUDIES = [
    },
    {
        "slug": "case-airline-loyalty-unification.html",
+       "image_alt": "Airplane wing above the clouds at sunset",
        "meta_title": "Airline loyalty unification - Tata Consulting Services, PLC",
        "meta_description": "How Tata unified a loyalty platform across nine airline sub-brands and unlocked incremental revenue.",
        "variant": "media--sunset",
@@ -1765,13 +1784,19 @@ RUN_SERVICE_PAGES = [
 RUN_SERVICE_PAGES_BY_SLUG = {page["slug"]: page for page in RUN_SERVICE_PAGES}
 
 
+def case_thumb_path(slug: str) -> str:
+   return "/assets/case-thumbs/" + slug.replace(".html", ".jpg")
+
+
 def render_related_case_cards(case_slugs: list[str]) -> str:
    cards = []
    for slug in case_slugs:
        study = CASE_STUDIES_BY_SLUG[slug]
        cards.append(
            f"""          <article class="story-card reveal">
-           <div class="story-card__media {study["variant"]}"></div>
+           <div class="story-card__media {study["variant"]}">
+             <img src="{case_thumb_path(study["slug"])}" alt="{study["image_alt"]}" width="560" height="320" />
+           </div>
            <div class="story-card__body">
              <span class="story-card__tag">{study["tag"]}</span>
              <h3 class="story-card__title">{study["title"]}</h3>
@@ -2027,7 +2052,9 @@ def case_detail_main(cfg: dict) -> str:
 def case_studies_main() -> str:
    cards = "\n".join(
        f"""          <article class="story-card reveal">
-           <div class="story-card__media {study["variant"]}"></div>
+           <div class="story-card__media {study["variant"]}">
+             <img src="{case_thumb_path(study["slug"])}" alt="{study["image_alt"]}" width="560" height="320" />
+           </div>
            <div class="story-card__body">
              <span class="story-card__tag">{study["tag"]}</span>
              <h3 class="story-card__title">{study["title"]}</h3>
