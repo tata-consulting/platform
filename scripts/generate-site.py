@@ -24,6 +24,14 @@ from pathlib import Path
 
 SITE_DIR = Path(__file__).resolve().parents[1] / "site"
 
+# Shared Open Graph image for every page. Link unfurlers do not render SVG,
+# so this is a PNG rendered from the wordmark (site/assets/og-image.png),
+# sized to the 1200x630 card most unfurlers expect. One image for all pages.
+OG_IMAGE_PATH = "/assets/og-image.png"
+OG_IMAGE_WIDTH = 1200
+OG_IMAGE_HEIGHT = 630
+OG_IMAGE_ALT = "Tata Consulting Services, PLC"
+
 WORDMARK_LIGHT = (
     '<img src="/assets/logo/tcs-logo-black.svg" '
     'alt="Tata Consulting Services, PLC" '
@@ -45,6 +53,18 @@ CHROME_TOP = """<!doctype html>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{title}</title>
   <meta name="description" content="{description}" />
+  <meta property="og:title" content="{title}" />
+  <meta property="og:description" content="{description}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="{page_url}" />
+  <meta property="og:image" content="{og_image}" />
+  <meta property="og:image:width" content="{og_image_width}" />
+  <meta property="og:image:height" content="{og_image_height}" />
+  <meta property="og:image:alt" content="{og_image_alt}" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="{title}" />
+  <meta name="twitter:description" content="{description}" />
+  <meta name="twitter:image" content="{og_image}" />
   <script>document.documentElement.classList.add('js')</script>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -2604,10 +2624,14 @@ EXISTING_PAGES = {
 MAIN_RE = re.compile(r"<main[^>]*>(.*?)</main>", re.DOTALL)
 HEAD_RE = re.compile(r"<head\b[^>]*>(.*?)</head>", re.DOTALL | re.IGNORECASE)
 HEAD_STYLE_RE = re.compile(r"[ \t]*<style\b[^>]*>.*?</style>", re.DOTALL | re.IGNORECASE)
+HEAD_ROBOTS_RE = re.compile(r"[ \t]*<meta\s+name=\"robots\"[^>]*>", re.IGNORECASE)
 
 # Bespoke per-page <head> additions the standard chrome does not carry. The
 # London and IDP pages use JetBrains Mono for code/architecture callouts; their
 # inline <style> blocks are preserved automatically (see preserve_head_extra).
+# Every page also carries its own <meta name="robots"> directive (noindex by
+# default, index for the Meshery pages); that is preserved the same way, so a
+# regeneration never silently de-noindexes the site.
 JETBRAINS_MONO_LINK = (
     '  <link rel="stylesheet" '
     'href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" />'
@@ -2622,9 +2646,10 @@ def preserve_head_extra(filename: str, old_html: str) -> str:
     """Collect <head> additions that must survive re-emission of an existing page.
 
     The chrome owns the head's shared parts; anything page-specific (an extra
-    font declared in PAGE_HEAD_EXTRA, plus any inline <style> blocks the page
-    carries in its own <head>) is preserved verbatim so the generator can manage
-    these pages without flattening their bespoke styling.
+    font declared in PAGE_HEAD_EXTRA, the page's <meta name="robots">
+    directive, plus any inline <style> blocks the page carries in its own
+    <head>) is preserved verbatim so the generator can manage these pages
+    without flattening their bespoke styling.
     """
     parts = []
     extra_font = PAGE_HEAD_EXTRA.get(filename)
@@ -2633,6 +2658,8 @@ def preserve_head_extra(filename: str, old_html: str) -> str:
 
     head_match = HEAD_RE.search(old_html)
     if head_match:
+        for robots in HEAD_ROBOTS_RE.findall(head_match.group(1)):
+            parts.append(robots.strip("\n"))
         for style in HEAD_STYLE_RE.findall(head_match.group(1)):
             parts.append(style.strip("\n"))
 
@@ -2652,7 +2679,21 @@ def emit_page(
     main_inner = main_inner.strip()
     head_slot = f"\n{head_extra}" if head_extra else ""
     body = f'  <main id="main">\n{main_inner}\n  </main>\n'
-    top = CHROME_TOP.format(title=title, description=description, head_extra=head_slot)
+    # Open Graph needs absolute URLs. The canonical domain comes from CNAME
+    # (see site_base_url); the homepage's canonical URL is the bare domain.
+    base_url = site_base_url()
+    rel = path.relative_to(SITE_DIR).as_posix()
+    page_url = base_url + "/" if rel == "index.html" else f"{base_url}/{rel}"
+    top = CHROME_TOP.format(
+        title=title,
+        description=description,
+        head_extra=head_slot,
+        page_url=page_url,
+        og_image=f"{base_url}{OG_IMAGE_PATH}",
+        og_image_width=OG_IMAGE_WIDTH,
+        og_image_height=OG_IMAGE_HEIGHT,
+        og_image_alt=OG_IMAGE_ALT,
+    )
     full = top + body + CHROME_BOTTOM
     path.write_text(full, encoding="utf-8")
 
@@ -2771,10 +2812,23 @@ def main() -> int:
         search_records.append(search_record(filename, title, description, main_inner))
         written.append(filename)
 
-    # Generate new stub pages.
+    # Generate new stub pages. A stub file that already exists keeps its
+    # bespoke <head> additions (robots directive, inline styles) the same
+    # way regenerated pages do; a genuinely new stub has none to keep.
     for filename, cfg in STUB_PAGES.items():
         path = SITE_DIR / filename
-        emit_page(path, cfg["title"], cfg["description"], cfg["main_html"])
+        head_extra = ""
+        if path.exists():
+            head_extra = preserve_head_extra(
+                filename, path.read_text(encoding="utf-8")
+            )
+        emit_page(
+            path,
+            cfg["title"],
+            cfg["description"],
+            cfg["main_html"],
+            head_extra=head_extra,
+        )
         search_records.append(
             search_record(filename, cfg["title"], cfg["description"], cfg["main_html"])
         )
